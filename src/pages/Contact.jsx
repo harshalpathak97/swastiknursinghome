@@ -46,8 +46,7 @@ This appointment request was submitted through the Swastik Nursing Home website.
   };
 
   const openGoogleMaps = () => {
-    const query = encodeURIComponent(clinicData.clinic.googleMapsQuery);
-    window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
+    window.open(clinicData.clinic.googleMapsLink || 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9', '_blank');
   };
 
   return (

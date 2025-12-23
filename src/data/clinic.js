@@ -14,6 +14,7 @@ export const clinicData = {
     addressText: '4W8G+HCP, Lal Bahadur Shastri Marg, Near Shreyas Cinema, Surya Nagar, Chandan Nagar, Ghatkopar West, Mumbai, Maharashtra 400083',
     addressShort: 'Lal Bahadur Shastri Marg, Near Shreyas Cinema, Ghatkopar West, Mumbai 400083',
     googleMapsQuery: '4W8G+HCP Lal Bahadur Shastri Marg Near Shreyas Cinema Surya Nagar Chandan Nagar Ghatkopar West Mumbai Maharashtra 400083',
+    googleMapsLink: 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9',
 
     // Clinic Hours
     timings: {
