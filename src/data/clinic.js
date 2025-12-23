@@ -32,7 +32,41 @@ export const clinicData = {
       facebook: '',
       instagram: '',
       linkedin: ''
-    }
+    },
+
+    // Hospital Images for Carousel
+    images: [
+      {
+        url: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&h=800&fit=crop',
+        alt: 'Modern hospital reception area',
+        caption: 'Welcoming Reception Area'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=800&fit=crop',
+        alt: 'Clean and modern clinic interior',
+        caption: 'Modern Clinic Facilities'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1200&h=800&fit=crop',
+        alt: 'Professional medical consultation room',
+        caption: 'Comfortable Consultation Rooms'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=1200&h=800&fit=crop',
+        alt: 'Well-equipped medical facility',
+        caption: 'Well-Equipped Medical Facility'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=1200&h=800&fit=crop',
+        alt: 'Pediatric care area',
+        caption: 'Specialized Pediatric Care'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=1200&h=800&fit=crop',
+        alt: 'Orthopedic treatment room',
+        caption: 'Orthopedic Treatment Center'
+      }
+    ]
   },
 
   // Doctors Information

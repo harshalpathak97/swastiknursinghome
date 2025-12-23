@@ -2,6 +2,7 @@ import { assets } from "../assets/assets";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { Button } from "./ui/button";
+import ImageCarousel from "./ImageCarousel";
 
 const Header = () => {
   const { clinicData } = useContext(AppContext);
@@ -59,8 +60,14 @@ const Header = () => {
       </div>
 
       {/* right side  */}
-      <div className="lg:w-1/2 relative animate-slideInFromRight">
-        <img className="w-full lg:absolute bottom-0 h-auto rounded-lg" src={assets.header_img} alt="Swastik Nursing Home" />
+      <div className="lg:w-1/2 relative animate-slideInFromRight px-4 lg:px-0 flex items-center justify-center lg:justify-end">
+        {clinicData.clinic.images && clinicData.clinic.images.length > 0 ? (
+          <div className="w-full max-w-full lg:max-w-lg">
+            <ImageCarousel images={clinicData.clinic.images} autoPlayInterval={5000} />
+          </div>
+        ) : (
+          <img className="w-full lg:absolute bottom-0 h-auto rounded-lg" src={assets.header_img} alt="Swastik Nursing Home" />
+        )}
       </div>
     </div>
   );
