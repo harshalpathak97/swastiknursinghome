@@ -98,7 +98,14 @@ const Privacy = () => {
             </p>
             <div className="bg-gray-50 p-4 rounded-lg text-center sm:text-left">
               <p className="font-semibold text-gray-800">{clinicData.clinic.name}</p>
-              <p className="text-gray-600">{clinicData.clinic.addressShort}</p>
+              <a
+                href={clinicData.clinic.googleMapsLink || 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-primary transition-colors cursor-pointer block"
+              >
+                {clinicData.clinic.addressShort}
+              </a>
               <p className="text-gray-600">Phone: {clinicData.clinic.phone}</p>
               <p className="text-gray-600">Email: {clinicData.clinic.email}</p>
             </div>

@@ -61,7 +61,7 @@ const Services = () => {
 
       <div className="text-center mb-16">
         <Button asChild className="mt-4 px-8 py-3 rounded-full font-semibold hover:scale-105 transition-all duration-300">
-          <a href="/appointment/general">Book Appointment</a>
+          <a href="/contact#appointment-form">Book Appointment</a>
         </Button>
       </div>
 

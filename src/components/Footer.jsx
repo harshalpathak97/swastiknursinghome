@@ -64,7 +64,14 @@ const Footer = () => {
             </li>
             <li className="mt-3">
               <p className="font-medium text-gray-800 mb-1">Address:</p>
-              <p className="text-sm">{clinicData.clinic.addressShort}</p>
+              <a
+                href={clinicData.clinic.googleMapsLink || 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm hover:text-primary transition-colors cursor-pointer block"
+              >
+                {clinicData.clinic.addressShort}
+              </a>
             </li>
           </ul>
         </div>

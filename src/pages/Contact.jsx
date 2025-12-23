@@ -1,5 +1,5 @@
 import { assets } from "../assets/assets";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
 
 const Contact = () => {
@@ -13,6 +13,17 @@ const Contact = () => {
     preferredTime: '',
     doctor: ''
   });
+
+  useEffect(() => {
+    if (window.location.hash === '#appointment-form') {
+      setTimeout(() => {
+        const element = document.getElementById('appointment-form');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -71,7 +82,14 @@ This appointment request was submitted through the Swastik Nursing Home website.
               {/* Address */}
               <div className="animate-fadeIn" style={{ animationDelay: '0.4s' }}>
                 <h3 className="text-lg font-semibold text-neutral-dark mb-2">📍 Address</h3>
-                <p className="text-gray-600 leading-relaxed">{clinicData.clinic.addressText}</p>
+                <a
+                  href={clinicData.clinic.googleMapsLink || 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 leading-relaxed hover:text-primary transition-colors cursor-pointer block"
+                >
+                  {clinicData.clinic.addressText}
+                </a>
                 <button
                   onClick={openGoogleMaps}
                   className="mt-2 text-primary hover:text-primary/80 font-medium transition-colors"
@@ -153,7 +171,7 @@ This appointment request was submitted through the Swastik Nursing Home website.
         </div>
 
         {/* Appointment Request Form */}
-        <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8 animate-slideInFromRight" style={{ animationDelay: '0.3s' }}>
+        <div id="appointment-form" className="bg-white rounded-lg shadow-sm p-6 sm:p-8 animate-slideInFromRight" style={{ animationDelay: '0.3s' }}>
           <h2 className="text-xl sm:text-2xl font-bold text-neutral-dark mb-6 text-center lg:text-left">Book an Appointment</h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -279,9 +297,14 @@ This appointment request was submitted through the Swastik Nursing Home website.
       <div className="bg-neutral-light rounded-lg p-6 sm:p-8 text-center mx-4 animate-fadeIn" style={{ animationDelay: '1.2s' }}>
         <div className="text-5xl sm:text-6xl mb-4">🗺️</div>
         <h3 className="text-lg sm:text-xl font-semibold text-neutral-dark mb-2 px-4">Find Us on Google Maps</h3>
-        <p className="text-gray-600 mb-4 px-4">
+        <a
+          href={clinicData.clinic.googleMapsLink || 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9'}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-600 mb-4 px-4 hover:text-primary transition-colors cursor-pointer block"
+        >
           {clinicData.clinic.addressShort}
-        </p>
+        </a>
         <button
           onClick={openGoogleMaps}
           className="bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-primary/90 transition-colors animate-bounceIn w-full sm:w-auto" style={{ animationDelay: '1.3s' }}

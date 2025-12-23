@@ -30,7 +30,7 @@ const Header = () => {
             asChild
             className="flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-primary text-white text-sm font-medium hover:scale-105 transition-all duration-300 w-full sm:w-auto"
           >
-            <a href="#appointment">Book Appointment</a>
+            <a href="/contact#appointment-form">Book Appointment</a>
           </Button>
           <a
             href={`https://wa.me/${clinicData.clinic.whatsappNumber.replace(/[^0-9]/g, '')}`}

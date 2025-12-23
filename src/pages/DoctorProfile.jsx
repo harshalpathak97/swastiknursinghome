@@ -136,7 +136,14 @@ const DoctorProfile = () => {
                 </div>
                 <div>
                   <p className="font-semibold text-neutral-dark">Address</p>
-                  <p className="text-gray-600">{clinicData.clinic.addressShort}</p>
+                  <a
+                    href={clinicData.clinic.googleMapsLink || 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-primary transition-colors cursor-pointer block"
+                  >
+                    {clinicData.clinic.addressShort}
+                  </a>
                 </div>
                 <div>
                   <p className="font-semibold text-neutral-dark">Timings</p>
