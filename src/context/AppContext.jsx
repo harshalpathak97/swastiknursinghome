@@ -1,14 +1,17 @@
 import { createContext } from "react";
-import { doctors, specialityData } from '../assets/assets'; 
+import { doctors, specialityData } from '../assets/assets';
+import { clinicData } from '../data/clinic';
 
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
 
-  const currencySymbol = '$'
+  const currencySymbol = '₹'
   const value = {
-    doctors,currencySymbol,
-    specialities: specialityData 
+    doctors,
+    currencySymbol,
+    specialities: specialityData,
+    clinicData
   };
 
   return (
