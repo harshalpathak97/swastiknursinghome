@@ -12,7 +12,7 @@ const Speciality = () => {
       <p className="w-full sm:w-2/3 md:w-1/3 text-center text-sm text-gray-600 px-4 animate-fadeIn" style={{ animationDelay: '0.1s' }}>
         Expert care in pediatrics and orthopedics for your family's health needs
       </p>
-      <div className="flex flex-wrap sm:justify-center gap-4 pt-5 w-full overflow-scroll lg:flex animate-slideInFromBottom" style={{ animationDelay: '0.2s' }}>
+      <div className="flex flex-wrap justify-center gap-4 pt-5 w-full overflow-scroll lg:flex animate-slideInFromBottom" style={{ animationDelay: '0.2s' }}>
         {specialityData.map((item, index) => (
           <Link
             onClick={() => window.scrollTo(0, 0)}
@@ -21,7 +21,7 @@ const Speciality = () => {
             to={`/doctors/${item.speciality}`}
           >
             <img className="w-16 sm:w-24 mb-2" src={item.image} alt={item.speciality} />
-            <p className="text-neutral-dark">{item.speciality}</p>
+            <p className="text-neutral-dark text-center">{item.speciality}</p>
           </Link>
         ))}
       </div>

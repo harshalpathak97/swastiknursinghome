@@ -105,7 +105,7 @@ const DoctorProfile = () => {
                   href={`https://wa.me/${clinicData.clinic.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hi, I would like to book an appointment with Dr. ${doctor.name.split(' ')[1]}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-secondary hover:bg-secondary/90 text-white py-3 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 animate-bounceIn" style={{ animationDelay: '1.4s' }}
+                  className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white py-3 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 animate-bounceIn" style={{ animationDelay: '1.4s' }}
                 >
                   <span>💬</span>
                   WhatsApp Now

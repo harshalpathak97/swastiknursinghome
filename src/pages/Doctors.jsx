@@ -90,7 +90,7 @@ const Doctors = () => {
                     </button>
                     <button
                       onClick={() => navigate(`/appointment/${item._id}`)}
-                      className="flex-1 bg-secondary text-white py-2 px-4 rounded-lg font-medium hover:bg-secondary/90 transition-colors"
+                      className="flex-1 bg-[#25D366] text-white py-2 px-4 rounded-lg font-medium hover:bg-[#20BA5A] transition-colors"
                     >
                       Book Now
                     </button>

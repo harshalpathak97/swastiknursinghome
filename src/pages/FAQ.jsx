@@ -64,7 +64,7 @@ const FAQ = () => {
             href={`https://wa.me/${clinicData.clinic.whatsappNumber.replace(/[^0-9]/g, '')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-secondary hover:bg-secondary/90 text-white px-8 py-3 rounded-full font-semibold transition-colors animate-bounceIn w-full sm:w-auto" style={{ animationDelay: '1.1s' }}
+            className="bg-[#25D366] hover:bg-[#20BA5A] text-white px-8 py-3 rounded-full font-semibold transition-colors animate-bounceIn w-full sm:w-auto" style={{ animationDelay: '1.1s' }}
           >
             WhatsApp Us
           </a>

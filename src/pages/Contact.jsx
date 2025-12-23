@@ -96,7 +96,7 @@ This appointment request was submitted through the Swastik Nursing Home website.
                     href={`https://wa.me/${clinicData.clinic.whatsappNumber.replace(/[^0-9]/g, '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-600 hover:text-secondary transition-colors"
+                    className="flex items-center gap-2 text-gray-600 hover:text-[#25D366] transition-colors"
                   >
                     <span>💬</span>
                     <span>WhatsApp: {clinicData.clinic.whatsappNumber}</span>
@@ -138,7 +138,7 @@ This appointment request was submitted through the Swastik Nursing Home website.
               href={`https://wa.me/${clinicData.clinic.whatsappNumber.replace(/[^0-9]/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-secondary text-white p-4 rounded-lg text-center hover:bg-secondary/90 transition-colors animate-bounceIn" style={{ animationDelay: '0.8s' }}
+              className="bg-[#25D366] text-white p-4 rounded-lg text-center hover:bg-[#20BA5A] transition-colors animate-bounceIn" style={{ animationDelay: '0.8s' }}
             >
               <div className="text-2xl mb-2">💬</div>
               <div className="font-semibold">WhatsApp</div>

@@ -36,7 +36,7 @@ const Header = () => {
             href={`https://wa.me/${clinicData.clinic.whatsappNumber.replace(/[^0-9]/g, '')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-secondary text-white text-sm font-medium hover:scale-105 transition-all duration-300 w-full sm:w-auto"
+            className="flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-[#25D366] hover:bg-[#20BA5A] text-white text-sm font-medium hover:scale-105 transition-all duration-300 w-full sm:w-auto"
           >
             WhatsApp Us
           </a>
