@@ -14,9 +14,9 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 shadow-md flex items-center justify-between text-sm py-4 border-b border-gray-300 px-4 sm:px-[10%]" style={{background: 'linear-gradient(135deg, #e8f0f8 0%, #e0e7f5 50%, #d8e0f2 100%)', backdropFilter: 'blur(10px)'}}>
+    <div className="fixed top-0 left-0 w-full z-50 shadow-md flex items-center justify-between text-sm py-3 sm:py-4 border-b border-gray-300 px-3 sm:px-4 md:px-[10%]" style={{background: 'linear-gradient(135deg, #e8f0f8 0%, #e0e7f5 50%, #d8e0f2 100%)', backdropFilter: 'blur(10px)'}}>
       {/* Logo */}
-      <div className="text-3xl font-extrabold text-black cursor-pointer" onClick={() => { navigate('/'); scrollToTop(); }}>
+      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-black cursor-pointer truncate max-w-[60%] sm:max-w-none" onClick={() => { navigate('/'); scrollToTop(); }}>
         {clinicData.clinic.name}
       </div>
 
@@ -45,32 +45,32 @@ const Navbar = () => {
       </ul>
 
       {/* User Menu */}
-      <div className="flex items-center gap-4 animate-slideInFromRight" style={{ animationDelay: '0.7s' }}>
+      <div className="flex items-center gap-2 sm:gap-4 animate-slideInFromRight" style={{ animationDelay: '0.7s' }}>
         {token ? (
-          <div className="flex items-center gap-2 cursor-pointer group relative">
+          <div className="flex items-center gap-1 sm:gap-2 cursor-pointer group relative">
             <img
-              className="w-8 rounded-full"
+              className="w-6 sm:w-7 md:w-8 rounded-full"
               src={assets.profile_pic}
               alt="Profile"
             />
-            <img className="w-2.5" src={assets.dropdown_icon} alt="Dropdown" />
-            <div className="absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block">
-              <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
+            <img className="w-2 sm:w-2.5 hidden sm:block" src={assets.dropdown_icon} alt="Dropdown" />
+            <div className="absolute top-0 right-0 pt-12 sm:pt-14 text-sm sm:text-base font-medium text-gray-600 z-20 hidden group-hover:block">
+              <div className="min-w-40 sm:min-w-48 bg-stone-100 rounded flex flex-col gap-3 sm:gap-4 p-3 sm:p-4 shadow-lg">
                 <p
                   onClick={() => { navigate("profile"); scrollToTop(); }}
-                  className="hover:text-black cursor-pointer"
+                  className="hover:text-black cursor-pointer text-sm sm:text-base"
                 >
                   My profile
                 </p>
                 <p
                   onClick={() => { navigate("my-appointment"); scrollToTop(); }}
-                  className="hover:text-black cursor-pointer"
+                  className="hover:text-black cursor-pointer text-sm sm:text-base"
                 >
                   My appointments
                 </p>
                 <p
                   onClick={() => setToken(false)}
-                  className="hover:text-black cursor-pointer"
+                  className="hover:text-black cursor-pointer text-sm sm:text-base"
                 >
                   Logout
                 </p>
@@ -80,7 +80,7 @@ const Navbar = () => {
         ) : (
           <button
             onClick={() => { navigate("/login"); scrollToTop(); }}
-            className="bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-opacity-90"
+            className="bg-primary text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full font-light text-xs sm:text-sm hidden md:block transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-opacity-90"
           >
             Create Account
           </button>
@@ -89,7 +89,7 @@ const Navbar = () => {
         {/* Mobile Menu Toggle */}
         <img
           onClick={() => setShowMenu(true)}
-          className="w-6 md:hidden"
+          className="w-5 sm:w-6 md:hidden cursor-pointer"
           src={assets.menu_icon}
           alt="Menu"
         />
@@ -97,38 +97,46 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 w-full pl-10 h-screen z-50 transform ${
+        className={`fixed top-0 right-0 w-full sm:w-80 h-screen z-50 transform ${
           showMenu ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 md:hidden`}
+        } transition-transform duration-300 md:hidden overflow-y-auto`}
         style={{background: 'linear-gradient(135deg, #e8f0f8 0%, #e0e7f5 50%, #d8e0f2 100%)', backdropFilter: 'blur(10px)'}}
       >
-        <div className="flex justify-between items-center p-4 border-b border-gray-300">
-          <div className="text-2xl font-bold text-gray-800" onClick={() => { navigate('/'); scrollToTop(); }}>
+        <div className="flex justify-between items-center p-4 border-b border-gray-300 sticky top-0 bg-inherit">
+          <div className="text-lg sm:text-xl font-bold text-gray-800 truncate" onClick={() => { navigate('/'); scrollToTop(); setShowMenu(false); }}>
             {clinicData.clinic.name}
           </div>
           <img
             onClick={() => setShowMenu(false)}
-            className="w-6 cursor-pointer"
+            className="w-5 sm:w-6 cursor-pointer flex-shrink-0"
             src={assets.cross_icon}
             alt="Close"
           />
         </div>
-        <ul className="flex flex-col gap-6 p-6 font-medium">
+        <ul className="flex flex-col gap-4 sm:gap-6 p-4 sm:p-6 font-medium">
           <NavLink to="/" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-1 text-center transition-all duration-300 hover:scale-110 hover:text-primary cursor-pointer">Home</li>
+            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Home</li>
           </NavLink>
           <NavLink to="/services" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-1 text-center transition-all duration-300 hover:scale-110 hover:text-primary cursor-pointer">Services</li>
+            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Services</li>
           </NavLink>
           <NavLink to="/doctors" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-1 text-center transition-all duration-300 hover:scale-110 hover:text-primary cursor-pointer">Doctors</li>
+            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Doctors</li>
           </NavLink>
           <NavLink to="/about" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-1 text-center transition-all duration-300 hover:scale-110 hover:text-primary cursor-pointer">About</li>
+            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">About</li>
           </NavLink>
           <NavLink to="/contact" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-1 text-center transition-all duration-300 hover:scale-110 hover:text-primary cursor-pointer">Contact</li>
+            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Contact</li>
           </NavLink>
+          {!token && (
+            <button
+              onClick={() => { navigate("/login"); scrollToTop(); setShowMenu(false); }}
+              className="bg-primary text-white px-6 py-3 rounded-full font-medium text-base sm:text-lg mt-4 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            >
+              Create Account
+            </button>
+          )}
         </ul>
       </div>
     </div>

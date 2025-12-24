@@ -31,9 +31,9 @@ const App = () => {
   }, [])
 
   return (
-  <div className="pt-20">
+  <div className="pt-16 sm:pt-20">
     <Navbar />
-    <div className="mx-4 sm:mx-[10%] ">
+    <div className="mx-3 sm:mx-4 md:mx-[10%]">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
