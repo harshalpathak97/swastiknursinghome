@@ -1,4 +1,5 @@
 import { Route, Routes} from 'react-router-dom'
+import { useEffect } from 'react'
 import Home from './pages/Home'
 import About from './pages/About'
 import Doctors from './pages/Doctors'
@@ -17,6 +18,18 @@ import FloatingWhatsApp from './components/FloatingWhatsApp'
 
 
 const App = () => {
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const x = (e.clientX / window.innerWidth) * 100
+      const y = (e.clientY / window.innerHeight) * 100
+      document.documentElement.style.setProperty('--mouse-x', `${x}%`)
+      document.documentElement.style.setProperty('--mouse-y', `${y}%`)
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
   return (
   <div className="pt-20">
     <Navbar />
