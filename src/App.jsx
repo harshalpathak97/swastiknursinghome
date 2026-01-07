@@ -1,5 +1,6 @@
 import { Route, Routes} from 'react-router-dom'
 import { useEffect } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import Home from './pages/Home'
 import About from './pages/About'
 import Doctors from './pages/Doctors'
@@ -52,6 +53,7 @@ const App = () => {
       <Footer />
     </div>
     <FloatingWhatsApp />
+    <Analytics />
   </div>
   );
 };
