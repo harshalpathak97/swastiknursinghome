@@ -100,11 +100,34 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    // Login with Google
+    const loginWithGoogle = async () => {
+        if (!isSupabaseConfigured) {
+            throw { success: false, message: 'Authentication is not configured. Please contact support.' };
+        }
+
+        try {
+            const { data, error } = await supabase.auth.signInWithOAuth({
+                provider: 'google',
+                options: {
+                    redirectTo: `${window.location.origin}/`
+                }
+            });
+
+            if (error) throw error;
+
+            return { success: true };
+        } catch (error) {
+            console.error('Google login error:', error.message);
+            throw { success: false, message: error.message };
+        }
+    };
+
     const value = {
         user,
         userData: user ? {
             email: user.email,
-            name: user.user_metadata?.name || user.email?.split('@')[0],
+            name: user.user_metadata?.name || user.user_metadata?.full_name || user.email?.split('@')[0],
             id: user.id
         } : null,
         loading,
@@ -113,6 +136,7 @@ export const AuthProvider = ({ children }) => {
         login,
         logout,
         register,
+        loginWithGoogle,
         isSupabaseConfigured
     };
 
