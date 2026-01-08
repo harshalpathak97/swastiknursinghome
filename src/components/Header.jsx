@@ -13,10 +13,10 @@ const Header = () => {
       {/* left side  */}
       <div className="lg:w-1/2 flex flex-col items-center lg:items-start justify-center gap-3 sm:gap-4 py-6 sm:py-8 md:py-10 px-3 sm:px-4 m-auto md:py-[10vw] md:mb-[-30px] animate-slideInFromLeft">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center lg:text-left text-black font-semibold leading-tight">
-          {clinicData.clinic.name}
+          Trusted Care for Your Family, Under One Roof
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl text-center lg:text-left text-gray-700 font-medium mb-2 px-2 sm:px-0">
-          {clinicData.clinic.tagline}
+          From the first visit to full recovery, we stay with you.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-black text-xs sm:text-sm font-light text-center lg:text-left px-2 sm:px-0">
           <img className="w-20 sm:w-24 md:w-28 flex-shrink-0" src={assets.group_profiles} alt="Happy patients" />
