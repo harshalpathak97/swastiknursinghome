@@ -13,7 +13,7 @@ const Header = () => {
     : [{ url: assets.header_img, alt: "Swastik Nursing Home" }];
 
   return (
-    <div className="relative w-full h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-[85vh] min-h-[600px] flex items-center overflow-hidden">
 
       {/* Background Carousel */}
       <div className="absolute inset-0 z-0">
@@ -25,60 +25,35 @@ const Header = () => {
         />
       </div>
 
-      {/* Opacity Overlay */}
-      <div className="absolute inset-0 bg-black/50 z-10 backdrop-blur-[2px]" />
+      {/* Gradient Overlay - subtle white from left for text readability */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-white/90 via-white/70 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center text-white h-full pt-16 gap-6 sm:gap-8 animate-in fade-in duration-1000">
+      <div className="relative z-20 container mx-auto px-6 sm:px-10 lg:px-16 flex flex-col items-start justify-center text-left h-full gap-5 max-w-3xl">
 
         {/* Main Headline */}
-        <div className="space-y-4 max-w-4xl">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight drop-shadow-lg animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100">
-            Trusted Care for Your Family, <span className="text-primary-foreground text-blue-200">Under One Roof</span>
+        <div className="space-y-3">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-gray-900 animate-fadeIn">
+            Trusted Care for<br />Your Family,
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-100 font-light max-w-2xl mx-auto drop-shadow-md animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-            From the first visit to full recovery, we stay with you with compassionate and expert care.
-          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-primary animate-fadeIn">
+            Under One Roof.
+          </h2>
         </div>
 
-        {/* Quick Info Badges */}
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
-          <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/30 hover:bg-white/30 transition-colors">
-            <span className="text-lg">📍</span>
-            <span className="text-sm font-medium">Ghatkopar West</span>
-          </div>
-          <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/30 hover:bg-white/30 transition-colors">
-            <span className="text-lg">🕒</span>
-            <span className="text-sm font-medium">Mon-Sat: {clinicData.clinic.timings.monday}</span>
-          </div>
-        </div>
+        {/* Subheadline */}
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 font-normal max-w-md leading-relaxed animate-fadeIn">
+          From the first visit to full recovery, we stay with you with compassionate and expert care. Conveniently located near Shreyas Cinema in Ghatkopar West.
+        </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 mt-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-700 w-full sm:w-auto">
+        {/* CTA Button */}
+        <div className="flex flex-col sm:flex-row gap-4 mt-2 animate-fadeIn">
           <Button
             asChild
-            className="h-auto px-8 py-4 rounded-full bg-primary hover:bg-primary/90 text-white text-base font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 min-w-[200px]"
+            className="h-auto px-8 py-4 rounded-md bg-primary hover:bg-primary/90 text-white text-base font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
-            <a href="/contact#appointment-form">Book Appointment</a>
+            <a href="/contact#appointment-form">Get started now</a>
           </Button>
-
-          <a
-            href={`https://wa.me/${clinicData.clinic.whatsappNumber.replace(/[^0-9]/g, '')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 h-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border-2 border-white text-white text-base font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 min-w-[200px]"
-          >
-            <span className="text-xl">💬</span> WhatsApp Us
-          </a>
-        </div>
-
-        {/* Trust/Social Proof */}
-        <div className="mt-8 sm:mt-12 flex flex-col items-center gap-3 animate-in fade-in duration-1000 delay-1000 opacity-0 fill-mode-forwards" style={{ animationFillMode: 'forwards' }}>
-          <div className="flex -space-x-3">
-            <img className="w-10 h-10 rounded-full border-2 border-white" src={assets.group_profiles} alt="Happy patients" />
-            <div className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs text-gray-600 font-bold">+1k</div>
-          </div>
-          <p className="text-sm text-gray-200 font-medium drop-shadow">Join thousands of happy families</p>
         </div>
 
       </div>
