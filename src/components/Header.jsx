@@ -33,24 +33,24 @@ const Header = () => {
 
         {/* Main Headline */}
         <div className="space-y-3">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-gray-900 animate-fadeIn">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-gray-900 opacity-0 animate-fadeInUp" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
             Trusted Care for<br />Your Family,
           </h1>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-primary animate-fadeIn">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-primary opacity-0 animate-fadeInUp" style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}>
             Under One Roof.
           </h2>
         </div>
 
         {/* Subheadline */}
-        <p className="text-base sm:text-lg md:text-xl text-gray-600 font-normal max-w-md leading-relaxed animate-fadeIn">
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 font-normal max-w-md leading-relaxed opacity-0 animate-fadeInUp" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
           From the first visit to full recovery, we stay with you with compassionate and expert care. Conveniently located near Shreyas Cinema in Ghatkopar West.
         </p>
 
         {/* CTA Button */}
-        <div className="flex flex-col sm:flex-row gap-4 mt-2 animate-fadeIn">
+        <div className="flex flex-col sm:flex-row gap-4 mt-2 opacity-0 animate-fadeInUp" style={{ animationDelay: '0.55s', animationFillMode: 'forwards' }}>
           <Button
             asChild
-            className="h-auto px-8 py-4 rounded-md bg-primary hover:bg-primary/90 text-white text-base font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="h-auto px-8 py-4 rounded-md bg-primary hover:bg-primary/90 text-white text-base font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
           >
             <a href="/contact#appointment-form">Get started now</a>
           </Button>
