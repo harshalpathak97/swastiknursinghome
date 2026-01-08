@@ -110,9 +110,9 @@ export const AuthProvider = ({ children }) => {
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
-                    redirectTo: window.location.hostname === 'localhost' 
-            ? `${window.location.origin}/`
-            : 'https://swastiknursinghome.org/'
+                    redirectTo: window.location.hostname === 'localhost'
+                        ? `${window.location.origin}/`
+                        : 'https://swastiknursinghome.org/'
                 }
             });
 
@@ -125,12 +125,35 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    // Update user profile metadata
+    const updateUserProfile = async (updates) => {
+        try {
+            const { data, error } = await supabase.auth.updateUser({
+                data: updates
+            });
+
+            if (error) throw error;
+
+            // Update local user state
+            setUser(data.user);
+            return { success: true };
+        } catch (error) {
+            console.error('Error updating profile:', error.message);
+            throw { success: false, message: error.message };
+        }
+    };
+
     const value = {
         user,
         userData: user ? {
             email: user.email,
             name: user.user_metadata?.name || user.user_metadata?.full_name || user.email?.split('@')[0],
-            id: user.id
+            phone: user.user_metadata?.phone || '',
+            address: user.user_metadata?.address || '',
+            gender: user.user_metadata?.gender || 'Not Selected',
+            dob: user.user_metadata?.dob || 'Not Selected',
+            id: user.id,
+            image: user.user_metadata?.picture || user.user_metadata?.avatar_url || null
         } : null,
         loading,
         isAuthenticated: !!user,
@@ -139,6 +162,7 @@ export const AuthProvider = ({ children }) => {
         logout,
         register,
         loginWithGoogle,
+        updateUserProfile,
         isSupabaseConfigured
     };
 

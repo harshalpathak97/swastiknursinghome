@@ -58,7 +58,7 @@ const Navbar = () => {
           <div className="flex items-center gap-1 sm:gap-2 cursor-pointer group relative">
             <img
               className="w-6 sm:w-7 md:w-8 rounded-full"
-              src={assets.profile_pic}
+              src={userData.image || assets.profile_pic}
               alt="Profile"
             />
             <img className="w-2 sm:w-2.5 hidden sm:block" src={assets.dropdown_icon} alt="Dropdown" />
@@ -146,7 +146,7 @@ const Navbar = () => {
             <>
               {userData && (
                 <div className="py-2 px-4 bg-white/50 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-900">{userData.name}</p>
+                  <p className="text-sm font-semibold text-gray-900">{userData.name || 'User'}</p>
                   <p className="text-xs text-gray-500">{userData.email}</p>
                 </div>
               )}
