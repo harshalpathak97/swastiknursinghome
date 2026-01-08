@@ -116,7 +116,7 @@ Dr. Shah combines surgical expertise with conservative treatment approaches to e
       languages: ['English', 'Hindi', 'Marathi'],
       areasOfFocus: ['Joint Care', 'Sports Injuries', 'Fracture Management', 'Back Pain', 'Arthritis Treatment'],
       availability: 'Mon-Sat: 9:00 AM - 8:00 PM',
-      image: '/src/assets/dr_swapnil_shah.jpg', // Updated doctor image
+      image: '/src/assets/dr_swapnil_shah_new.jpg', // Updated doctor image
       credentials: 'MS Orthopedic Surgery, MBBS',
       consultationCTA: 'Book Orthopedic Consultation'
     }
