@@ -92,7 +92,7 @@ Dr. Shah is committed to providing compassionate, family-centered care and build
       languages: ['English', 'Hindi', 'Marathi'],
       areasOfFocus: ['Newborn Care', 'Vaccinations', 'Growth Monitoring', 'Child Nutrition', 'Allergy Management'],
       availability: 'Mon-Sat: 9:00 AM - 8:00 PM',
-      image: '/src/assets/doc1.png', // Will use existing doctor image
+      image: '/src/assets/dr_amit_shah.jpg', // Updated doctor image
       credentials: 'MD Pediatrics, MBBS',
       consultationCTA: 'Book Pediatric Consultation'
     },

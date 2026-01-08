@@ -15,6 +15,7 @@ import info_icon from './info_icon.svg'
 import upload_icon from './upload_icon.png'
 import stripe_logo from './stripe_logo.png'
 import razorpay_logo from './razorpay_logo.png'
+import drAmitShah from './dr_amit_shah.jpg'
 import doc1 from './doc1.png'
 import doc2 from './doc2.png'
 import doc3 from './doc3.png'
@@ -30,12 +31,11 @@ import doc12 from './doc12.png'
 import doc13 from './doc13.png'
 import doc14 from './doc14.png'
 import doc15 from './doc15.png'
-import Dermatologist from './Dermatologist.svg'
+import Pediatricians from './Pediatricians.svg'
 import Gastroenterologist from './Gastroenterologist.svg'
 import General_physician from './General_physician.svg'
 import Gynecologist from './Gynecologist.svg'
 import Neurologist from './Neurologist.svg'
-import Pediatricians from './Pediatricians.svg'
 
 // Import clinic data
 import { clinicData } from '../data/clinic'
@@ -77,7 +77,7 @@ export const specialityData = [
 export const doctors = clinicData.doctors.map((doctor, index) => ({
     _id: doctor.id,
     name: doctor.name,
-    image: index === 0 ? doc1 : doc2, // Using doc1 for first doctor, doc2 for second
+    image: index === 0 ? drAmitShah : doc2, // Using drAmitShah for first doctor, doc2 for second
     speciality: doctor.specialty,
     degree: doctor.degree,
     experience: '10+ Years',
