@@ -16,6 +16,7 @@ import upload_icon from './upload_icon.png'
 import stripe_logo from './stripe_logo.png'
 import razorpay_logo from './razorpay_logo.png'
 import drAmitShah from './dr_amit_shah.jpg'
+import drSwapnilShah from './dr_swapnil_shah_new.jpg'
 import doc1 from './doc1.png'
 import doc2 from './doc2.png'
 import doc3 from './doc3.png'
@@ -77,7 +78,7 @@ export const specialityData = [
 export const doctors = clinicData.doctors.map((doctor, index) => ({
     _id: doctor.id,
     name: doctor.name,
-    image: index === 0 ? drAmitShah : doc2, // Using drAmitShah for first doctor, doc2 for second
+    image: index === 0 ? drAmitShah : drSwapnilShah, // Using actual doctor images
     speciality: doctor.specialty,
     degree: doctor.degree,
     experience: '10+ Years',
