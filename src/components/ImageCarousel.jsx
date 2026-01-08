@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { cn } from '../lib/utils';
 
-const ImageCarousel = ({ images, autoPlayInterval = 5000 }) => {
+const ImageCarousel = ({ images, autoPlayInterval = 5000, className, contentClassName }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -25,19 +26,18 @@ const ImageCarousel = ({ images, autoPlayInterval = 5000 }) => {
   };
 
   return (
-    <div className="relative w-full rounded-lg overflow-hidden group">
-      <div className="relative w-full h-[350px] sm:h-[450px] md:h-[500px] lg:h-[550px] xl:h-[600px]">
+    <div className={cn("relative w-full rounded-lg overflow-hidden group", className)}>
+      <div className={cn("relative w-full h-[350px] sm:h-[450px] md:h-[500px] lg:h-[550px] xl:h-[600px]", contentClassName)}>
         {images.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-              index === currentIndex ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'
+              }`}
           >
             <img
               src={image.url}
               alt={image.alt || `Hospital image ${index + 1}`}
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover"
             />
             {image.caption && (
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 sm:p-6 rounded-b-lg">
@@ -50,7 +50,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 5000 }) => {
 
       <button
         onClick={goToPrevious}
-        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 border border-white/20"
         aria-label="Previous image"
       >
         <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,7 +60,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 5000 }) => {
 
       <button
         onClick={goToNext}
-        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 border border-white/20"
         aria-label="Next image"
       >
         <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,11 +73,10 @@ const ImageCarousel = ({ images, autoPlayInterval = 5000 }) => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex
+            className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${index === currentIndex
                 ? 'bg-white w-6 sm:w-8'
                 : 'bg-white/50 w-1.5 sm:w-2 hover:bg-white/75'
-            }`}
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
