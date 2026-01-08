@@ -1,90 +1,101 @@
 import { createContext, useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [token, setToken] = useState(null);
-    const [userData, setUserData] = useState(null);
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // Load auth state from localStorage on mount
+    // Check for existing session on mount
     useEffect(() => {
-        const storedToken = localStorage.getItem('authToken');
-        const storedUser = localStorage.getItem('userData');
+        checkUser();
 
-        if (storedToken && storedUser) {
-            setToken(storedToken);
-            setUserData(JSON.parse(storedUser));
-        }
-        setLoading(false);
+        // Listen for auth changes
+        const { data: authListener } = supabase.auth.onAuthStateChange(
+            async (event, session) => {
+                setUser(session?.user ?? null);
+                setLoading(false);
+            }
+        );
+
+        return () => {
+            authListener?.subscription?.unsubscribe();
+        };
     }, []);
 
-    // Login function
-    const login = (email, password) => {
-        // TODO: Replace with actual API call
-        // For now, this is a mock implementation
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (email && password) {
-                    const mockToken = 'mock_token_' + Date.now();
-                    const mockUser = {
-                        email,
-                        name: email.split('@')[0],
-                        id: 'user_' + Date.now()
-                    };
+    // Check if user is logged in
+    const checkUser = async () => {
+        try {
+            const { data: { session } } = await supabase.auth.getSession();
+            setUser(session?.user ?? null);
+        } catch (error) {
+            console.error('Error checking user:', error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-                    setToken(mockToken);
-                    setUserData(mockUser);
-                    localStorage.setItem('authToken', mockToken);
-                    localStorage.setItem('userData', JSON.stringify(mockUser));
-
-                    resolve({ success: true, user: mockUser });
-                } else {
-                    reject({ success: false, message: 'Invalid credentials' });
+    // Sign up function
+    const register = async (name, email, password) => {
+        try {
+            const { data, error } = await supabase.auth.signUp({
+                email,
+                password,
+                options: {
+                    data: {
+                        name: name,
+                    }
                 }
-            }, 1000); // Simulate network delay
-        });
+            });
+
+            if (error) throw error;
+
+            return { success: true, user: data.user };
+        } catch (error) {
+            console.error('Registration error:', error.message);
+            throw { success: false, message: error.message };
+        }
+    };
+
+    // Login function
+    const login = async (email, password) => {
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
+
+            if (error) throw error;
+
+            return { success: true, user: data.user };
+        } catch (error) {
+            console.error('Login error:', error.message);
+            throw { success: false, message: error.message };
+        }
     };
 
     // Logout function
-    const logout = () => {
-        setToken(null);
-        setUserData(null);
-        localStorage.removeItem('authToken');
-        localStorage.removeItem('userData');
-    };
-
-    // Register function
-    const register = (name, email, password) => {
-        // TODO: Replace with actual API call
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (name && email && password) {
-                    const mockToken = 'mock_token_' + Date.now();
-                    const mockUser = {
-                        email,
-                        name,
-                        id: 'user_' + Date.now()
-                    };
-
-                    setToken(mockToken);
-                    setUserData(mockUser);
-                    localStorage.setItem('authToken', mockToken);
-                    localStorage.setItem('userData', JSON.stringify(mockUser));
-
-                    resolve({ success: true, user: mockUser });
-                } else {
-                    reject({ success: false, message: 'All fields are required' });
-                }
-            }, 1000);
-        });
+    const logout = async () => {
+        try {
+            const { error } = await supabase.auth.signOut();
+            if (error) throw error;
+            setUser(null);
+        } catch (error) {
+            console.error('Logout error:', error.message);
+        }
     };
 
     const value = {
-        token,
-        userData,
+        user,
+        userData: user ? {
+            email: user.email,
+            name: user.user_metadata?.name || user.email?.split('@')[0],
+            id: user.id
+        } : null,
         loading,
-        isAuthenticated: !!token,
+        isAuthenticated: !!user,
+        token: user ? 'supabase-auth' : null,
         login,
         logout,
         register

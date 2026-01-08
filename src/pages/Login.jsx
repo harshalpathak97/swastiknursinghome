@@ -6,29 +6,41 @@ const Login = () => {
   const navigate = useNavigate();
   const { login, register } = useContext(AuthContext);
 
-  const [state, setState] = useState('Sign Up');
+  const [state, setState] = useState('Login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     setError('');
+    setSuccess('');
     setLoading(true);
 
     try {
       if (state === 'Sign Up') {
         await register(name, email, password);
-        alert('Account created successfully! Welcome to Swastik Nursing Home.');
+        setSuccess('Account created successfully! Please check your email to confirm your account.');
+        // Clear form
+        setName('');
+        setEmail('');
+        setPassword('');
+        // Switch to login after 3 seconds
+        setTimeout(() => {
+          setState('Login');
+          setSuccess('');
+        }, 3000);
       } else {
         await login(email, password);
-        alert('Login successful! Welcome back.');
+        setSuccess('Login successful! Welcome back.');
+        // Navigate to home page after successful login
+        setTimeout(() => {
+          navigate('/');
+        }, 1000);
       }
-
-      // Navigate to home page after successful login/signup
-      navigate('/');
     } catch (err) {
       setError(err.message || 'An error occurred. Please try again.');
     } finally {
@@ -43,12 +55,18 @@ const Login = () => {
           {state === 'Sign Up' ? "Create Account" : "Login"}
         </p>
         <p className="text-center sm:text-left w-full">
-          Please {state === 'Sign Up' ? "sign up" : "login"} to book appointment
+          Please {state === 'Sign Up' ? "sign up" : "login"} to book appointments
         </p>
 
         {error && (
           <div className="w-full p-3 bg-red-100 border border-red-400 text-red-700 rounded animate-fadeIn">
             {error}
+          </div>
+        )}
+
+        {success && (
+          <div className="w-full p-3 bg-green-100 border border-green-400 text-green-700 rounded animate-fadeIn">
+            {success}
           </div>
         )}
 
@@ -86,8 +104,12 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             required
+            minLength={6}
             disabled={loading}
           />
+          {state === 'Sign Up' && (
+            <p className="text-xs text-gray-500 mt-1">Minimum 6 characters</p>
+          )}
         </div>
 
         <button
@@ -95,7 +117,14 @@ const Login = () => {
           className="bg-primary text-white w-full py-2 rounded-md text-base hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={loading}
         >
-          {loading ? 'Please wait...' : (state === 'Sign Up' ? "Create Account" : "Login")}
+          {loading ? (
+            <span className="flex items-center justify-center gap-2">
+              <span className="animate-spin">⏳</span>
+              {state === 'Sign Up' ? 'Creating Account...' : 'Logging in...'}
+            </span>
+          ) : (
+            state === 'Sign Up' ? "Create Account" : "Login"
+          )}
         </button>
 
         {state === "Sign Up" ? (
@@ -105,6 +134,7 @@ const Login = () => {
               onClick={() => {
                 setState('Login');
                 setError('');
+                setSuccess('');
               }}
               className="text-primary underline cursor-pointer ml-1"
             >
@@ -118,6 +148,7 @@ const Login = () => {
               onClick={() => {
                 setState('Sign Up');
                 setError('');
+                setSuccess('');
               }}
               className="text-primary underline cursor-pointer ml-1"
             >
@@ -125,6 +156,12 @@ const Login = () => {
             </span>
           </p>
         )}
+
+        <div className="w-full pt-2 border-t border-gray-200">
+          <p className="text-xs text-gray-500 text-center">
+            🔒 Secure authentication powered by Supabase
+          </p>
+        </div>
       </div>
     </form>
   );
