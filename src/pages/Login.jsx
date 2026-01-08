@@ -2,11 +2,11 @@ import { useState } from "react";
 
 const Login = () => {
 
-  const [state,setState] = useState('Sign Up');
+  const [state, setState] = useState('Sign Up');
 
-  const [email,setEmail] = useState('')
-  const [password,setPassword] = useState('')
-  const [name,setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [name, setName] = useState('')
 
   const onSubmitHandler = async (event) => {
     event.preventDefault()
@@ -20,25 +20,26 @@ const Login = () => {
         <p className="text-center sm:text-left w-full">Please {state === 'Sign Up' ? "Sign Up" : "Login"}  to book appointment</p>
         {
           state === "Sign Up"
-          && <div  className="w-full ">
-          <p>Full Name</p>
-          <input className="border border-zinc-300 rounded w-full p-2 mt-1" type="text" onChange={()=>setName(e.target.name)} value={name} required />
-        </div>
+          && <div className="w-full ">
+            <p>Full Name</p>
+            <input className="border border-zinc-300 rounded w-full p-2 mt-1" type="text" onChange={(e) => setName(e.target.value)} value={name} required />
+          </div>
         }
-        
-        <div  className="w-full ">
+
+        <div className="w-full ">
           <p>Email</p>
-          <input className="border border-zinc-300 rounded w-full p-2 mt-1" type="email" onChange={()=>setEmail(e.target.name)} value={email} required />
+          <input className="border border-zinc-300 rounded w-full p-2 mt-1" type="email" onChange={(e) => setEmail(e.target.value)} value={email} required />
         </div>
-        <div  className="w-full ">
+        <div className="w-full ">
           <p>Password</p>
-          <input className="border border-zinc-300 rounded w-full p-2 mt-1" type="password" onChange={()=>setPassword(e.target.name)} value={password} required />
+          <input className="border border-zinc-300 rounded w-full p-2 mt-1" type="password" onChange={(e) => setPassword(e.target.value)} value={password} required />
+
         </div>
         <button className="bg-primary text-white w-full py-2 rounded-md text-base">{state === 'Sign Up' ? "Create Account" : "Login"}</button>
         {
           state === "Sign Up"
-          ? <p>Already have an account? <span onClick={()=>setState('Login')} className="text-primary underline cursor-pointer">Login here</span></p>
-          : <p>Create an New account? <span onClick={()=>setState('Sign Up')} className="text-primary underline cursor-pointer">Click here</span></p>
+            ? <p>Already have an account? <span onClick={() => setState('Login')} className="text-primary underline cursor-pointer">Login here</span></p>
+            : <p>Create an New account? <span onClick={() => setState('Sign Up')} className="text-primary underline cursor-pointer">Click here</span></p>
         }
       </div>
 
