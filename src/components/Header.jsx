@@ -42,7 +42,7 @@ const Header = () => {
         {/* Main Headline */}
         <div className="space-y-4">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-gray-900 opacity-0 animate-fadeInUp" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
-            Trusted Care for <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Your Family,</span>
+            Trusted Care for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary whitespace-nowrap">Your Family,</span>
           </h1>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-gray-800 opacity-0 animate-fadeInUp" style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}>
             Under One Roof.

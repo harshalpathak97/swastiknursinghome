@@ -26,7 +26,7 @@ export const clinicData = {
       saturday: '9:00 AM - 2:00 PM',
       sunday: 'Closed'
     },
-    emergencyNote: 'For medical emergencies, please visit the nearest emergency facility. We provide non-emergency care only.',
+    emergencyNote: '⚠️ We provide non-emergency care only. For life-threatening emergencies, please call 108 (ambulance) or visit the nearest emergency facility immediately.',
 
     // Social Links (placeholders)
     social: {

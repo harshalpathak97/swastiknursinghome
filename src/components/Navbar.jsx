@@ -2,15 +2,23 @@ import { useState, useContext } from "react";
 import { assets } from "../assets/assets";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
-  const [token, setToken] = useState(true);
+  const { isAuthenticated, userData, logout } = useContext(AuthContext);
   const { clinicData } = useContext(AppContext);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLogout = () => {
+    logout();
+    alert('You have been logged out successfully.');
+    navigate('/');
+    scrollToTop();
   };
 
   return (
@@ -46,7 +54,7 @@ const Navbar = () => {
 
       {/* User Menu */}
       <div className="flex items-center gap-2 sm:gap-4 animate-slideInFromRight" style={{ animationDelay: '0.7s' }}>
-        {token ? (
+        {isAuthenticated ? (
           <div className="flex items-center gap-1 sm:gap-2 cursor-pointer group relative">
             <img
               className="w-6 sm:w-7 md:w-8 rounded-full"
@@ -55,22 +63,28 @@ const Navbar = () => {
             />
             <img className="w-2 sm:w-2.5 hidden sm:block" src={assets.dropdown_icon} alt="Dropdown" />
             <div className="absolute top-0 right-0 pt-12 sm:pt-14 text-sm sm:text-base font-medium text-gray-600 z-20 hidden group-hover:block">
-              <div className="min-w-40 sm:min-w-48 bg-stone-100 rounded flex flex-col gap-3 sm:gap-4 p-3 sm:p-4 shadow-lg">
+              <div className="min-w-40 sm:min-w-48 bg-white rounded-lg flex flex-col gap-3 sm:gap-4 p-3 sm:p-4 shadow-xl border border-gray-100">
+                {userData && (
+                  <div className="pb-2 border-b border-gray-200">
+                    <p className="text-sm font-semibold text-gray-900">{userData.name}</p>
+                    <p className="text-xs text-gray-500">{userData.email}</p>
+                  </div>
+                )}
                 <p
                   onClick={() => { navigate("profile"); scrollToTop(); }}
-                  className="hover:text-black cursor-pointer text-sm sm:text-base"
+                  className="hover:text-primary cursor-pointer text-sm sm:text-base transition-colors"
                 >
-                  My profile
+                  My Profile
                 </p>
                 <p
                   onClick={() => { navigate("my-appointment"); scrollToTop(); }}
-                  className="hover:text-black cursor-pointer text-sm sm:text-base"
+                  className="hover:text-primary cursor-pointer text-sm sm:text-base transition-colors"
                 >
-                  My appointments
+                  My Appointments
                 </p>
                 <p
-                  onClick={() => setToken(false)}
-                  className="hover:text-black cursor-pointer text-sm sm:text-base"
+                  onClick={handleLogout}
+                  className="hover:text-red-600 cursor-pointer text-sm sm:text-base transition-colors text-red-500 font-medium"
                 >
                   Logout
                 </p>
@@ -128,7 +142,28 @@ const Navbar = () => {
           <NavLink to="/contact" onClick={() => { setShowMenu(false); scrollToTop(); }}>
             <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Contact</li>
           </NavLink>
-          {!token && (
+          {isAuthenticated ? (
+            <>
+              {userData && (
+                <div className="py-2 px-4 bg-white/50 rounded-lg">
+                  <p className="text-sm font-semibold text-gray-900">{userData.name}</p>
+                  <p className="text-xs text-gray-500">{userData.email}</p>
+                </div>
+              )}
+              <NavLink to="/profile" onClick={() => { setShowMenu(false); scrollToTop(); }}>
+                <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">My Profile</li>
+              </NavLink>
+              <NavLink to="/my-appointment" onClick={() => { setShowMenu(false); scrollToTop(); }}>
+                <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">My Appointments</li>
+              </NavLink>
+              <button
+                onClick={() => { handleLogout(); setShowMenu(false); }}
+                className="bg-red-500 text-white px-6 py-3 rounded-full font-medium text-base sm:text-lg mt-2 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-red-600"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
             <button
               onClick={() => { navigate("/login"); scrollToTop(); setShowMenu(false); }}
               className="bg-primary text-white px-6 py-3 rounded-full font-medium text-base sm:text-lg mt-4 transition-all duration-300 hover:scale-105 hover:shadow-lg"
