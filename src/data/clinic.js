@@ -6,8 +6,8 @@ export const clinicData = {
     description: 'A family-focused healthcare facility providing specialized pediatric and orthopedic services with experienced doctors and modern medical care.',
 
     // Contact Information
-    phone: '+91 9821330087',
-    whatsappNumber: '+919821330087',
+    phone: '+91 22 2500 8858',
+    whatsappNumber: '+912225008858',
     email: 'info@swastiknursinghome.org',
 
     // Address Information
