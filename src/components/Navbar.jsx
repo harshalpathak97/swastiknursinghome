@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 transition-all duration-300 flex items-center justify-between text-sm py-3 sm:py-4 px-3 sm:px-4 md:px-10 lg:px-16" style={{ background: 'rgba(255, 255, 255, 0.7)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(255,255,255,0.3)' }}>
+    <div className="fixed top-0 left-0 w-full z-50 transition-all duration-300 flex items-center justify-between text-sm py-3 sm:py-4 px-3 sm:px-4 md:px-10 lg:px-16" style={{ background: 'rgba(255, 255, 255, 0.2)', backdropFilter: 'blur(8px)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
       {/* Logo */}
       <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-black cursor-pointer truncate max-w-[60%] sm:max-w-none" onClick={() => { navigate('/'); scrollToTop(); }}>
         {clinicData.clinic.name}

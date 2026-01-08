@@ -8,7 +8,7 @@ export const clinicData = {
     // Contact Information
     phone: '+91 9821330087',
     whatsappNumber: '+919821330087',
-    email: 'info@swastiknursinghome.com',
+    email: 'info@swastiknursinghome.org',
 
     // Address Information
     addressText: '4W8G+HCP, Lal Bahadur Shastri Marg, Near Shreyas Cinema, Surya Nagar, Chandan Nagar, Ghatkopar West, Mumbai, Maharashtra 400083',
