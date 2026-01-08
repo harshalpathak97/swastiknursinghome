@@ -31,17 +31,22 @@ const ImageCarousel = ({ images, autoPlayInterval = 5000, className, contentClas
         {images.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'
+            className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
               }`}
           >
-            <img
-              src={image.url}
-              alt={image.alt || `Hospital image ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
+            <div className={`absolute inset-0 transform transition-transform duration-[8000ms] ease-out ${index === currentIndex ? 'scale-110' : 'scale-100'}`}>
+              <img
+                src={image.url}
+                alt={image.alt || `Hospital image ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Darker Modern Gradient Overlay for better text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
+
             {image.caption && (
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 sm:p-6 rounded-b-lg">
-                <p className="text-white text-xs sm:text-sm font-medium">{image.caption}</p>
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 transform transition-transform duration-1000 delay-500 translate-y-0">
+                <p className="text-white/90 text-sm sm:text-base font-medium tracking-wide border-l-4 border-primary pl-4 backdrop-blur-sm bg-black/10 inline-block py-2 rounded-r-lg max-w-md animate-fadeInUp">{image.caption}</p>
               </div>
             )}
           </div>
@@ -74,8 +79,8 @@ const ImageCarousel = ({ images, autoPlayInterval = 5000, className, contentClas
             key={index}
             onClick={() => goToSlide(index)}
             className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                ? 'bg-white w-6 sm:w-8'
-                : 'bg-white/50 w-1.5 sm:w-2 hover:bg-white/75'
+              ? 'bg-white w-6 sm:w-8'
+              : 'bg-white/50 w-1.5 sm:w-2 hover:bg-white/75'
               }`}
             aria-label={`Go to slide ${index + 1}`}
           />
