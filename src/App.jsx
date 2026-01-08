@@ -1,4 +1,4 @@
-import { Route, Routes} from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import Home from './pages/Home'
@@ -32,29 +32,29 @@ const App = () => {
   }, [])
 
   return (
-  <div className="pt-16 sm:pt-20">
-    <Navbar />
-    <div className="mx-3 sm:mx-4 md:mx-[10%]">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/doctors" element={<Doctors />} />
-        <Route path="/doctors/:speciality" element={<Doctors />} />
-        <Route path="/doctors/:doctorId" element={<DoctorProfile />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/my-appointment" element={<Myappointment />} />
-        <Route path="/appointment/:docId" element={<Appointment />} />
-      </Routes>
-      <Footer />
+    <div className="">
+      <Navbar />
+      <div className="">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/doctors" element={<Doctors />} />
+          <Route path="/doctors/:speciality" element={<Doctors />} />
+          <Route path="/doctors/:doctorId" element={<DoctorProfile />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/my-appointment" element={<Myappointment />} />
+          <Route path="/appointment/:docId" element={<Appointment />} />
+        </Routes>
+        <Footer />
+      </div>
+      <FloatingWhatsApp />
+      <Analytics />
     </div>
-    <FloatingWhatsApp />
-    <Analytics />
-  </div>
   );
 };
 

@@ -22,7 +22,7 @@ const Doctors = () => {
   }, [doctors, speciality]);
 
   return (
-    <div className="py-6 sm:py-8 px-3 sm:px-4">
+    <div className="pt-24 sm:pt-28 pb-10 container mx-auto px-4 max-w-7xl">
       <div className="text-center mb-8 sm:mb-12">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-dark mb-3 sm:mb-4 animate-slideInFromTop">Our Expert Doctors</h1>
         <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-3 sm:px-4 animate-fadeIn" style={{ animationDelay: '0.1s' }}>
@@ -38,25 +38,22 @@ const Doctors = () => {
             <div className="space-y-2">
               <button
                 onClick={() => { navigate('/doctors'); setShowFilters(false); }}
-                className={`w-full text-left px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base ${
-                  !speciality ? 'bg-primary text-white' : 'bg-neutral-light text-neutral-dark hover:bg-gray-200'
-                }`}
+                className={`w-full text-left px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base ${!speciality ? 'bg-primary text-white' : 'bg-neutral-light text-neutral-dark hover:bg-gray-200'
+                  }`}
               >
                 All Doctors
               </button>
               <button
                 onClick={() => { speciality === 'Pediatrician' ? navigate('/doctors') : navigate('/doctors/Pediatrician'); setShowFilters(false); }}
-                className={`w-full text-left px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base ${
-                  speciality === 'Pediatrician' ? 'bg-primary text-white' : 'bg-neutral-light text-neutral-dark hover:bg-gray-200'
-                }`}
+                className={`w-full text-left px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base ${speciality === 'Pediatrician' ? 'bg-primary text-white' : 'bg-neutral-light text-neutral-dark hover:bg-gray-200'
+                  }`}
               >
                 Pediatrician
               </button>
               <button
                 onClick={() => { speciality === 'Orthopedic Surgeon' ? navigate('/doctors') : navigate('/doctors/Orthopedic Surgeon'); setShowFilters(false); }}
-                className={`w-full text-left px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base ${
-                  speciality === 'Orthopedic Surgeon' ? 'bg-primary text-white' : 'bg-neutral-light text-neutral-dark hover:bg-gray-200'
-                }`}
+                className={`w-full text-left px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base ${speciality === 'Orthopedic Surgeon' ? 'bg-primary text-white' : 'bg-neutral-light text-neutral-dark hover:bg-gray-200'
+                  }`}
               >
                 Orthopedic Surgeon
               </button>
@@ -82,7 +79,7 @@ const Doctors = () => {
                 className="bg-white border border-neutral-light rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
                 style={{ animationDelay: `${0.1 + index * 0.05}s` }}
               >
-                <img className="w-full h-40 sm:h-48 object-cover bg-neutral-light" src={item.image} alt={item.name} />
+                <img className="w-full h-40 sm:h-56 object-cover object-top bg-neutral-light" src={item.image} alt={item.name} />
                 <div className="p-4 sm:p-6">
                   <div className="flex items-center gap-2 text-xs sm:text-sm text-secondary mb-2 sm:mb-3">
                     <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary rounded-full"></div>

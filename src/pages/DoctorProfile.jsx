@@ -26,15 +26,15 @@ const DoctorProfile = () => {
   }
 
   return (
-    <div className="py-6 sm:py-8 px-3 sm:px-4 animate-fadeIn">
+    <div className="animate-fadeIn">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-primary to-primary/90 text-white py-8 sm:py-10 md:py-12 lg:py-16 animate-slideInFromTop" style={{ animationDelay: '0.1s' }}>
+      <div className="bg-gradient-to-r from-primary to-primary/90 text-white pt-24 pb-12 sm:pt-32 sm:pb-16 animate-slideInFromTop" style={{ animationDelay: '0.1s' }}>
         <div className="max-w-4xl mx-auto px-3 sm:px-4">
           <div className="flex flex-col md:flex-row items-center gap-4 sm:gap-6 md:gap-8">
             <img
               src={doctor.image}
               alt={doctor.name}
-              className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-white shadow-lg animate-bounceIn" style={{ animationDelay: '0.2s' }}
+              className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover object-top border-4 border-white shadow-lg animate-bounceIn" style={{ animationDelay: '0.2s' }}
             />
             <div className="text-center md:text-left animate-fadeIn" style={{ animationDelay: '0.3s' }}>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2">{doctor.name}</h1>
