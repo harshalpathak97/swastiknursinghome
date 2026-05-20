@@ -24,12 +24,12 @@ const RelatedDoctors = ({ speciality, docId }) => {
         {relDoc.slice(0, 5).map((item, index) => (
           <div
             onClick={() => { navigate(`/doctors/${item._id}`); window.scrollTo(0, 0) }}
-            className="group rounded-xl overflow-hidden cursor-pointer bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
+            className="group rounded-xl overflow-hidden cursor-pointer bg-white shadow-sm hover:shadow-lg transition-shadow duration-200 border border-gray-100"
             key={index}
           >
             <div className="overflow-hidden h-60">
               <img
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover object-top"
                 src={item.image}
                 alt={item.name}
               />

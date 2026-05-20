@@ -7,7 +7,7 @@ const Myappointment = () => {
 
   return (
     <div>
-      <p className="pb-3 mt-12 font-medium text-zinc-700 border-b ">My appointments</p>
+      <p className="pb-3 mt-12 font-medium text-zinc-700 border-b">My appointments</p>
       <div>
         {/* Placeholder for real appointments */}
         <div className="text-center py-10 text-gray-500">

@@ -7,7 +7,7 @@ const About = () => {
   const { clinicData } = useContext(AppContext);
 
   return (
-    <div className="py-6 sm:py-8 px-3 sm:px-4 animate-fadeIn">
+    <div className="py-6 sm:py-8 px-3 sm:px-4">
       <SEO
         title="About Us - Over 20 Years of Trusted Healthcare"
         description="Swastik Nursing Home has served Ghatkopar West, Mumbai for over 20 years. Learn about our mission, our doctors Dr. Amit Shah and Dr. Swapnil Shah, and our commitment to family-centered care."
@@ -15,17 +15,17 @@ const About = () => {
       />
       {/* Hero Section */}
       <div className="text-center mb-10 sm:mb-12 md:mb-16">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-3 sm:mb-4 animate-slideInFromTop" style={{ animationDelay: '0.1s' }}>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-3 sm:mb-4">
           About <span className="text-primary">{clinicData.clinic.name}</span>
         </h1>
-        <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-3 sm:px-4 animate-fadeIn" style={{ animationDelay: '0.2s' }}>
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-3 sm:px-4">
           Your trusted healthcare partner in Ghatkopar West, providing specialized pediatric and orthopedic care with compassion and expertise.
         </p>
       </div>
 
       {/* Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 mb-12 sm:mb-16 md:mb-20">
-        <div className="flex justify-center animate-slideInFromLeft" style={{ animationDelay: '0.3s' }}>
+        <div className="flex justify-center">
           <img
             className="w-full max-w-md rounded-lg shadow-lg"
             src={assets.about_image}
@@ -33,7 +33,7 @@ const About = () => {
           />
         </div>
 
-        <div className="flex flex-col justify-center gap-4 sm:gap-6 text-gray-600 px-2 sm:px-4 animate-fadeIn" style={{ animationDelay: '0.4s' }}>
+        <div className="flex flex-col justify-center gap-4 sm:gap-6 text-gray-600 px-2 sm:px-4">
           <div className="text-center lg:text-left">
             <h2 className="text-xl sm:text-2xl font-bold text-neutral-dark mb-3 sm:mb-4">Our Story</h2>
             <p className="leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">
@@ -62,8 +62,8 @@ const About = () => {
       {/* Why Choose Us Section */}
       <div className="mb-12 sm:mb-16 md:mb-20 px-2 sm:px-4">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-dark mb-3 sm:mb-4 animate-slideInFromTop" style={{ animationDelay: '0.5s' }}>Why Choose Swastik Nursing Home</h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 px-3 sm:px-4 animate-fadeIn" style={{ animationDelay: '0.6s' }}>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-dark mb-3 sm:mb-4">Why Choose Swastik Nursing Home</h2>
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 px-3 sm:px-4">
             What makes us the preferred healthcare choice for families in Ghatkopar West
           </p>
         </div>
@@ -72,9 +72,9 @@ const About = () => {
           {clinicData.whyChooseUs.map((reason, index) => (
             <div
               key={index}
-              className="bg-white border border-gray-200 rounded-lg p-5 sm:p-6 md:p-8 hover:shadow-lg hover:border-primary/20 transition-all duration-300 text-center group animate-bounceIn" style={{ animationDelay: `${0.7 + index * 0.1}s` }}
+              className="bg-white border border-gray-200 rounded-lg p-5 sm:p-6 md:p-8 hover:shadow-lg hover:border-primary/20 transition-colors duration-200 text-center group"
             >
-              <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300 text-primary">
+              <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 text-primary">
                 {reason.icon}
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-neutral-dark mb-2 sm:mb-3">{reason.title}</h3>
@@ -85,31 +85,31 @@ const About = () => {
       </div>
 
       {/* Facility Highlights */}
-      <div className="bg-neutral-light rounded-2xl p-4 sm:p-6 md:p-8 lg:p-12 mb-12 sm:mb-16 md:mb-20 mx-2 sm:mx-4 animate-fadeIn" style={{ animationDelay: '1.2s' }}>
+      <div className="bg-neutral-light rounded-2xl p-4 sm:p-6 md:p-8 lg:p-12 mb-12 sm:mb-16 md:mb-20 mx-2 sm:mx-4">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-dark mb-3 sm:mb-4 animate-slideInFromTop" style={{ animationDelay: '1.3s' }}>Our Facility</h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 px-3 sm:px-4 animate-fadeIn" style={{ animationDelay: '1.4s' }}>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-dark mb-3 sm:mb-4">Our Facility</h2>
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 px-3 sm:px-4">
             A modern, patient-friendly clinic designed for comfort and care
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
-          <div className="text-center animate-bounceIn" style={{ animationDelay: '1.5s' }}>
+          <div className="text-center">
             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-primary">🏥</div>
             <h4 className="font-semibold text-neutral-dark mb-1 sm:mb-2 text-sm sm:text-base">Modern Clinic</h4>
             <p className="text-xs sm:text-sm text-gray-600">Well-equipped facility with hygienic environment</p>
           </div>
-          <div className="text-center animate-bounceIn" style={{ animationDelay: '1.6s' }}>
+          <div className="text-center">
             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-primary">🅿️</div>
             <h4 className="font-semibold text-neutral-dark mb-1 sm:mb-2 text-sm sm:text-base">Parking Available</h4>
             <p className="text-xs sm:text-sm text-gray-600">Dedicated parking space for patient convenience</p>
           </div>
-          <div className="text-center animate-bounceIn" style={{ animationDelay: '1.7s' }}>
+          <div className="text-center">
             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-primary">📍</div>
             <h4 className="font-semibold text-neutral-dark mb-1 sm:mb-2 text-sm sm:text-base">Prime Location</h4>
             <p className="text-xs sm:text-sm text-gray-600">Conveniently located near Shreyas Cinema</p>
           </div>
-          <div className="text-center animate-bounceIn" style={{ animationDelay: '1.8s' }}>
+          <div className="text-center">
             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-primary">👨‍👩‍👧‍👦</div>
             <h4 className="font-semibold text-neutral-dark mb-1 sm:mb-2 text-sm sm:text-base">Family-Friendly</h4>
             <p className="text-xs sm:text-sm text-gray-600">Welcoming atmosphere for families and children</p>
@@ -118,9 +118,9 @@ const About = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="text-center bg-primary text-white rounded-2xl p-5 sm:p-6 md:p-8 lg:p-12 mx-2 sm:mx-4 animate-slideInFromBottom" style={{ animationDelay: '2.0s' }}>
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 px-3 sm:px-4 animate-fadeIn" style={{ animationDelay: '2.1s' }}>Experience Quality Healthcare</h2>
-        <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90 px-3 sm:px-4 animate-fadeIn" style={{ animationDelay: '2.2s' }}>
+      <div className="text-center bg-primary text-white rounded-2xl p-5 sm:p-6 md:p-8 lg:p-12 mx-2 sm:mx-4">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 px-3 sm:px-4">Experience Quality Healthcare</h2>
+        <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90 px-3 sm:px-4">
           Join the families who trust Swastik Nursing Home for their healthcare needs
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-3 sm:px-4">
@@ -128,13 +128,13 @@ const About = () => {
             href={`https://wa.me/${clinicData.clinic.whatsappNumber.replace(/[^0-9]/g, '')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#25D366] hover:bg-[#20BA5A] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-colors animate-bounceIn w-full sm:w-auto" style={{ animationDelay: '2.3s' }}
+            className="bg-[#25D366] hover:bg-[#20BA5A] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-colorsw-full sm:w-auto"
           >
             Book Your Appointment
           </a>
           <a
             href={`tel:${clinicData.clinic.phone}`}
-            className="bg-white text-neutral-dark px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-gray-100 transition-colors animate-bounceIn w-full sm:w-auto" style={{ animationDelay: '2.4s' }}
+            className="bg-white text-neutral-dark px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-gray-100 transition-colorsw-full sm:w-auto"
           >
             Call Us: {clinicData.clinic.phone}
           </a>

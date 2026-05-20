@@ -65,7 +65,7 @@ const DoctorProfile = () => {
     : `Dr. Amit Shah is a pediatrician at Swastik Nursing Home, Ghatkopar West, Mumbai. Specializes in newborn care, vaccinations, growth monitoring, and childhood illnesses. Book consultation: 022 2500 8858.`
 
   return (
-    <div className="animate-fadeIn">
+    <div className="">
       <SEO
         title={seoTitle}
         description={seoDescription}
@@ -73,15 +73,15 @@ const DoctorProfile = () => {
         schema={physicianSchema}
       />
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-primary to-primary/90 text-white pt-24 pb-12 sm:pt-32 sm:pb-16 animate-slideInFromTop" style={{ animationDelay: '0.1s' }}>
+      <div className="bg-gradient-to-r from-primary to-primary/90 text-white pt-24 pb-12 sm:pt-32 sm:pb-16">
         <div className="max-w-4xl mx-auto px-3 sm:px-4">
           <div className="flex flex-col md:flex-row items-center gap-4 sm:gap-6 md:gap-8">
             <img
               src={doctor.image}
               alt={doctor.name}
-              className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover object-top border-4 border-white shadow-lg animate-bounceIn" style={{ animationDelay: '0.2s' }}
+              className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover object-top border-4 border-white shadow-lg"
             />
-            <div className="text-center md:text-left animate-fadeIn" style={{ animationDelay: '0.3s' }}>
+            <div className="text-center md:text-left">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2">{doctor.name}</h1>
               <p className="text-base sm:text-lg md:text-xl mb-2 opacity-90">{doctor.specialty}</p>
               <p className="text-sm sm:text-base md:text-lg opacity-80">{doctor.degree} • {doctor.credentials}</p>
@@ -99,10 +99,10 @@ const DoctorProfile = () => {
       </div>
 
       {/* Content Section */}
-      <div className="max-w-4xl mx-auto px-3 sm:px-4 py-6 sm:py-8 md:py-12 animate-fadeIn" style={{ animationDelay: '0.5s' }}>
+      <div className="max-w-4xl mx-auto px-3 sm:px-4 py-6 sm:py-8 md:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Main Content */}
-          <div className="lg:col-span-2 animate-slideInFromLeft" style={{ animationDelay: '0.6s' }}>
+          <div className="lg:col-span-2">
             {/* About Section */}
             <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 mb-6 sm:mb-8">
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-neutral-dark mb-3 sm:mb-4 text-center lg:text-left">About Dr. {doctor.name.split(' ')[1]}</h2>
@@ -112,7 +112,7 @@ const DoctorProfile = () => {
               <h3 className="text-base sm:text-lg md:text-xl font-semibold text-neutral-dark mb-2 sm:mb-3 text-center lg:text-left">Areas of Focus</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6">
                 {doctor.areasOfFocus.map((area, index) => (
-                  <div key={index} className="flex items-center gap-2 justify-center md:justify-start animate-fadeIn" style={{ animationDelay: `${0.7 + index * 0.1}s` }}>
+                  <div key={index} className="flex items-center gap-2 justify-center md:justify-start">
                     <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full"></span>
                     <span className="text-gray-700 text-sm sm:text-base">{area}</span>
                   </div>
@@ -123,7 +123,7 @@ const DoctorProfile = () => {
               <h3 className="text-base sm:text-lg md:text-xl font-semibold text-neutral-dark mb-2 sm:mb-3 text-center lg:text-left">Languages</h3>
               <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
                 {doctor.languages.map((language, index) => (
-                  <span key={index} className="bg-neutral-light px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm text-gray-700 animate-fadeIn" style={{ animationDelay: `${1.0 + index * 0.1}s` }}>
+                  <span key={index} className="bg-neutral-light px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm text-gray-700">
                     {language}
                   </span>
                 ))}
@@ -131,7 +131,7 @@ const DoctorProfile = () => {
             </div>
 
             {/* Medical Disclaimer */}
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 sm:p-6 animate-fadeIn" style={{ animationDelay: '1.3s' }}>
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 sm:p-6">
               <h3 className="text-sm sm:text-base md:text-lg font-semibold text-yellow-800 mb-2 text-center lg:text-left">Medical Disclaimer</h3>
               <p className="text-yellow-700 text-xs sm:text-sm text-center lg:text-left leading-relaxed">
                 Information on this site is for general guidance and not a substitute for medical consultation.
@@ -141,7 +141,7 @@ const DoctorProfile = () => {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-4 sm:space-y-6 animate-slideInFromRight" style={{ animationDelay: '0.6s' }}>
+          <div className="space-y-4 sm:space-y-6">
             {/* Quick Actions */}
             <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6">
               <h3 className="text-base sm:text-lg md:text-xl font-bold text-neutral-dark mb-3 sm:mb-4 text-center lg:text-left">Book Consultation</h3>
@@ -150,21 +150,21 @@ const DoctorProfile = () => {
                   href={`https://wa.me/${clinicData.clinic.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hi, I would like to book an appointment with Dr. ${doctor.name.split(' ')[1]}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-semibold text-sm sm:text-base transition-colors flex items-center justify-center gap-2 animate-bounceIn" style={{ animationDelay: '1.4s' }}
+                  className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-semibold text-sm sm:text-base transition-colors flex items-center justify-center gap-2"
                 >
                   <span>💬</span>
                   WhatsApp Now
                 </a>
                 <a
                   href={`tel:${clinicData.clinic.phone}`}
-                  className="w-full bg-primary hover:bg-primary/90 text-white py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-semibold text-sm sm:text-base transition-colors flex items-center justify-center gap-2 animate-bounceIn" style={{ animationDelay: '1.5s' }}
+                  className="w-full bg-primary hover:bg-primary/90 text-white py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-semibold text-sm sm:text-base transition-colors flex items-center justify-center gap-2"
                 >
                   <span>📞</span>
                   Call Now
                 </a>
                 <button
                   onClick={() => navigate('/contact')}
-                  className="w-full bg-neutral-light hover:bg-gray-200 text-neutral-dark py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-semibold text-sm sm:text-base transition-colors animate-bounceIn" style={{ animationDelay: '1.6s' }}
+                  className="w-full bg-neutral-light hover:bg-gray-200 text-neutral-dark py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-semibold text-sm sm:text-base transition-colors"
                 >
                   Contact Form
                 </button>
@@ -172,7 +172,7 @@ const DoctorProfile = () => {
             </div>
 
             {/* Clinic Info */}
-            <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 animate-fadeIn" style={{ animationDelay: '1.7s' }}>
+            <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6">
               <h3 className="text-base sm:text-lg md:text-xl font-bold text-neutral-dark mb-3 sm:mb-4 text-center lg:text-left">Clinic Information</h3>
               <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-center lg:text-left">
                 <div>
@@ -206,7 +206,7 @@ const DoctorProfile = () => {
             {/* Back Button */}
             <button
               onClick={() => navigate('/doctors')}
-              className="w-full bg-neutral-light hover:bg-gray-200 text-neutral-dark py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-semibold text-sm sm:text-base transition-colors animate-bounceIn" style={{ animationDelay: '1.8s' }}
+              className="w-full bg-neutral-light hover:bg-gray-200 text-neutral-dark py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-semibold text-sm sm:text-base transition-colors"
             >
               ← Back to Doctors
             </button>

@@ -63,15 +63,15 @@ const Doctors = () => {
         schema={doctorsSchema}
       />
       <div className="text-center mb-8 sm:mb-12">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-dark mb-3 sm:mb-4 animate-slideInFromTop">Our Expert Doctors</h1>
-        <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-3 sm:px-4 animate-fadeIn" style={{ animationDelay: '0.1s' }}>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-dark mb-3 sm:mb-4">Our Expert Doctors</h1>
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-3 sm:px-4">
           Meet our experienced doctors providing specialized care in pediatrics and orthopedics.
         </p>
       </div>
 
       <div className="flex flex-col md:flex-row items-start gap-4 sm:gap-6 md:gap-8">
         {/* Filter Sidebar */}
-        <div className={`w-full md:w-64 flex-shrink-0 animate-slideInFromLeft ${showFilters ? 'block' : 'hidden md:block'}`} style={{ animationDelay: '0.2s' }}>
+        <div className={`w-full md:w-64 flex-shrink-0${showFilters ? 'block' : 'hidden md:block'}`}>
           <div className="bg-white rounded-lg shadow-sm p-4 sm:p-5">
             <h3 className="text-base sm:text-lg font-semibold text-neutral-dark mb-3 sm:mb-4 text-center md:text-left">Filter by Specialty</h3>
             <div className="space-y-2">
@@ -101,7 +101,7 @@ const Doctors = () => {
         </div>
 
         {/* Doctors Grid */}
-        <div className="flex-1 w-full animate-slideInFromBottom" style={{ animationDelay: '0.4s' }}>
+        <div className="flex-1 w-full">
           {/* Mobile Filter Toggle */}
           <button
             onClick={() => setShowFilters(!showFilters)}
@@ -115,8 +115,8 @@ const Doctors = () => {
             {filterDoc.map((item, index) => (
               <div
                 key={index}
-                className="bg-white border border-neutral-light rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
-                style={{ animationDelay: `${0.1 + index * 0.05}s` }}
+                className="bg-white border border-neutral-light rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-colors duration-200"
+
               >
                 <img className="w-full h-40 sm:h-56 object-cover object-top bg-neutral-light" src={item.image} alt={item.name} />
                 <div className="p-4 sm:p-6">
@@ -149,7 +149,7 @@ const Doctors = () => {
           </div>
 
           {filterDoc.length === 0 && (
-            <div className="text-center py-8 sm:py-12 animate-fadeIn" style={{ animationDelay: '0.7s' }}>
+            <div className="text-center py-8 sm:py-12">
               <p className="text-gray-500 text-base sm:text-lg">No doctors found for this specialty.</p>
               <button
                 onClick={() => navigate('/doctors')}

@@ -31,22 +31,19 @@ const ImageCarousel = ({ images, autoPlayInterval = 5000, className, contentClas
         {images.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
               }`}
           >
-            <div className={`absolute inset-0 transform transition-transform duration-[8000ms] ease-out ${index === currentIndex ? 'scale-110' : 'scale-100'}`}>
-              <img
-                src={image.url}
-                alt={image.alt || `Hospital image ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            {/* Darker Modern Gradient Overlay for better text readability */}
+            <img
+              src={image.url}
+              alt={image.alt || `Hospital image ${index + 1}`}
+              className="w-full h-full object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
 
             {image.caption && (
-              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 transform transition-transform duration-1000 delay-500 translate-y-0">
-                <p className="text-white/90 text-sm sm:text-base font-medium tracking-wide border-l-4 border-primary pl-4 backdrop-blur-sm bg-black/10 inline-block py-2 rounded-r-lg max-w-md animate-fadeInUp">{image.caption}</p>
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
+                <p className="text-white/90 text-sm sm:text-base font-medium tracking-wide border-l-4 border-primary pl-4 backdrop-blur-sm bg-black/10 inline-block py-2 rounded-r-lg max-w-md">{image.caption}</p>
               </div>
             )}
           </div>
@@ -55,7 +52,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 5000, className, contentClas
 
       <button
         onClick={goToPrevious}
-        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 border border-white/20"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 border border-white/20"
         aria-label="Previous image"
       >
         <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,7 +62,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 5000, className, contentClas
 
       <button
         onClick={goToNext}
-        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 border border-white/20"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 border border-white/20"
         aria-label="Next image"
       >
         <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,7 +75,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 5000, className, contentClas
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${index === currentIndex
+            className={`h-1.5 sm:h-2 rounded-full transition-all duration-200 ${index === currentIndex
               ? 'bg-white w-6 sm:w-8'
               : 'bg-white/50 w-1.5 sm:w-2 hover:bg-white/75'
               }`}
@@ -91,4 +88,3 @@ const ImageCarousel = ({ images, autoPlayInterval = 5000, className, contentClas
 };
 
 export default ImageCarousel;
-

@@ -62,7 +62,7 @@ This appointment request was submitted through the Swastik Nursing Home website.
   };
 
   return (
-    <div className="py-6 sm:py-8 px-3 sm:px-4 animate-fadeIn">
+    <div className="py-6 sm:py-8 px-3 sm:px-4">
       <SEO
         title="Contact Us - Book an Appointment"
         description="Contact Swastik Nursing Home in Ghatkopar West, Mumbai. Phone: 022 2500 8858. Open Mon–Fri 9 AM–8 PM, Sat 9 AM–2 PM. Lal Bahadur Shastri Marg, Near Shreyas Cinema. Walk-ins welcome."
@@ -70,23 +70,23 @@ This appointment request was submitted through the Swastik Nursing Home website.
       />
       {/* Hero Section */}
       <div className="text-center mb-10 sm:mb-12 md:mb-16">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-3 sm:mb-4 animate-slideInFromTop" style={{ animationDelay: '0.1s' }}>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-3 sm:mb-4">
           Contact <span className="text-primary">Us</span>
         </h1>
-        <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-3 sm:px-4 animate-fadeIn" style={{ animationDelay: '0.2s' }}>
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-3 sm:px-4">
           Get in touch with Swastik Nursing Home for appointments and healthcare inquiries
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-10 sm:mb-12 md:mb-16">
         {/* Contact Information & Map */}
-        <div className="animate-slideInFromLeft" style={{ animationDelay: '0.3s' }}>
+        <div className="">
           <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-neutral-dark mb-4 sm:mb-6 text-center lg:text-left">Clinic Information</h2>
 
             <div className="space-y-6">
               {/* Address */}
-              <div className="animate-fadeIn" style={{ animationDelay: '0.4s' }}>
+              <div className="">
                 <h3 className="text-lg font-semibold text-neutral-dark mb-2">📍 Address</h3>
                 <a
                   href={clinicData.clinic.googleMapsLink || 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9'}
@@ -105,7 +105,7 @@ This appointment request was submitted through the Swastik Nursing Home website.
               </div>
 
               {/* Contact Details */}
-              <div className="animate-fadeIn" style={{ animationDelay: '0.5s' }}>
+              <div className="">
                 <h3 className="text-lg font-semibold text-neutral-dark mb-2">📞 Contact Details</h3>
                 <div className="space-y-2">
                   <a
@@ -135,7 +135,7 @@ This appointment request was submitted through the Swastik Nursing Home website.
               </div>
 
               {/* Timings */}
-              <div className="animate-fadeIn" style={{ animationDelay: '0.6s' }}>
+              <div className="">
                 <h3 className="text-lg font-semibold text-neutral-dark mb-2">🕒 Clinic Hours</h3>
                 <div className="text-gray-600 space-y-1">
                   <p>Monday - Saturday: {clinicData.clinic.timings.monday}</p>
@@ -152,7 +152,7 @@ This appointment request was submitted through the Swastik Nursing Home website.
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <a
               href={`tel:${clinicData.clinic.phone}`}
-              className="bg-primary text-white p-3 sm:p-4 rounded-lg text-center hover:bg-primary/90 transition-colors animate-bounceIn" style={{ animationDelay: '0.7s' }}
+              className="bg-primary text-white p-3 sm:p-4 rounded-lg text-center hover:bg-primary/90 transition-colors"
             >
               <div className="text-xl sm:text-2xl mb-1 sm:mb-2">📞</div>
               <div className="font-semibold text-sm sm:text-base">Call Now</div>
@@ -161,14 +161,14 @@ This appointment request was submitted through the Swastik Nursing Home website.
               href={`https://wa.me/${clinicData.clinic.whatsappNumber.replace(/[^0-9]/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#25D366] text-white p-3 sm:p-4 rounded-lg text-center hover:bg-[#20BA5A] transition-colors animate-bounceIn" style={{ animationDelay: '0.8s' }}
+              className="bg-[#25D366] text-white p-3 sm:p-4 rounded-lg text-center hover:bg-[#20BA5A] transition-colors"
             >
               <div className="text-xl sm:text-2xl mb-1 sm:mb-2">💬</div>
               <div className="font-semibold text-sm sm:text-base">WhatsApp</div>
             </a>
             <a
               href={`mailto:${clinicData.clinic.email}`}
-              className="bg-neutral-dark text-white p-3 sm:p-4 rounded-lg text-center hover:bg-gray-700 transition-colors animate-bounceIn" style={{ animationDelay: '0.9s' }}
+              className="bg-neutral-dark text-white p-3 sm:p-4 rounded-lg text-center hover:bg-gray-700 transition-colors"
             >
               <div className="text-xl sm:text-2xl mb-1 sm:mb-2">✉️</div>
               <div className="font-semibold text-sm sm:text-base">Email</div>
@@ -177,7 +177,7 @@ This appointment request was submitted through the Swastik Nursing Home website.
         </div>
 
         {/* Appointment Request Form */}
-        <div id="appointment-form" className="bg-white rounded-lg shadow-sm p-4 sm:p-6 md:p-8 animate-slideInFromRight" style={{ animationDelay: '0.3s' }}>
+        <div id="appointment-form" className="bg-white rounded-lg shadow-sm p-4 sm:p-6 md:p-8">
           <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-neutral-dark mb-4 sm:mb-6 text-center lg:text-left">Book an Appointment</h2>
 
           <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
@@ -285,13 +285,13 @@ This appointment request was submitted through the Swastik Nursing Home website.
 
             <button
               type="submit"
-              className="w-full bg-primary text-white py-2.5 sm:py-3 px-5 sm:px-6 rounded-md font-semibold text-sm sm:text-base hover:bg-primary/90 transition-colors animate-bounceIn" style={{ animationDelay: '1.0s' }}
+              className="w-full bg-primary text-white py-2.5 sm:py-3 px-5 sm:px-6 rounded-md font-semibold text-sm sm:text-base hover:bg-primary/90 transition-colors"
             >
               Send Appointment Request
             </button>
           </form>
 
-          <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-neutral-light rounded-lg animate-fadeIn" style={{ animationDelay: '1.1s' }}>
+          <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-neutral-light rounded-lg">
             <p className="text-primary text-xs sm:text-sm">
               <strong>Note:</strong> This form will open your email client. We'll contact you within 24 hours to confirm your appointment.
             </p>
@@ -300,7 +300,7 @@ This appointment request was submitted through the Swastik Nursing Home website.
       </div>
 
       {/* Map Placeholder */}
-      <div className="bg-neutral-light rounded-lg p-4 sm:p-6 md:p-8 text-center mx-0 sm:mx-4 animate-fadeIn" style={{ animationDelay: '1.2s' }}>
+      <div className="bg-neutral-light rounded-lg p-4 sm:p-6 md:p-8 text-center mx-0 sm:mx-4">
         <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4">🗺️</div>
         <h3 className="text-base sm:text-lg md:text-xl font-semibold text-neutral-dark mb-2 px-3 sm:px-4">Find Us on Google Maps</h3>
         <a
@@ -313,7 +313,7 @@ This appointment request was submitted through the Swastik Nursing Home website.
         </a>
         <button
           onClick={openGoogleMaps}
-          className="bg-primary text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-primary/90 transition-colors animate-bounceIn w-full sm:w-auto" style={{ animationDelay: '1.3s' }}
+          className="bg-primary text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-primary/90 transition-colorsw-full sm:w-auto"
         >
           Get Directions
         </button>

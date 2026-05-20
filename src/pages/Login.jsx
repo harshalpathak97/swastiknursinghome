@@ -63,7 +63,7 @@ const Login = () => {
 
   return (
     <form onSubmit={onSubmitHandler} className="min-h-[80vh] flex items-center px-4">
-      <div className="flex flex-col gap-3 m-auto items-center sm:items-start p-6 sm:p-8 w-full max-w-[340px] sm:min-w-96 border rounded-xl text-zinc-600 text-sm shadow-lg animate-fadeIn">
+      <div className="flex flex-col gap-3 m-auto items-center sm:items-start p-6 sm:p-8 w-full max-w-[340px] sm:min-w-96 border rounded-xl text-zinc-600 text-sm shadow-lg">
         <p className="text-xl sm:text-2xl font-semibold text-center sm:text-left w-full">
           {state === 'Sign Up' ? "Create Account" : "Login"}
         </p>
@@ -72,13 +72,13 @@ const Login = () => {
         </p>
 
         {error && (
-          <div className="w-full p-3 bg-red-100 border border-red-400 text-red-700 rounded animate-fadeIn">
+          <div className="w-full p-3 bg-red-100 border border-red-400 text-red-700 rounded">
             {error}
           </div>
         )}
 
         {success && (
-          <div className="w-full p-3 bg-green-100 border border-green-400 text-green-700 rounded animate-fadeIn">
+          <div className="w-full p-3 bg-green-100 border border-green-400 text-green-700 rounded">
             {success}
           </div>
         )}

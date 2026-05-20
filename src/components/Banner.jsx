@@ -39,7 +39,7 @@ const Banner = () => {
         <div className="text-center mt-6 sm:mt-8">
           <a
             href="/contact"
-            className="inline-block bg-white text-neutral-dark px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-gray-100 transition-all duration-300 hover:scale-105"
+            className="inline-block bg-white text-neutral-dark px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-gray-100 transition-colors duration-200"
           >
             Read More Reviews
           </a>

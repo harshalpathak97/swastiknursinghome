@@ -6,7 +6,7 @@ const Privacy = () => {
   const { clinicData } = useContext(AppContext);
 
   return (
-    <div className="py-8 max-w-4xl mx-auto px-4 animate-fadeIn">
+    <div className="py-8 max-w-4xl mx-auto px-4">
       <SEO
         title="Privacy Policy"
         description="Privacy policy for Swastik Nursing Home. How we collect, use, and protect your personal information in compliance with applicable Indian laws."
@@ -14,10 +14,10 @@ const Privacy = () => {
       />
       {/* Hero Section */}
       <div className="text-center mb-16">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 animate-slideInFromTop" style={{ animationDelay: '0.1s' }}>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">
           Privacy Policy
         </h1>
-        <p className="text-base sm:text-lg text-gray-600 px-4 animate-fadeIn" style={{ animationDelay: '0.2s' }}>
+        <p className="text-base sm:text-lg text-gray-600 px-4">
           How we collect, use, and protect your personal information
         </p>
       </div>
@@ -26,7 +26,7 @@ const Privacy = () => {
       <div className="prose prose-lg max-w-none">
         <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8 space-y-8">
 
-          <section className="animate-slideInFromBottom" style={{ animationDelay: '0.3s' }}>
+          <section className="">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 text-center sm:text-left">1. Information We Collect</h2>
             <p className="text-gray-600 leading-relaxed mb-4 text-center sm:text-left">
               We collect information you provide directly to us, such as when you:
@@ -41,7 +41,7 @@ const Privacy = () => {
             </p>
           </section>
 
-          <section className="animate-slideInFromBottom" style={{ animationDelay: '0.4s' }}>
+          <section className="">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 text-center sm:text-left">2. How We Use Your Information</h2>
             <p className="text-gray-600 leading-relaxed mb-4 text-center sm:text-left">
               We use the information we collect to:
@@ -55,7 +55,7 @@ const Privacy = () => {
             </ul>
           </section>
 
-          <section className="animate-slideInFromBottom" style={{ animationDelay: '0.5s' }}>
+          <section className="">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 text-center sm:text-left">3. Information Sharing</h2>
             <p className="text-gray-600 leading-relaxed text-center sm:text-left">
               We do not sell, trade, or otherwise transfer your personal information to third parties without your consent,
@@ -64,7 +64,7 @@ const Privacy = () => {
             </p>
           </section>
 
-          <section className="animate-slideInFromBottom" style={{ animationDelay: '0.6s' }}>
+          <section className="">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 text-center sm:text-left">4. Data Security</h2>
             <p className="text-gray-600 leading-relaxed text-center sm:text-left">
               We implement appropriate security measures to protect your personal information against unauthorized access,
@@ -72,7 +72,7 @@ const Privacy = () => {
             </p>
           </section>
 
-          <section className="animate-slideInFromBottom" style={{ animationDelay: '0.7s' }}>
+          <section className="">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 text-center sm:text-left">5. Contact Form Data</h2>
             <p className="text-gray-600 leading-relaxed mb-4 text-center sm:text-left">
               Information submitted through our appointment request form is used solely for scheduling purposes and
@@ -84,7 +84,7 @@ const Privacy = () => {
             </p>
           </section>
 
-          <section className="animate-slideInFromBottom" style={{ animationDelay: '0.8s' }}>
+          <section className="">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 text-center sm:text-left">6. Your Rights</h2>
             <p className="text-gray-600 leading-relaxed mb-4 text-center sm:text-left">
               You have the right to:
@@ -97,7 +97,7 @@ const Privacy = () => {
             </ul>
           </section>
 
-          <section className="animate-slideInFromBottom" style={{ animationDelay: '0.9s' }}>
+          <section className="">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 text-center sm:text-left">7. Contact Us</h2>
             <p className="text-gray-600 leading-relaxed mb-4 text-center sm:text-left">
               If you have any questions about this Privacy Policy or our data practices, please contact us:
@@ -117,7 +117,7 @@ const Privacy = () => {
             </div>
           </section>
 
-          <section className="animate-slideInFromBottom" style={{ animationDelay: '1.0s' }}>
+          <section className="">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 text-center sm:text-left">8. Updates to This Policy</h2>
             <p className="text-gray-600 leading-relaxed text-center sm:text-left">
               We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated
@@ -125,7 +125,7 @@ const Privacy = () => {
             </p>
           </section>
 
-          <section className="animate-fadeIn" style={{ animationDelay: '1.1s' }}>
+          <section className="">
             <p className="text-sm text-gray-500 italic">
               Last updated: December 2025
             </p>

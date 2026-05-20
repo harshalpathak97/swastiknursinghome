@@ -139,14 +139,14 @@ const Profile = () => {
         {
           isEdit
             ? <button
-              className="bg-primary text-white border border-primary px-8 py-2 rounded-full hover:bg-opacity-90 transition-all duration-300 disabled:opacity-50"
+              className="bg-primary text-white border border-primary px-8 py-2 rounded-full hover:bg-opacity-90 transition-colors duration-200 disabled:opacity-50"
               onClick={handleSave}
               disabled={loading}
             >
               {loading ? "Saving..." : "Save Information"}
             </button>
             : <button
-              className="border border-primary text-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300"
+              className="border border-primary text-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-colors duration-200"
               onClick={() => setIsEdit(true)}
             >
               Edit

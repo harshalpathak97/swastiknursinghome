@@ -31,29 +31,29 @@ const Navbar = () => {
       {/* Desktop Menu */}
       <ul className="hidden md:flex items-start gap-5 font-medium">
         <NavLink to="/" onClick={scrollToTop}>
-          <li className="py-1 transition-all duration-300 hover:scale-110 hover:text-primary cursor-pointer">Home</li>
+          <li className="py-1 transition-colors duration-200 hover:text-primary cursor-pointer">Home</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
         <NavLink to="/services" onClick={scrollToTop}>
-          <li className="py-1 transition-all duration-300 hover:scale-110 hover:text-primary cursor-pointer">Services</li>
+          <li className="py-1 transition-colors duration-200 hover:text-primary cursor-pointer">Services</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
         <NavLink to="/doctors" onClick={scrollToTop}>
-          <li className="py-1 transition-all duration-300 hover:scale-110 hover:text-primary cursor-pointer">Doctors</li>
+          <li className="py-1 transition-colors duration-200 hover:text-primary cursor-pointer">Doctors</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
         <NavLink to="/about" onClick={scrollToTop}>
-          <li className="py-1 transition-all duration-300 hover:scale-110 hover:text-primary cursor-pointer">About</li>
+          <li className="py-1 transition-colors duration-200 hover:text-primary cursor-pointer">About</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
         <NavLink to="/contact" onClick={scrollToTop}>
-          <li className="py-1 transition-all duration-300 hover:scale-110 hover:text-primary cursor-pointer">Contact</li>
+          <li className="py-1 transition-colors duration-200 hover:text-primary cursor-pointer">Contact</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
       </ul>
 
       {/* User Menu */}
-      <div className="flex items-center gap-2 sm:gap-4 animate-slideInFromRight" style={{ animationDelay: '0.7s' }}>
+      <div className="flex items-center gap-2 sm:gap-4">
         {isAuthenticated ? (
           <div className="flex items-center gap-1 sm:gap-2 cursor-pointer group relative">
             <img
@@ -94,7 +94,7 @@ const Navbar = () => {
         ) : (
           <button
             onClick={() => { navigate("/login"); scrollToTop(); }}
-            className="bg-primary text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full font-light text-xs sm:text-sm hidden md:block transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-opacity-90"
+            className="bg-primary text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full font-light text-xs sm:text-sm hidden md:block transition-colors duration-200 hover:shadow-md hover:bg-primary/90"
           >
             Create Account
           </button>
@@ -128,19 +128,19 @@ const Navbar = () => {
         </div>
         <ul className="flex flex-col gap-4 sm:gap-6 p-4 sm:p-6 font-medium">
           <NavLink to="/" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Home</li>
+            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Home</li>
           </NavLink>
           <NavLink to="/services" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Services</li>
+            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Services</li>
           </NavLink>
           <NavLink to="/doctors" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Doctors</li>
+            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Doctors</li>
           </NavLink>
           <NavLink to="/about" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">About</li>
+            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">About</li>
           </NavLink>
           <NavLink to="/contact" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Contact</li>
+            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Contact</li>
           </NavLink>
           {isAuthenticated ? (
             <>
@@ -151,14 +151,14 @@ const Navbar = () => {
                 </div>
               )}
               <NavLink to="/profile" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-                <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">My Profile</li>
+                <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">My Profile</li>
               </NavLink>
               <NavLink to="/my-appointment" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-                <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">My Appointments</li>
+                <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">My Appointments</li>
               </NavLink>
               <button
                 onClick={() => { handleLogout(); setShowMenu(false); }}
-                className="bg-red-500 text-white px-6 py-3 rounded-full font-medium text-base sm:text-lg mt-2 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-red-600"
+                className="bg-red-500 text-white px-6 py-3 rounded-full font-medium text-base sm:text-lg mt-2 transition-colors duration-200 hover:shadow-md hover:bg-red-600"
               >
                 Logout
               </button>
@@ -166,7 +166,7 @@ const Navbar = () => {
           ) : (
             <button
               onClick={() => { navigate("/login"); scrollToTop(); setShowMenu(false); }}
-              className="bg-primary text-white px-6 py-3 rounded-full font-medium text-base sm:text-lg mt-4 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              className="bg-primary text-white px-6 py-3 rounded-full font-medium text-base sm:text-lg mt-4 transition-colors duration-200 hover:shadow-md"
             >
               Create Account
             </button>
