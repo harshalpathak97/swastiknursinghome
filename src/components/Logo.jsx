@@ -46,22 +46,25 @@ const LogoMark = ({ size = 42, radius }) => {
   );
 };
 
-const Logo = ({ size = 42, showText = true, subtitle = 'Nursing Home · Est. 2002' }) => (
+const Logo = ({ size = 42, showText = true, subtitle = 'Est. 2002' }) => (
   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
     <LogoMark size={size} />
     {showText && (
       <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
         <span
+          className="ds-logo-title"
           style={{
             fontFamily: "'Instrument Serif', serif",
             fontSize: Math.round(size * 0.55),
             letterSpacing: '-0.01em',
             color: 'var(--ink)',
+            whiteSpace: 'nowrap',
           }}
         >
-          Swastik
+          Swastik Nursing Home
         </span>
         <span
+          className="ds-logo-subtitle"
           style={{
             fontSize: 10.5,
             letterSpacing: '0.16em',

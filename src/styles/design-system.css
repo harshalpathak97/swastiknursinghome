@@ -1085,3 +1085,15 @@
     gap: 32px;
   }
 }
+
+@media (max-width: 480px) {
+  .ds-logo-title {
+    font-size: 19px !important;
+  }
+  .ds-logo-subtitle {
+    font-size: 9px !important;
+    letter-spacing: 0.12em !important;
+    margin-top: 3px !important;
+  }
+}
+
