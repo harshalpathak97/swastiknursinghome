@@ -83,7 +83,7 @@ export const doctors = clinicData.doctors.map((doctor, index) => ({
     degree: doctor.degree,
     experience: doctor.experience || '10+ Years',
     about: doctor.longBio,
-    fees: doctor.specialty === 'Pediatrician' ? 8 : 10, // ₹800 for pediatrics, ₹1000 for orthopedics
+    fees: doctor.specialty === 'Pediatrician' ? 800 : 1000, // ₹800 for pediatrics, ₹1000 for orthopedics
     address: {
         line1: 'Lal Bahadur Shastri Marg',
         line2: 'Near Shreyas Cinema, Ghatkopar West, Mumbai'
