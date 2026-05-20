@@ -1,3 +1,5 @@
+import { LogoMark } from './Logo';
+import { useMapsPrompt } from './MapsPrompt';
 import '../styles/design-system.css';
 
 const CLINIC = {
@@ -8,13 +10,15 @@ const CLINIC = {
   mapsLink: 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9',
 };
 
-const Footer = () => (
+const Footer = () => {
+  const { open: openMaps } = useMapsPrompt();
+  return (
   <footer className="ds-footer">
     <div className="ds-container">
       <div className="ds-foot-grid">
         <div className="ds-foot-col">
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
-            <div style={{ width: 38, height: 38, borderRadius: 10, background: 'var(--brand)', display: 'grid', placeItems: 'center', color: '#fff', fontFamily: "'Instrument Serif', serif", fontSize: 22, flexShrink: 0 }}>S</div>
+            <LogoMark size={42} />
             <div>
               <div style={{ fontFamily: "'Instrument Serif', serif", fontSize: 20, color: 'var(--ink)', letterSpacing: '-0.01em' }}>Swastik Nursing Home</div>
               <div style={{ fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--ink-3)', marginTop: 3 }}>Pediatric · Orthopedic · Family Care</div>
@@ -31,7 +35,13 @@ const Footer = () => (
             Ghatkopar West, Mumbai 400083
           </p>
           <p style={{ marginTop: 12 }}>
-            <a href={CLINIC.mapsLink} target="_blank" rel="noreferrer">Open in Maps ↗</a>
+            <button
+              type="button"
+              onClick={openMaps}
+              style={{ background: 'none', border: 'none', padding: 0, color: 'var(--brand)', cursor: 'pointer', fontSize: 14, fontFamily: 'inherit', textDecoration: 'none' }}
+            >
+              Open in Maps ↗
+            </button>
           </p>
         </div>
 
@@ -73,6 +83,7 @@ const Footer = () => (
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 export default Footer;

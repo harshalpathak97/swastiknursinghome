@@ -24,7 +24,7 @@ const ServicesSection = () => {
   const list = tab === 'pedi' ? PEDI_SERVICES : ORTHO_SERVICES;
 
   return (
-    <section className="ds-section" id="services" style={{ background: 'var(--bg)' }}>
+    <section className="ds-section ds-reveal" id="services" style={{ background: 'var(--bg)' }}>
       <div className="ds-container">
         <div className="ds-section-header">
           <div>

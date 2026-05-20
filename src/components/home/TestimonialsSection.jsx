@@ -13,7 +13,7 @@ const TESTIMONIALS = [
 const SVC_LABEL = { pedi: 'Pediatrics', ortho: 'Orthopedics', gen: 'General' };
 
 const TestimonialsSection = () => (
-  <section className="ds-section" id="reviews" style={{ background: 'var(--bg)' }}>
+  <section className="ds-section ds-reveal" id="reviews" style={{ background: 'var(--bg)' }}>
     <div className="ds-container">
       <div className="ds-section-header">
         <div>

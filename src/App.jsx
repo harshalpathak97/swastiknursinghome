@@ -15,11 +15,12 @@ import Privacy from './pages/Privacy'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
+import { MapsPromptProvider } from './components/MapsPrompt'
 
 
 const App = () => {
   return (
-    <div className="">
+    <MapsPromptProvider>
       <Navbar />
       <div>
         <Routes>
@@ -41,7 +42,7 @@ const App = () => {
       </div>
       <FloatingWhatsApp />
       <Analytics />
-    </div>
+    </MapsPromptProvider>
   );
 };
 

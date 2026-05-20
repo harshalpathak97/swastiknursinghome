@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import SEO from '../components/SEO';
+import useReveal from '../lib/useReveal';
 import HeroSection from '../components/home/HeroSection';
 import WalkinBanner from '../components/home/WalkinBanner';
 import SpecialtySection from '../components/home/SpecialtySection';
@@ -29,6 +30,7 @@ const clinicSchema = {
 };
 
 const Home = () => {
+  useReveal();
   const [bookingDocId, setBookingDocId] = useState(null);
 
   const scrollToBook = useCallback(() => {

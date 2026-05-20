@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { assets } from '../assets/assets';
 import I from './Icons';
+import Logo from './Logo';
+import { useMapsPrompt } from './MapsPrompt';
 import '../styles/design-system.css';
 
 function smoothScrollTo(id) {
@@ -14,10 +16,10 @@ function smoothScrollTo(id) {
 
 const CLINIC_PHONE = '022 2500 8858';
 const CLINIC_PHONE_DIGITS = '+912225008858';
-const CLINIC_MAPS = 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9';
 const CLINIC_ADDRESS_SHORT = 'Near Shreyas Cinema, Ghatkopar West';
 
 function UtilityBar() {
+  const { open: openMaps } = useMapsPrompt();
   return (
     <div className="ds-utility">
       <div className="ds-container">
@@ -35,9 +37,13 @@ function UtilityBar() {
             <I.Phone size={13} /> {CLINIC_PHONE}
           </a>
           <span style={{ opacity: 0.5 }}>·</span>
-          <a href={CLINIC_MAPS} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+          <button
+            type="button"
+            onClick={openMaps}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', padding: 0, font: 'inherit' }}
+          >
             <I.Pin size={13} /> {CLINIC_ADDRESS_SHORT}
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -97,13 +103,10 @@ const Navbar = () => {
         <div className="ds-container ds-nav">
           <button
             onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            style={{ border: 'none', background: 'transparent', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 12 }}
+            style={{ border: 'none', background: 'transparent', padding: 0, cursor: 'pointer' }}
+            aria-label="Swastik Nursing Home — go to home"
           >
-            <div className="ds-brand-mark">S</div>
-            <div className="ds-brand-text">
-              <div className="ds-brand-name">Swastik</div>
-              <div className="ds-brand-sub">Nursing Home · Est. 2002</div>
-            </div>
+            <Logo size={44} />
           </button>
 
           <nav className="ds-nav-links">

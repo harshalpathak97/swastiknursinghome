@@ -18,7 +18,7 @@ const WHY = [
 
 const WhyChooseSection = () => (
   <section
-    className="ds-section"
+    className="ds-section ds-reveal"
     id="why"
     style={{ background: 'var(--surface-warm)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}
   >

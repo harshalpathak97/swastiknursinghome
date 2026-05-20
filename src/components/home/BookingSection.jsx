@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import I from '../Icons';
 import drAmitShah from '../../assets/dr_amit_shah.jpg';
 import drSwapnilShah from '../../assets/dr_swapnil_shah_new.jpg';
+import { useMapsPrompt } from '../MapsPrompt';
 import '../../styles/design-system.css';
 
 const CLINIC_PHONE = '022 2500 8858';
@@ -36,6 +37,7 @@ function nextDays(n) {
 }
 
 const BookingSection = ({ initialDocId }) => {
+  const { open: openMaps } = useMapsPrompt();
   const [step, setStep] = useState(1);
   const [docId, setDocId] = useState(null);
   const [date, setDate] = useState(null);
@@ -84,7 +86,16 @@ const BookingSection = ({ initialDocId }) => {
     <ul className="ds-book-info-list">
       <li>
         <div className="bk-ic"><I.Pin size={16} /></div>
-        <div><strong>Address</strong>Lal Bahadur Shastri Marg, Near Shreyas Cinema, Ghatkopar West, Mumbai 400083</div>
+        <div>
+          <strong>Address</strong>
+          <button
+            type="button"
+            onClick={openMaps}
+            style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', textAlign: 'left', font: 'inherit' }}
+          >
+            Lal Bahadur Shastri Marg, Near Shreyas Cinema, Ghatkopar West, Mumbai 400083 ↗
+          </button>
+        </div>
       </li>
       <li>
         <div className="bk-ic"><I.Phone size={16} /></div>
@@ -113,7 +124,7 @@ const BookingSection = ({ initialDocId }) => {
   );
 
   return (
-    <section className="ds-section" id="book" style={{ background: 'var(--bg)' }}>
+    <section className="ds-section ds-reveal" id="book" style={{ background: 'var(--bg)' }}>
       <div className="ds-container">
         <div className="ds-booking-section">
           <div className="ds-booking-grid">

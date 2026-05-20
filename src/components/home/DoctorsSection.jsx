@@ -33,7 +33,7 @@ const DOCTORS = [
 ];
 
 const DoctorsSection = ({ onBook }) => (
-  <section className="ds-section" id="doctors" style={{ paddingTop: 48, background: 'var(--bg)' }}>
+  <section className="ds-section ds-reveal" id="doctors" style={{ paddingTop: 48, background: 'var(--bg)' }}>
     <div className="ds-container">
       <div className="ds-section-header">
         <div>

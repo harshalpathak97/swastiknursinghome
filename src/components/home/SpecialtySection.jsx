@@ -20,7 +20,7 @@ const SpecialtySection = ({ onBook }) => {
   };
 
   return (
-    <section className="ds-section" id="specialties" style={{ background: 'var(--bg)' }}>
+    <section className="ds-section ds-reveal" id="specialties" style={{ background: 'var(--bg)' }}>
       <div className="ds-container">
         <div className="ds-section-header">
           <div>

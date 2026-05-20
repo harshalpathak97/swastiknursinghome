@@ -169,18 +169,13 @@
     min-height: 100%;
   }
   body {
-    background: 
-      radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-        rgba(99, 102, 241, 0.15) 0%, 
-        rgba(139, 92, 246, 0.1) 30%,
-        rgba(59, 130, 246, 0.08) 60%,
-        transparent 100%),
-      linear-gradient(135deg, #f8fafc 0%, #e0e7ff 25%, #f0f9ff 50%, #e0e7ff 75%, #f8fafc 100%);
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(31, 79, 122, 0.06) 0%, transparent 70%),
+      linear-gradient(180deg, #f3f6fb 0%, #eaf0f7 100%);
     background-attachment: fixed;
     min-height: 100vh;
     color: hsl(var(--foreground));
     font-weight: 400;
-    transition: background 0.3s ease;
   }
   .dark body {
     background: 

@@ -1,6 +1,7 @@
 import I from '../Icons';
 import drAmitShah from '../../assets/dr_amit_shah.jpg';
 import drSwapnilShah from '../../assets/dr_swapnil_shah_new.jpg';
+import { useMapsPrompt } from '../MapsPrompt';
 import '../../styles/design-system.css';
 
 const CLINIC = {
@@ -20,6 +21,7 @@ const CLINIC = {
 };
 
 const HeroSection = ({ onBook }) => {
+  const { open: openMaps } = useMapsPrompt();
   const today = new Date().getDay();
   const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const todayLabel = dayNames[today];
@@ -51,9 +53,9 @@ const HeroSection = ({ onBook }) => {
               <button className="ds-btn ds-btn-primary ds-btn-lg" onClick={onBook}>
                 Book a visit <I.Arrow size={16} />
               </button>
-              <a href={CLINIC.mapsLink} target="_blank" rel="noreferrer" className="ds-btn ds-btn-outline ds-btn-lg">
+              <button type="button" onClick={openMaps} className="ds-btn ds-btn-outline ds-btn-lg">
                 <I.Pin size={16} /> Get directions
-              </a>
+              </button>
               <a href={`tel:${CLINIC.phoneDigits}`} className="ds-btn ds-btn-ghost ds-btn-lg">
                 <I.Phone size={16} /> Call clinic
               </a>
@@ -93,7 +95,14 @@ const HeroSection = ({ onBook }) => {
             </div>
 
             {/* Stylised map */}
-            <div className="vc-map">
+            <div
+              className="vc-map"
+              role="button"
+              tabIndex={0}
+              aria-label="Open directions to clinic"
+              onClick={openMaps}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openMaps(); } }}
+            >
               <span className="vc-pin"><span className="vc-dot" /> Near Shreyas Cinema</span>
               <div className="vc-map-canvas" aria-label="Clinic location map">
                 <svg viewBox="0 0 400 280" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
@@ -120,12 +129,12 @@ const HeroSection = ({ onBook }) => {
                   <rect x="300" y="30" width="70" height="40" rx="4" fill="rgba(31,79,122,0.06)" />
                   <text x="40" y="260" fontFamily="ui-monospace, SF Mono, Menlo, monospace" fontSize="9" fill="rgba(31,79,122,0.45)" letterSpacing="1">LBS MARG →</text>
                   <g transform="translate(204 138)">
-                    <circle r="22" fill="rgba(217,121,84,0.18)">
-                      <animate attributeName="r" values="18;28;18" dur="2.4s" repeatCount="indefinite" />
-                      <animate attributeName="opacity" values="0.35;0;0.35" dur="2.4s" repeatCount="indefinite" />
+                    <circle r="22" fill="rgba(31,79,122,0.16)">
+                      <animate attributeName="r" values="18;26;18" dur="3.2s" repeatCount="indefinite" />
+                      <animate attributeName="opacity" values="0.35;0;0.35" dur="3.2s" repeatCount="indefinite" />
                     </circle>
-                    <circle r="12" fill="#fff" stroke="#d97954" strokeWidth="2" />
-                    <circle r="5" fill="#d97954" />
+                    <circle r="12" fill="#fff" stroke="#1f4f7a" strokeWidth="2" />
+                    <circle r="5" fill="#1f4f7a" />
                   </g>
                 </svg>
               </div>
@@ -155,9 +164,9 @@ const HeroSection = ({ onBook }) => {
             </div>
 
             <div className="ds-visit-actions">
-              <a className="ds-btn ds-btn-outline ds-btn-sm" href={CLINIC.mapsLink} target="_blank" rel="noreferrer">
+              <button type="button" className="ds-btn ds-btn-outline ds-btn-sm" onClick={openMaps}>
                 <I.Pin size={14} /> Directions
-              </a>
+              </button>
               <a className="ds-btn ds-btn-outline ds-btn-sm" href={`tel:${CLINIC.phoneDigits}`}>
                 <I.Phone size={14} /> Call
               </a>
