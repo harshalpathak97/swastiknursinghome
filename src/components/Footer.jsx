@@ -7,7 +7,7 @@ const CLINIC = {
   phoneDigits: '+912225008858',
   whatsapp: '912225008858',
   email: 'info@swastiknursinghome.org',
-  mapsLink: 'https://www.google.com/maps/search/?api=1&query=3WR6%2BXV+Mumbai+Maharashtra+India',
+  mapsLink: 'https://www.google.com/maps/search/?api=1&query=Swastik+Nursing+Home+C-101+Bhaveshwar+Plaza+Nityanand+Nagar+Ghatkopar+West+Mumbai+400086',
 };
 
 const Footer = () => {
