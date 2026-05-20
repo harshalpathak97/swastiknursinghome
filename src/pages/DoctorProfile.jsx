@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
+import SEO from '../components/SEO';
 
 const DoctorProfile = () => {
   const { clinicData } = useContext(AppContext);
@@ -25,8 +26,52 @@ const DoctorProfile = () => {
     );
   }
 
+  const physicianSchema = {
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    "@id": `https://www.swastiknursinghome.org/doctor/${doctor.id}`,
+    "name": doctor.name,
+    "medicalSpecialty": doctor.specialty === 'Pediatrician' ? 'Pediatrics' : 'Orthopedic Surgery',
+    "jobTitle": doctor.specialty,
+    "description": doctor.shortBio,
+    "worksFor": {
+      "@type": "MedicalClinic",
+      "@id": "https://www.swastiknursinghome.org/#clinic",
+      "name": "Swastik Nursing Home",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lal Bahadur Shastri Marg, Near Shreyas Cinema",
+        "addressLocality": "Ghatkopar West",
+        "addressRegion": "Maharashtra",
+        "postalCode": "400083",
+        "addressCountry": "IN"
+      }
+    },
+    "knowsAbout": doctor.areasOfFocus,
+    "knowsLanguage": doctor.languages,
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "degree",
+      "name": doctor.credentials
+    }
+  }
+
+  const seoTitle = doctor.id === 'dr-swapnil-shah'
+    ? `Dr. Swapnil Shah - MS Orthopedic Surgery, 27+ Years Experience`
+    : `Dr. Amit Shah - MD Pediatrics, Pediatrician`
+
+  const seoDescription = doctor.id === 'dr-swapnil-shah'
+    ? `Dr. Swapnil Shah is an orthopedic surgeon with 27+ years of experience at Swastik Nursing Home, Ghatkopar West, Mumbai. Specializes in joint pain, sports injuries, fracture care, and arthritis. Book consultation: 022 2500 8858.`
+    : `Dr. Amit Shah is a pediatrician at Swastik Nursing Home, Ghatkopar West, Mumbai. Specializes in newborn care, vaccinations, growth monitoring, and childhood illnesses. Book consultation: 022 2500 8858.`
+
   return (
     <div className="animate-fadeIn">
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        canonical={`/doctor/${doctor.id}`}
+        schema={physicianSchema}
+      />
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-primary to-primary/90 text-white pt-24 pb-12 sm:pt-32 sm:pb-16 animate-slideInFromTop" style={{ animationDelay: '0.1s' }}>
         <div className="max-w-4xl mx-auto px-3 sm:px-4">

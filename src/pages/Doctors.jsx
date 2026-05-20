@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AppContext } from '../context/AppContext';
+import SEO from '../components/SEO';
 
 const Doctors = () => {
   const { speciality } = useParams();
@@ -21,8 +22,46 @@ const Doctors = () => {
     applyFilter();
   }, [doctors, speciality]);
 
+  const doctorsSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Doctors at Swastik Nursing Home",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Physician",
+          "@id": "https://www.swastiknursinghome.org/doctor/dr-amit-shah",
+          "name": "Dr. Amit Shah",
+          "medicalSpecialty": "Pediatrics",
+          "jobTitle": "Pediatrician",
+          "description": "Experienced pediatrician at Swastik Nursing Home, Ghatkopar West, Mumbai. MD Pediatrics. Specializes in newborn care, vaccinations, and childhood illnesses."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Physician",
+          "@id": "https://www.swastiknursinghome.org/doctor/dr-swapnil-shah",
+          "name": "Dr. Swapnil Shah",
+          "medicalSpecialty": "Orthopedic Surgery",
+          "jobTitle": "Orthopedic Surgeon",
+          "description": "Orthopedic surgeon with 27+ years of experience at Swastik Nursing Home, Ghatkopar West, Mumbai. MS Orthopedic Surgery. Specializes in joint care, sports injuries, and fracture management."
+        }
+      }
+    ]
+  }
+
   return (
     <div className="pt-24 sm:pt-28 pb-10 container mx-auto px-4 max-w-7xl">
+      <SEO
+        title="Our Doctors - Dr. Amit Shah &amp; Dr. Swapnil Shah"
+        description="Meet our expert doctors: Dr. Amit Shah (MD Pediatrics) and Dr. Swapnil Shah (MS Orthopedic Surgery, 27+ years). Trusted healthcare in Ghatkopar West, Mumbai."
+        canonical="/doctors"
+        schema={doctorsSchema}
+      />
       <div className="text-center mb-8 sm:mb-12">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-dark mb-3 sm:mb-4 animate-slideInFromTop">Our Expert Doctors</h1>
         <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-3 sm:px-4 animate-fadeIn" style={{ animationDelay: '0.1s' }}>
@@ -92,7 +131,7 @@ const Doctors = () => {
 
                   <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                     <button
-                      onClick={() => navigate(`/doctors/${item._id}`)}
+                      onClick={() => navigate(`/doctor/${item._id}`)}
                       className="flex-1 bg-primary text-white py-2 px-3 sm:px-4 rounded-lg font-medium text-sm sm:text-base hover:bg-primary/90 transition-colors"
                     >
                       View Profile

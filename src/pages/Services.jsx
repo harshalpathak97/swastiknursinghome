@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../context/AppContext'
 import { Button } from "../components/ui/button";
+import SEO from '../components/SEO'
 
 const Services = () => {
   const { clinicData } = useContext(AppContext)
@@ -15,8 +16,45 @@ const Services = () => {
     </div>
   )
 
+  const servicesSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Medical Services at Swastik Nursing Home",
+    "description": "Pediatric and orthopedic healthcare services in Ghatkopar West, Mumbai",
+    "itemListElement": [
+      ...clinicData.services.pediatrics.map((s, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "item": {
+          "@type": "MedicalProcedure",
+          "name": s.title,
+          "description": s.description,
+          "procedureType": "Therapeutic",
+          "followup": "Consultation available at Swastik Nursing Home, Ghatkopar West"
+        }
+      })),
+      ...clinicData.services.orthopedics.map((s, i) => ({
+        "@type": "ListItem",
+        "position": clinicData.services.pediatrics.length + i + 1,
+        "item": {
+          "@type": "MedicalProcedure",
+          "name": s.title,
+          "description": s.description,
+          "procedureType": "Therapeutic",
+          "followup": "Consultation available at Swastik Nursing Home, Ghatkopar West"
+        }
+      }))
+    ]
+  }
+
   return (
     <div className="py-8 sm:py-10 md:py-12 px-3 sm:px-4">
+      <SEO
+        title="Services - Pediatric &amp; Orthopedic Care"
+        description="Comprehensive pediatric and orthopedic services in Ghatkopar West, Mumbai: newborn care, vaccinations, growth monitoring, joint pain, sports injuries, fracture care. Walk-ins welcome."
+        canonical="/services"
+        schema={servicesSchema}
+      />
       {/* Hero Section */}
       <div className="text-center mb-10 sm:mb-12 md:mb-16">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-3 sm:mb-4 animate-slideInFromTop">

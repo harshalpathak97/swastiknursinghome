@@ -92,7 +92,8 @@ Dr. Shah is committed to providing compassionate, family-centered care and build
       languages: ['English', 'Hindi', 'Marathi'],
       areasOfFocus: ['Newborn Care', 'Vaccinations', 'Growth Monitoring', 'Child Nutrition', 'Allergy Management'],
       availability: 'Mon-Sat: 9:00 AM - 8:00 PM',
-      image: '/src/assets/dr_amit_shah.jpg', // Updated doctor image
+      image: '/src/assets/dr_amit_shah.jpg',
+      experience: '15+ Years Experience',
       credentials: 'MD Pediatrics, MBBS',
       consultationCTA: 'Book Pediatric Consultation'
     },
@@ -116,7 +117,8 @@ Dr. Shah combines surgical expertise with conservative treatment approaches to e
       languages: ['English', 'Hindi', 'Marathi'],
       areasOfFocus: ['Joint Care', 'Sports Injuries', 'Fracture Management', 'Back Pain', 'Arthritis Treatment'],
       availability: 'Mon-Sat: 9:00 AM - 8:00 PM',
-      image: '/src/assets/dr_swapnil_shah_new.jpg', // Updated doctor image
+      image: '/src/assets/dr_swapnil_shah_new.jpg',
+      experience: '27+ Years Experience',
       credentials: 'MS Orthopedic Surgery, MBBS',
       consultationCTA: 'Book Orthopedic Consultation'
     }
@@ -311,10 +313,10 @@ Dr. Shah combines surgical expertise with conservative treatment approaches to e
   // SEO Configuration
   seo: {
     siteTitle: 'Swastik Nursing Home - Pediatric & Orthopedic Care in Ghatkopar West, Mumbai',
-    defaultDescription: 'Trusted pediatric and orthopedic care in Ghatkopar West, Mumbai. Experienced doctors Dr. Amit Shah (Pediatrician) and Dr. Swapnil Shah (Orthopedic Surgeon). Family-friendly clinic with modern facilities.',
-    keywords: 'pediatrician Ghatkopar, orthopedic doctor Mumbai, child specialist Chandan Nagar, bone doctor Ghatkopar West, vaccination clinic Mumbai, pediatric care Maharashtra',
-    ogImage: '/src/assets/header_img.png',
-    canonicalBase: 'https://swastiknursinghome.com'
+    defaultDescription: 'Trusted pediatric and orthopedic care in Ghatkopar West, Mumbai. Dr. Amit Shah (MD Pediatrics) and Dr. Swapnil Shah (MS Orthopedics, 27+ years). Walk-ins welcome. Call: 022 2500 8858.',
+    keywords: 'pediatrician Ghatkopar, orthopedic doctor Mumbai, child specialist Ghatkopar West, bone doctor Mumbai, vaccination clinic Ghatkopar, pediatric care Maharashtra, Dr Amit Shah, Dr Swapnil Shah',
+    ogImage: '/og-image.png',
+    canonicalBase: 'https://www.swastiknursinghome.org'
   },
 
   // Why Choose Us section

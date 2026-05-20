@@ -81,7 +81,7 @@ export const doctors = clinicData.doctors.map((doctor, index) => ({
     image: index === 0 ? drAmitShah : drSwapnilShah, // Using actual doctor images
     speciality: doctor.specialty,
     degree: doctor.degree,
-    experience: '10+ Years',
+    experience: doctor.experience || '10+ Years',
     about: doctor.longBio,
     fees: doctor.specialty === 'Pediatrician' ? 8 : 10, // ₹800 for pediatrics, ₹1000 for orthopedics
     address: {

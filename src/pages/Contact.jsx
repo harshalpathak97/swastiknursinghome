@@ -1,6 +1,7 @@
 import { assets } from "../assets/assets";
 import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
+import SEO from "../components/SEO";
 
 const Contact = () => {
   const { clinicData } = useContext(AppContext);
@@ -62,6 +63,11 @@ This appointment request was submitted through the Swastik Nursing Home website.
 
   return (
     <div className="py-6 sm:py-8 px-3 sm:px-4 animate-fadeIn">
+      <SEO
+        title="Contact Us - Book an Appointment"
+        description="Contact Swastik Nursing Home in Ghatkopar West, Mumbai. Phone: 022 2500 8858. Open Mon–Fri 9 AM–8 PM, Sat 9 AM–2 PM. Lal Bahadur Shastri Marg, Near Shreyas Cinema. Walk-ins welcome."
+        canonical="/contact"
+      />
       {/* Hero Section */}
       <div className="text-center mb-10 sm:mb-12 md:mb-16">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-3 sm:mb-4 animate-slideInFromTop" style={{ animationDelay: '0.1s' }}>

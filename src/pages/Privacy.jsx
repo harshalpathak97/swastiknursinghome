@@ -1,11 +1,17 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import SEO from '../components/SEO';
 
 const Privacy = () => {
   const { clinicData } = useContext(AppContext);
 
   return (
     <div className="py-8 max-w-4xl mx-auto px-4 animate-fadeIn">
+      <SEO
+        title="Privacy Policy"
+        description="Privacy policy for Swastik Nursing Home. How we collect, use, and protect your personal information in compliance with applicable Indian laws."
+        canonical="/privacy"
+      />
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 animate-slideInFromTop" style={{ animationDelay: '0.1s' }}>

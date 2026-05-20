@@ -1,12 +1,18 @@
 import { assets } from '../assets/assets';
 import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import SEO from '../components/SEO';
 
 const About = () => {
   const { clinicData } = useContext(AppContext);
 
   return (
     <div className="py-6 sm:py-8 px-3 sm:px-4 animate-fadeIn">
+      <SEO
+        title="About Us - Over 20 Years of Trusted Healthcare"
+        description="Swastik Nursing Home has served Ghatkopar West, Mumbai for over 20 years. Learn about our mission, our doctors Dr. Amit Shah and Dr. Swapnil Shah, and our commitment to family-centered care."
+        canonical="/about"
+      />
       {/* Hero Section */}
       <div className="text-center mb-10 sm:mb-12 md:mb-16">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-3 sm:mb-4 animate-slideInFromTop" style={{ animationDelay: '0.1s' }}>
@@ -31,13 +37,12 @@ const About = () => {
           <div className="text-center lg:text-left">
             <h2 className="text-xl sm:text-2xl font-bold text-neutral-dark mb-3 sm:mb-4">Our Story</h2>
             <p className="leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">
-              Swastik Nursing Home has been serving the Ghatkopar West community for years, providing quality healthcare services
-              with a focus on family-centered care. Located conveniently near Shreyas Cinema, we are committed to delivering
-              personalized medical attention in a comfortable and welcoming environment.
+              Swastik Nursing Home has been serving the Ghatkopar West community for over 20 years, providing quality healthcare
+              services with a focus on family-centered care. Located conveniently near Shreyas Cinema on Lal Bahadur Shastri Marg,
+              we are committed to delivering personalized medical attention in a comfortable and welcoming environment.
             </p>
             <p className="leading-relaxed text-sm sm:text-base">
-              Our experienced doctors, Dr. Amit Shah (Pediatrician) and Dr. Swapnil Shah (Orthopedic Surgeon), bring years of
-              expertise and dedication to ensure the best possible outcomes for our patients. We understand that each family
+              Our experienced doctors, Dr. Amit Shah (MD Pediatrics, Pediatrician) and Dr. Swapnil Shah (MS Orthopedic Surgery, 27+ years experience), bring deep expertise and dedication to ensure the best possible outcomes for our patients. We understand that each family
               has unique healthcare needs, and we strive to provide comprehensive care that addresses both physical and
               emotional well-being.
             </p>

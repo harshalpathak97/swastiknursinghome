@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import SEO from '../components/SEO';
 
 const FAQ = () => {
   const { clinicData } = useContext(AppContext);
@@ -9,8 +10,27 @@ const FAQ = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": clinicData.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+
   return (
     <div className="py-8 px-4 animate-fadeIn">
+      <SEO
+        title="FAQ - Frequently Asked Questions"
+        description="Answers about appointments, consultation fees (₹800–₹1,000), vaccinations, insurance, parking, and more at Swastik Nursing Home, Ghatkopar West, Mumbai. Call: 022 2500 8858."
+        canonical="/faq"
+        schema={faqSchema}
+      />
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-neutral-dark mb-4 animate-slideInFromTop" style={{ animationDelay: '0.1s' }}>

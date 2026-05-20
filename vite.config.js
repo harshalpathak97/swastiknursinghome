@@ -13,4 +13,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    // Target es2015 so react-snap's older Chromium can execute the bundle
+    target: 'es2015',
+  },
 })
