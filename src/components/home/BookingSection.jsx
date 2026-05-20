@@ -93,7 +93,7 @@ const BookingSection = ({ initialDocId }) => {
             onClick={openMaps}
             style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', textAlign: 'left', font: 'inherit' }}
           >
-            C-101, Bhaveshwar Plaza, Nityanand Nagar, Ghatkopar West, Mumbai 400086 ↗
+            C-101 / Room No. 101, 1st Floor, Bhaveshwar Plaza, L. B. S. Marg, opposite Shreyas Theatre, Ghatkopar West, Mumbai 400086 ↗
           </button>
         </div>
       </li>

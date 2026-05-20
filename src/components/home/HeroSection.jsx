@@ -143,7 +143,10 @@ const HeroSection = ({ onBook }) => {
             <div>
               <div style={{ fontSize: 13, color: 'var(--ink-3)', marginBottom: 4, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 600, fontFamily: "'Geist', sans-serif" }}>Address</div>
               <div style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--ink)', fontFamily: "'Geist', sans-serif" }}>
-                C-101, Bhaveshwar Plaza,<br />Nityanand Nagar, Ghatkopar West, Mumbai 400086
+                C-101 / Room No. 101, 1st Floor,<br />
+                Bhaveshwar Plaza, L. B. S. Marg,<br />
+                opposite Shreyas Theatre, Ghatkopar West,<br />
+                Mumbai 400086
               </div>
             </div>
 

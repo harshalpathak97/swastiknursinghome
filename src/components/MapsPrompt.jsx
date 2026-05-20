@@ -1,16 +1,14 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
-const CLINIC_LAT = 19.08727;
-const CLINIC_LNG = 72.90132;
 const CLINIC_NAME = 'Swastik Nursing Home';
-const CLINIC_ADDRESS = 'C-101, Bhaveshwar Plaza, Nityanand Nagar, Ghatkopar West, Mumbai 400086';
-const GOOGLE_MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Swastik+Nursing+Home+C-101+Bhaveshwar+Plaza+Nityanand+Nagar+Ghatkopar+West+Mumbai+400086';
+const CLINIC_ADDRESS = 'C-101 / Room No. 101, 1st Floor, Bhaveshwar Plaza, L. B. S. Marg, opposite Shreyas Theatre, Ghatkopar West, Mumbai 400086';
+const GOOGLE_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CLINIC_NAME + ', ' + CLINIC_ADDRESS)}`;
 
 const googleDirectionsUrl = () =>
-  `https://www.google.com/maps/dir/?api=1&destination=${CLINIC_LAT},${CLINIC_LNG}&destination_place_id=&travelmode=driving`;
+  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(CLINIC_NAME + ', ' + CLINIC_ADDRESS)}&travelmode=driving`;
 
 const appleMapsUrl = () =>
-  `https://maps.apple.com/?daddr=${CLINIC_LAT},${CLINIC_LNG}&q=${encodeURIComponent(CLINIC_NAME)}`;
+  `https://maps.apple.com/?daddr=${encodeURIComponent(CLINIC_NAME + ', ' + CLINIC_ADDRESS)}`;
 
 const detectPlatform = () => {
   if (typeof navigator === 'undefined') return 'other';
