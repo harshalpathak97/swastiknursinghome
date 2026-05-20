@@ -11,10 +11,10 @@ export const clinicData = {
     email: 'info@swastiknursinghome.org',
 
     // Address Information
-    addressText: 'C-101, Bhaveshwar Plaza, L.B.S. Marg, Nityanand Nagar, Ghatkopar West, Mumbai, Maharashtra 400086',
+    addressText: '3WR6+XV, C-101, Bhaveshwar Plaza, L.B.S. Marg, Nityanand Nagar, Ghatkopar West, Mumbai, Maharashtra 400086',
     addressShort: 'C-101, Bhaveshwar Plaza, Nityanand Nagar, Ghatkopar West, Mumbai 400086',
-    googleMapsQuery: 'Swastik Nursing Home Bhaveshwar Plaza C-101 Nityanand Nagar Ghatkopar West Mumbai Maharashtra 400086 India',
-    googleMapsLink: 'https://www.google.com/maps/search/?api=1&query=Swastik+Nursing+Home+Bhaveshwar+Plaza+C-101+Nityanand+Nagar+Ghatkopar+West+Mumbai+Maharashtra+400086+India',
+    googleMapsQuery: '3WR6+XV Mumbai Maharashtra India',
+    googleMapsLink: 'https://www.google.com/maps/search/?api=1&query=3WR6%2BXV+Mumbai+Maharashtra+India',
 
     // Clinic Hours
     timings: {
