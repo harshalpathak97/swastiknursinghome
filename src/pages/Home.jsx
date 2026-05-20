@@ -21,10 +21,10 @@ const clinicSchema = {
   telephone: '+912225008858',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Lal Bahadur Shastri Marg, Near Shreyas Cinema',
+    streetAddress: 'C-101, Bhaveshwar Plaza, L.B.S. Marg, Nityanand Nagar',
     addressLocality: 'Ghatkopar West',
     addressRegion: 'Maharashtra',
-    postalCode: '400083',
+    postalCode: '400086',
     addressCountry: 'IN',
   },
 };

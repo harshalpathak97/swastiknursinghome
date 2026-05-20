@@ -1010,23 +1010,78 @@
 [data-density="compact"] .ds-booking-section { padding: 44px; }
 
 /* ============ Responsive ============ */
-@media (max-width: 980px) {
-  .ds-hero-grid, .ds-specialty-grid, .ds-doctors-grid, .ds-booking-grid, .ds-trust-block, .ds-testi-grid, .ds-svc-grid, .ds-foot-grid {
+@media (max-width: 1024px) {
+  .ds-hero-grid {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 36px;
+  }
+  .ds-foot-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 32px;
+  }
+  .ds-booking-grid {
+    gap: 36px;
+  }
+  .ds-trust-block {
+    gap: 36px;
+  }
+  .ds-svc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ds-testi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .ds-nav-links {
+    display: none;
+  }
+  .ds-section {
+    padding: 72px 0;
+  }
+  .ds-booking-section {
+    padding: 36px;
+  }
+  .ds-hero {
+    padding-top: 32px;
+  }
+  .ds-section-header {
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ds-hero-grid, .ds-booking-grid, .ds-trust-block {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .ds-specialty-grid, .ds-doctors-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .ds-doc-card {
     grid-template-columns: 1fr;
   }
-  .ds-svc-grid { grid-template-columns: 1fr 1fr; }
-  .ds-doc-card { grid-template-columns: 1fr; }
-  .ds-doc-card .dc-photo { aspect-ratio: 16/10; }
-  .ds-nav-links { display: none; }
-  .ds-section { padding: 72px 0; }
-  .ds-booking-section { padding: 36px; }
-  .ds-hero { padding-top: 32px; }
-  .ds-section-header { margin-bottom: 36px; }
+  .ds-doc-card .dc-photo {
+    aspect-ratio: 16/10;
+  }
 }
+
 @media (max-width: 640px) {
-  .ds-svc-grid { grid-template-columns: 1fr; }
-  .ds-choose-doctor, .ds-field-row { grid-template-columns: 1fr; }
-  .ds-slot-grid { grid-template-columns: repeat(3, 1fr); }
-  .ds-utility .u-right { display: none; }
-  .ds-foot-grid { grid-template-columns: 1fr; gap: 32px; }
+  .ds-specialty-grid, .ds-doctors-grid, .ds-svc-grid, .ds-testi-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .ds-choose-doctor, .ds-field-row {
+    grid-template-columns: 1fr;
+  }
+  .ds-slot-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .ds-utility .u-right {
+    display: none;
+  }
+  .ds-foot-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 }

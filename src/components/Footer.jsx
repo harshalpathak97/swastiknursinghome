@@ -7,7 +7,7 @@ const CLINIC = {
   phoneDigits: '+912225008858',
   whatsapp: '912225008858',
   email: 'info@swastiknursinghome.org',
-  mapsLink: 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9',
+  mapsLink: 'https://www.google.com/maps/search/?api=1&query=Swastik+Nursing+Home+Bhaveshwar+Plaza+C-101+Nityanand+Nagar+Ghatkopar+West+Mumbai+Maharashtra+400086+India',
 };
 
 const Footer = () => {
@@ -30,9 +30,9 @@ const Footer = () => {
         <div className="ds-foot-col">
           <h5>Visit</h5>
           <p style={{ fontSize: 14, color: 'var(--ink-2)', margin: 0, lineHeight: 1.55 }}>
-            Lal Bahadur Shastri Marg,<br />
-            Near Shreyas Cinema,<br />
-            Ghatkopar West, Mumbai 400083
+            C-101, Bhaveshwar Plaza,<br />
+            Nityanand Nagar, L.B.S. Marg,<br />
+            Ghatkopar West, Mumbai 400086
           </p>
           <p style={{ marginTop: 12 }}>
             <button

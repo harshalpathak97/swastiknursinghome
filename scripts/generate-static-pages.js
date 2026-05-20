@@ -59,10 +59,10 @@ const pages = [
         "email": "info@swastiknursinghome.org",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Lal Bahadur Shastri Marg, Near Shreyas Cinema",
+          "streetAddress": "C-101, Bhaveshwar Plaza, L.B.S. Marg, Nityanand Nagar",
           "addressLocality": "Ghatkopar West",
           "addressRegion": "Maharashtra",
-          "postalCode": "400083",
+          "postalCode": "400086",
           "addressCountry": "IN"
         }
       }
@@ -94,10 +94,10 @@ const pages = [
         "name": "Swastik Nursing Home",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Lal Bahadur Shastri Marg, Near Shreyas Cinema",
+          "streetAddress": "C-101, Bhaveshwar Plaza, L.B.S. Marg, Nityanand Nagar",
           "addressLocality": "Ghatkopar West",
           "addressRegion": "Maharashtra",
-          "postalCode": "400083",
+          "postalCode": "400086",
           "addressCountry": "IN"
         }
       },
@@ -129,10 +129,10 @@ const pages = [
         "name": "Swastik Nursing Home",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Lal Bahadur Shastri Marg, Near Shreyas Cinema",
+          "streetAddress": "C-101, Bhaveshwar Plaza, L.B.S. Marg, Nityanand Nagar",
           "addressLocality": "Ghatkopar West",
           "addressRegion": "Maharashtra",
-          "postalCode": "400083",
+          "postalCode": "400086",
           "addressCountry": "IN"
         }
       },

@@ -11,10 +11,10 @@ export const clinicData = {
     email: 'info@swastiknursinghome.org',
 
     // Address Information
-    addressText: '4W8G+HCP, Lal Bahadur Shastri Marg, Near Shreyas Cinema, Surya Nagar, Chandan Nagar, Ghatkopar West, Mumbai, Maharashtra 400083',
-    addressShort: 'Lal Bahadur Shastri Marg, Near Shreyas Cinema, Ghatkopar West, Mumbai 400083',
-    googleMapsQuery: '4W8G+HCP Lal Bahadur Shastri Marg Near Shreyas Cinema Surya Nagar Chandan Nagar Ghatkopar West Mumbai Maharashtra 400083',
-    googleMapsLink: 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9',
+    addressText: 'C-101, Bhaveshwar Plaza, L.B.S. Marg, Nityanand Nagar, Ghatkopar West, Mumbai, Maharashtra 400086',
+    addressShort: 'C-101, Bhaveshwar Plaza, Nityanand Nagar, Ghatkopar West, Mumbai 400086',
+    googleMapsQuery: 'Swastik Nursing Home Bhaveshwar Plaza C-101 Nityanand Nagar Ghatkopar West Mumbai Maharashtra 400086 India',
+    googleMapsLink: 'https://www.google.com/maps/search/?api=1&query=Swastik+Nursing+Home+Bhaveshwar+Plaza+C-101+Nityanand+Nagar+Ghatkopar+West+Mumbai+Maharashtra+400086+India',
 
     // Clinic Hours
     timings: {
@@ -225,8 +225,8 @@ Dr. Shah combines surgical expertise with conservative treatment approaches to e
     {
       id: 3,
       name: 'Mrs. Sunita Patel',
-      location: 'Surya Nagar',
-      text: 'Very convenient location near Shreyas Cinema. Both doctors are excellent and the clinic maintains high standards of hygiene. Family-friendly environment.',
+      location: 'Ghatkopar West',
+      text: 'Very convenient location at Bhaveshwar Plaza. Both doctors are excellent and the clinic maintains high standards of hygiene. Family-friendly environment.',
       rating: 5,
       service: 'General'
     },
@@ -333,7 +333,7 @@ Dr. Shah combines surgical expertise with conservative treatment approaches to e
     },
     {
       title: 'Convenient Location',
-      description: 'Easily accessible location near Shreyas Cinema in Ghatkopar West with ample parking.',
+      description: 'Easily accessible location at Bhaveshwar Plaza in Ghatkopar West with ample parking.',
       icon: '📍'
     },
     {

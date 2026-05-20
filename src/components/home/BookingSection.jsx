@@ -93,7 +93,7 @@ const BookingSection = ({ initialDocId }) => {
             onClick={openMaps}
             style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', textAlign: 'left', font: 'inherit' }}
           >
-            Lal Bahadur Shastri Marg, Near Shreyas Cinema, Ghatkopar West, Mumbai 400083 ↗
+            C-101, Bhaveshwar Plaza, Nityanand Nagar, Ghatkopar West, Mumbai 400086 ↗
           </button>
         </div>
       </li>

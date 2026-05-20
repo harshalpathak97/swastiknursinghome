@@ -1,10 +1,10 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
-const CLINIC_LAT = 19.0709;
-const CLINIC_LNG = 72.9088;
+const CLINIC_LAT = 19.08628;
+const CLINIC_LNG = 72.9078;
 const CLINIC_NAME = 'Swastik Nursing Home';
-const CLINIC_ADDRESS = 'Lal Bahadur Shastri Marg, Near Shreyas Cinema, Ghatkopar West, Mumbai 400083';
-const GOOGLE_SHORT = 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9';
+const CLINIC_ADDRESS = 'C-101, Bhaveshwar Plaza, Nityanand Nagar, Ghatkopar West, Mumbai 400086';
+const GOOGLE_MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Swastik+Nursing+Home+Bhaveshwar+Plaza+C-101+Nityanand+Nagar+Ghatkopar+West+Mumbai+Maharashtra+400086+India';
 
 const googleDirectionsUrl = () =>
   `https://www.google.com/maps/dir/?api=1&destination=${CLINIC_LAT},${CLINIC_LNG}&destination_place_id=&travelmode=driving`;
@@ -156,7 +156,7 @@ export const MapsPromptProvider = ({ children }) => {
             </div>
 
             <div style={{ fontSize: 11.5, color: 'var(--ink-3)', marginTop: 14, textAlign: 'center' }}>
-              Or share location: <a href={GOOGLE_SHORT} target="_blank" rel="noreferrer" style={{ color: 'var(--brand)' }}>maps.app.goo.gl link</a>
+              Or share location: <a href={GOOGLE_MAPS_URL} target="_blank" rel="noreferrer" style={{ color: 'var(--brand)' }}>Google Maps link</a>
             </div>
           </div>
           <style>{`
