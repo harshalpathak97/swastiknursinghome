@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import { useEffect } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -19,22 +18,10 @@ import FloatingWhatsApp from './components/FloatingWhatsApp'
 
 
 const App = () => {
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth) * 100
-      const y = (e.clientY / window.innerHeight) * 100
-      document.documentElement.style.setProperty('--mouse-x', `${x}%`)
-      document.documentElement.style.setProperty('--mouse-y', `${y}%`)
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
-
   return (
     <div className="">
       <Navbar />
-      <div className="pt-16 sm:pt-20 md:pt-24">
+      <div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />

@@ -1,89 +1,78 @@
-import { assets } from "../assets/assets";
-import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
+import '../styles/design-system.css';
 
-const Footer = () => {
-  const { clinicData } = useContext(AppContext);
+const CLINIC = {
+  phone: '022 2500 8858',
+  phoneDigits: '+912225008858',
+  whatsapp: '912225008858',
+  email: 'info@swastiknursinghome.org',
+  mapsLink: 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9',
+};
 
-  return (
-    <div className="md:mx-10 px-3 sm:px-4">
-      <div className="flex flex-col sm:grid sm:grid-cols-[3fr_1fr_1fr] gap-6 sm:gap-8 md:gap-14 my-8 sm:my-10 mt-20 sm:mt-32 md:mt-40 text-xs sm:text-sm">
-        {/* left section  */}
-        <div className="text-center sm:text-left">
-          <div className="mb-4 sm:mb-5 text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
-            {clinicData.clinic.name}
+const Footer = () => (
+  <footer className="ds-footer">
+    <div className="ds-container">
+      <div className="ds-foot-grid">
+        <div className="ds-foot-col">
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
+            <div style={{ width: 38, height: 38, borderRadius: 10, background: 'var(--brand)', display: 'grid', placeItems: 'center', color: '#fff', fontFamily: "'Instrument Serif', serif", fontSize: 22, flexShrink: 0 }}>S</div>
+            <div>
+              <div style={{ fontFamily: "'Instrument Serif', serif", fontSize: 20, color: 'var(--ink)', letterSpacing: '-0.01em' }}>Swastik Nursing Home</div>
+              <div style={{ fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--ink-3)', marginTop: 3 }}>Pediatric · Orthopedic · Family Care</div>
+            </div>
           </div>
-          <p className="w-full md:w-2/3 text-gray-600 leading-relaxed text-xs sm:text-sm">{clinicData.clinic.description}</p>
-          <div className="mt-3 sm:mt-4">
-            <p className="font-medium text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base">Clinic Hours:</p>
-            <ul className="text-gray-600 text-xs sm:text-sm space-y-1">
-              <li>Mon-Sat: {clinicData.clinic.timings.monday}</li>
-              <li>Sunday: {clinicData.clinic.timings.sunday}</li>
+          <p className="fc-blurb">A family clinic in Ghatkopar West, looking after Mumbai families since 2002. We see children and adults — same warmth, same unhurried approach.</p>
+        </div>
+
+        <div className="ds-foot-col">
+          <h5>Visit</h5>
+          <p style={{ fontSize: 14, color: 'var(--ink-2)', margin: 0, lineHeight: 1.55 }}>
+            Lal Bahadur Shastri Marg,<br />
+            Near Shreyas Cinema,<br />
+            Ghatkopar West, Mumbai 400083
+          </p>
+          <p style={{ marginTop: 12 }}>
+            <a href={CLINIC.mapsLink} target="_blank" rel="noreferrer">Open in Maps ↗</a>
+          </p>
+        </div>
+
+        <div className="ds-foot-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href={`tel:${CLINIC.phoneDigits}`}>{CLINIC.phone}</a></li>
+            <li><a href={`https://wa.me/${CLINIC.whatsapp}`} target="_blank" rel="noreferrer">WhatsApp</a></li>
+            <li><a href={`mailto:${CLINIC.email}`}>{CLINIC.email}</a></li>
+          </ul>
+        </div>
+
+        <div className="ds-foot-col">
+          <h5>Hours</h5>
+          <ul style={{ fontSize: 13.5, color: 'var(--ink-2)', fontVariantNumeric: 'tabular-nums' }}>
+            <li>Mon–Fri · 9:00 AM – 8:00 PM</li>
+            <li>Saturday · 9:00 AM – 2:00 PM</li>
+            <li style={{ color: 'var(--danger)' }}>Sunday · Closed</li>
+          </ul>
+          <div style={{ marginTop: 16 }}>
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/doctors">Doctors</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+              <li><a href="/faq">FAQ</a></li>
             </ul>
           </div>
         </div>
-        {/* center section  */}
-        <div className="text-center sm:text-left">
-          <p className="text-base sm:text-lg md:text-xl font-medium mb-3 sm:mb-5">Quick Links</p>
-          <ul className="flex flex-col gap-1.5 sm:gap-2 text-gray-600 text-xs sm:text-sm">
-            <li><a href="/" className="hover:text-primary transition-colors">Home</a></li>
-            <li><a href="/services" className="hover:text-primary transition-colors">Services</a></li>
-            <li><a href="/doctors" className="hover:text-primary transition-colors">Doctors</a></li>
-            <li><a href="/about" className="hover:text-primary transition-colors">About Us</a></li>
-            <li><a href="/contact" className="hover:text-primary transition-colors">Contact Us</a></li>
-            <li><a href="/faq" className="hover:text-primary transition-colors">FAQ</a></li>
-            <li><a href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-          </ul>
-        </div>
-        {/* right section  */}
-        <div className="text-center sm:text-left">
-          <p className="text-base sm:text-lg md:text-xl font-medium mb-3 sm:mb-5">GET IN TOUCH</p>
-          <ul className="flex flex-col gap-1.5 sm:gap-2 text-gray-600 text-xs sm:text-sm">
-            <li className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2">
-              <span className="text-sm sm:text-base">📞</span>
-              <a href={`tel:${clinicData.clinic.phone}`} className="hover:text-primary transition-colors break-all">
-                {clinicData.clinic.phone}
-              </a>
-            </li>
-            <li className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2">
-              <span className="text-sm sm:text-base">💬</span>
-              <a
-                href={`https://wa.me/${clinicData.clinic.whatsappNumber.replace(/[^0-9]/g, '')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-primary transition-colors"
-              >
-                WhatsApp Us
-              </a>
-            </li>
-            <li className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2">
-              <span className="text-sm sm:text-base">✉️</span>
-              <a href={`mailto:${clinicData.clinic.email}`} className="hover:text-primary transition-colors break-all">
-                {clinicData.clinic.email}
-              </a>
-            </li>
-            <li className="mt-2 sm:mt-3">
-              <p className="font-medium text-gray-800 mb-1 text-sm sm:text-base">Address:</p>
-              <a
-                href={clinicData.clinic.googleMapsLink || 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs sm:text-sm hover:text-primary transition-colors cursor-pointer block break-words"
-              >
-                {clinicData.clinic.addressShort}
-              </a>
-            </li>
-          </ul>
-        </div>
       </div>
-      <div>
-        {/* copyright  */}
-        <p className="py-4 sm:py-5 text-xs sm:text-sm text-center border-t border-gray-300 px-3 sm:px-4">
-          © 2025 {clinicData.clinic.name}. All rights reserved.
-        </p>
+
+      <div className="ds-foot-bottom">
+        <div>© 2026 Swastik Nursing Home · Ghatkopar West, Mumbai</div>
+        <div style={{ display: 'flex', gap: 16 }}>
+          <a href="/privacy">Privacy</a>
+          <a href="/faq">FAQ</a>
+        </div>
       </div>
     </div>
-  );
-};
+  </footer>
+);
 
 export default Footer;

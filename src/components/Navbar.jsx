@@ -1,179 +1,147 @@
-import { useState, useContext } from "react";
-import { assets } from "../assets/assets";
-import { NavLink, useNavigate } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
-import { AuthContext } from "../context/AuthContext";
+import { useState, useEffect, useContext } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import { assets } from '../assets/assets';
+import I from './Icons';
+import '../styles/design-system.css';
+
+function smoothScrollTo(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const y = el.getBoundingClientRect().top + window.scrollY - 80;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
+
+const CLINIC_PHONE = '022 2500 8858';
+const CLINIC_PHONE_DIGITS = '+912225008858';
+const CLINIC_MAPS = 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9';
+const CLINIC_ADDRESS_SHORT = 'Near Shreyas Cinema, Ghatkopar West';
+
+function UtilityBar() {
+  return (
+    <div className="ds-utility">
+      <div className="ds-container">
+        <div className="u-left">
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span className="u-dot" /> Open today · walk-ins welcome
+          </span>
+          <span style={{ opacity: 0.5 }}>·</span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+            <I.Clock size={13} /> Mon–Fri 9:00–8:00 · Sat 9:00–2:00
+          </span>
+        </div>
+        <div className="u-right">
+          <a href={`tel:${CLINIC_PHONE_DIGITS}`} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+            <I.Phone size={13} /> {CLINIC_PHONE}
+          </a>
+          <span style={{ opacity: 0.5 }}>·</span>
+          <a href={CLINIC_MAPS} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+            <I.Pin size={13} /> {CLINIC_ADDRESS_SHORT}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [showMenu, setShowMenu] = useState(false);
+  const location = useLocation();
   const { isAuthenticated, userData, logout } = useContext(AuthContext);
-  const { clinicData } = useContext(AppContext);
+  const [scrolled, setScrolled] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const isHome = location.pathname === '/';
+
+  const handleSectionLink = (id) => {
+    if (isHome) {
+      smoothScrollTo(id);
+    } else {
+      navigate('/');
+      setTimeout(() => smoothScrollTo(id), 200);
+    }
+  };
+
+  const handleBook = () => {
+    if (isHome) {
+      smoothScrollTo('book');
+    } else {
+      navigate('/');
+      setTimeout(() => smoothScrollTo('book'), 200);
+    }
   };
 
   const handleLogout = () => {
     logout();
-    alert('You have been logged out successfully.');
+    setUserMenuOpen(false);
     navigate('/');
-    scrollToTop();
+  };
+
+  const navBtnStyle = {
+    background: 'none', border: 'none', padding: '10px 14px', borderRadius: 999,
+    fontSize: 14.5, color: 'var(--ink-2)', fontWeight: 500, cursor: 'pointer',
+    fontFamily: "'Geist', sans-serif", transition: 'background 0.15s, color 0.15s',
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 transition-all duration-300 flex items-center justify-between text-sm py-3 sm:py-4 px-3 sm:px-4 md:px-10 lg:px-16" style={{ background: 'rgba(255, 255, 255, 0.2)', backdropFilter: 'blur(8px)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-      {/* Logo */}
-      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-black cursor-pointer truncate max-w-[60%] sm:max-w-none" onClick={() => { navigate('/'); scrollToTop(); }}>
-        {clinicData.clinic.name}
-      </div>
+    <>
+      <UtilityBar />
+      <div className={`ds-nav-wrap${scrolled ? ' scrolled' : ''}`}>
+        <div className="ds-container ds-nav">
+          <button
+            onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            style={{ border: 'none', background: 'transparent', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 12 }}
+          >
+            <div className="ds-brand-mark">S</div>
+            <div className="ds-brand-text">
+              <div className="ds-brand-name">Swastik</div>
+              <div className="ds-brand-sub">Nursing Home · Est. 2002</div>
+            </div>
+          </button>
 
-      {/* Desktop Menu */}
-      <ul className="hidden md:flex items-start gap-5 font-medium">
-        <NavLink to="/" onClick={scrollToTop}>
-          <li className="py-1 transition-colors duration-200 hover:text-primary cursor-pointer">Home</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
-        </NavLink>
-        <NavLink to="/services" onClick={scrollToTop}>
-          <li className="py-1 transition-colors duration-200 hover:text-primary cursor-pointer">Services</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
-        </NavLink>
-        <NavLink to="/doctors" onClick={scrollToTop}>
-          <li className="py-1 transition-colors duration-200 hover:text-primary cursor-pointer">Doctors</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
-        </NavLink>
-        <NavLink to="/about" onClick={scrollToTop}>
-          <li className="py-1 transition-colors duration-200 hover:text-primary cursor-pointer">About</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
-        </NavLink>
-        <NavLink to="/contact" onClick={scrollToTop}>
-          <li className="py-1 transition-colors duration-200 hover:text-primary cursor-pointer">Contact</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
-        </NavLink>
-      </ul>
+          <nav className="ds-nav-links">
+            <button style={navBtnStyle} onClick={() => handleSectionLink('specialties')}>Specialties</button>
+            <button style={navBtnStyle} onClick={() => handleSectionLink('doctors')}>Doctors</button>
+            <button style={navBtnStyle} onClick={() => handleSectionLink('services')}>Services</button>
+            <button style={navBtnStyle} onClick={() => handleSectionLink('why')}>Why us</button>
+            <button style={navBtnStyle} onClick={() => handleSectionLink('visit')}>Visit us</button>
+          </nav>
 
-      {/* User Menu */}
-      <div className="flex items-center gap-2 sm:gap-4">
-        {isAuthenticated ? (
-          <div className="flex items-center gap-1 sm:gap-2 cursor-pointer group relative">
-            <img
-              className="w-6 sm:w-7 md:w-8 rounded-full"
-              src={userData.image || assets.profile_pic}
-              alt="Profile"
-            />
-            <img className="w-2 sm:w-2.5 hidden sm:block" src={assets.dropdown_icon} alt="Dropdown" />
-            <div className="absolute top-0 right-0 pt-12 sm:pt-14 text-sm sm:text-base font-medium text-gray-600 z-20 hidden group-hover:block">
-              <div className="min-w-40 sm:min-w-48 bg-white rounded-lg flex flex-col gap-3 sm:gap-4 p-3 sm:p-4 shadow-xl border border-gray-100">
-                {userData && (
-                  <div className="pb-2 border-b border-gray-200">
-                    <p className="text-sm font-semibold text-gray-900">{userData.name}</p>
-                    <p className="text-xs text-gray-500">{userData.email}</p>
+          <div className="ds-nav-cta">
+            <a href={`tel:${CLINIC_PHONE_DIGITS}`} className="ds-btn ds-btn-outline ds-btn-sm">
+              <I.Phone size={14} /> <span style={{ display: 'none' }} className="hide-sm">{CLINIC_PHONE}</span>
+            </a>
+            <button className="ds-btn ds-btn-primary ds-btn-sm" onClick={handleBook}>
+              Book a visit <I.Arrow size={14} />
+            </button>
+            {isAuthenticated && (
+              <div style={{ position: 'relative' }}>
+                <button
+                  onClick={() => setUserMenuOpen((v) => !v)}
+                  style={{ background: 'none', border: '2px solid var(--line)', cursor: 'pointer', borderRadius: '50%', padding: 0, display: 'flex' }}
+                >
+                  <img src={userData?.image || assets.profile_pic} alt="Profile" style={{ width: 34, height: 34, borderRadius: '50%', display: 'block' }} />
+                </button>
+                {userMenuOpen && (
+                  <div style={{ position: 'absolute', top: 'calc(100% + 8px)', right: 0, background: '#fff', border: '1px solid var(--line)', borderRadius: 12, padding: '8px 0', minWidth: 160, boxShadow: 'var(--ds-shadow)', zIndex: 60 }}>
+                    <button onClick={() => { navigate('/profile'); setUserMenuOpen(false); }} style={{ width: '100%', textAlign: 'left', padding: '8px 16px', background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, color: 'var(--ink-2)', fontFamily: "'Geist', sans-serif" }}>My Profile</button>
+                    <button onClick={() => { navigate('/my-appointment'); setUserMenuOpen(false); }} style={{ width: '100%', textAlign: 'left', padding: '8px 16px', background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, color: 'var(--ink-2)', fontFamily: "'Geist', sans-serif" }}>My Appointments</button>
+                    <button onClick={handleLogout} style={{ width: '100%', textAlign: 'left', padding: '8px 16px', background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, color: 'var(--danger)', fontFamily: "'Geist', sans-serif" }}>Logout</button>
                   </div>
                 )}
-                <p
-                  onClick={() => { navigate("profile"); scrollToTop(); }}
-                  className="hover:text-primary cursor-pointer text-sm sm:text-base transition-colors"
-                >
-                  My Profile
-                </p>
-                <p
-                  onClick={() => { navigate("my-appointment"); scrollToTop(); }}
-                  className="hover:text-primary cursor-pointer text-sm sm:text-base transition-colors"
-                >
-                  My Appointments
-                </p>
-                <p
-                  onClick={handleLogout}
-                  className="hover:text-red-600 cursor-pointer text-sm sm:text-base transition-colors text-red-500 font-medium"
-                >
-                  Logout
-                </p>
               </div>
-            </div>
+            )}
           </div>
-        ) : (
-          <button
-            onClick={() => { navigate("/login"); scrollToTop(); }}
-            className="bg-primary text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full font-light text-xs sm:text-sm hidden md:block transition-colors duration-200 hover:shadow-md hover:bg-primary/90"
-          >
-            Create Account
-          </button>
-        )}
-
-        {/* Mobile Menu Toggle */}
-        <img
-          onClick={() => setShowMenu(true)}
-          className="w-5 sm:w-6 md:hidden cursor-pointer"
-          src={assets.menu_icon}
-          alt="Menu"
-        />
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`fixed top-0 right-0 w-full sm:w-80 h-screen z-50 transform ${showMenu ? "translate-x-0" : "translate-x-full"
-          } transition-transform duration-300 md:hidden overflow-y-auto`}
-        style={{ background: 'linear-gradient(135deg, #e8f0f8 0%, #e0e7f5 50%, #d8e0f2 100%)', backdropFilter: 'blur(10px)' }}
-      >
-        <div className="flex justify-between items-center p-4 border-b border-gray-300 sticky top-0 bg-inherit">
-          <div className="text-lg sm:text-xl font-bold text-gray-800 truncate" onClick={() => { navigate('/'); scrollToTop(); setShowMenu(false); }}>
-            {clinicData.clinic.name}
-          </div>
-          <img
-            onClick={() => setShowMenu(false)}
-            className="w-5 sm:w-6 cursor-pointer flex-shrink-0"
-            src={assets.cross_icon}
-            alt="Close"
-          />
         </div>
-        <ul className="flex flex-col gap-4 sm:gap-6 p-4 sm:p-6 font-medium">
-          <NavLink to="/" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Home</li>
-          </NavLink>
-          <NavLink to="/services" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Services</li>
-          </NavLink>
-          <NavLink to="/doctors" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Doctors</li>
-          </NavLink>
-          <NavLink to="/about" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">About</li>
-          </NavLink>
-          <NavLink to="/contact" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-            <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">Contact</li>
-          </NavLink>
-          {isAuthenticated ? (
-            <>
-              {userData && (
-                <div className="py-2 px-4 bg-white/50 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-900">{userData.name || 'User'}</p>
-                  <p className="text-xs text-gray-500">{userData.email}</p>
-                </div>
-              )}
-              <NavLink to="/profile" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-                <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">My Profile</li>
-              </NavLink>
-              <NavLink to="/my-appointment" onClick={() => { setShowMenu(false); scrollToTop(); }}>
-                <li className="py-2 sm:py-3 text-center text-base sm:text-lg transition-colors duration-200 hover:text-primary cursor-pointer active:bg-primary/10 rounded-lg">My Appointments</li>
-              </NavLink>
-              <button
-                onClick={() => { handleLogout(); setShowMenu(false); }}
-                className="bg-red-500 text-white px-6 py-3 rounded-full font-medium text-base sm:text-lg mt-2 transition-colors duration-200 hover:shadow-md hover:bg-red-600"
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <button
-              onClick={() => { navigate("/login"); scrollToTop(); setShowMenu(false); }}
-              className="bg-primary text-white px-6 py-3 rounded-full font-medium text-base sm:text-lg mt-4 transition-colors duration-200 hover:shadow-md"
-            >
-              Create Account
-            </button>
-          )}
-        </ul>
       </div>
-    </div>
+    </>
   );
 };
 
