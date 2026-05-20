@@ -201,27 +201,29 @@ const BookingSection = ({ initialDocId }) => {
                   {step === 2 && (
                     <>
                       <div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
+                        <div className="ds-date-picker-header">
                           <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--ink-2)', letterSpacing: '0.04em', fontFamily: "'Geist', sans-serif" }}>SELECT A DATE</span>
                           <span style={{ fontSize: 12, color: 'var(--ink-3)', fontFamily: "'Geist', sans-serif" }}>Next 14 days · Sundays closed</span>
                         </div>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 6 }}>
-                          {days.map((d, i) => {
-                            const disabled = d.getDay() === 0;
-                            const selected = date && d.toDateString() === date.toDateString();
-                            return (
-                              <button
-                                key={i}
-                                disabled={disabled}
-                                onClick={() => { setDate(d); setSlot(null); }}
-                                className={`ds-date-btn${selected ? ' selected' : ''}`}
-                              >
-                                <span style={{ fontSize: 10.5, opacity: 0.7 }}>{fmtDay(d)}</span>
-                                <span className="ds-serif" style={{ fontSize: 18 }}>{fmtNum(d)}</span>
-                                <span style={{ fontSize: 10.5, opacity: 0.7 }}>{fmtMonth(d)}</span>
-                              </button>
-                            );
-                          })}
+                        <div className="ds-date-picker-wrapper">
+                          <div className="ds-date-picker-container">
+                            {days.map((d, i) => {
+                              const disabled = d.getDay() === 0;
+                              const selected = date && d.toDateString() === date.toDateString();
+                              return (
+                                <button
+                                  key={i}
+                                  disabled={disabled}
+                                  onClick={() => { setDate(d); setSlot(null); }}
+                                  className={`ds-date-btn${selected ? ' selected' : ''}`}
+                                >
+                                  <span style={{ fontSize: 10.5, opacity: 0.7 }}>{fmtDay(d)}</span>
+                                  <span className="ds-serif" style={{ fontSize: 18 }}>{fmtNum(d)}</span>
+                                  <span style={{ fontSize: 10.5, opacity: 0.7 }}>{fmtMonth(d)}</span>
+                                </button>
+                              );
+                            })}
+                          </div>
                         </div>
                       </div>
                       {date && (

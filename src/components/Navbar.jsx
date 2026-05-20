@@ -56,6 +56,7 @@ const Navbar = () => {
   const { isAuthenticated, userData, logout } = useContext(AuthContext);
   const [scrolled, setScrolled] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -63,6 +64,17 @@ const Navbar = () => {
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   const isHome = location.pathname === '/';
 
@@ -99,10 +111,10 @@ const Navbar = () => {
   return (
     <>
       <UtilityBar />
-      <div className={`ds-nav-wrap${scrolled ? ' scrolled' : ''}`}>
+      <div className={`ds-nav-wrap${scrolled ? ' scrolled' : ''}${mobileMenuOpen ? ' drawer-open' : ''}`}>
         <div className="ds-container ds-nav">
           <button
-            onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); setMobileMenuOpen(false); }}
             style={{ border: 'none', background: 'transparent', padding: 0, cursor: 'pointer' }}
             aria-label="Swastik Nursing Home — go to home"
           >
@@ -121,7 +133,7 @@ const Navbar = () => {
             <a href={`tel:${CLINIC_PHONE_DIGITS}`} className="ds-btn ds-btn-outline ds-btn-sm">
               <I.Phone size={14} /> <span style={{ display: 'none' }} className="hide-sm">{CLINIC_PHONE}</span>
             </a>
-            <button className="ds-btn ds-btn-primary ds-btn-sm" onClick={handleBook}>
+            <button className="ds-btn ds-btn-primary ds-btn-sm hide-xs" onClick={handleBook}>
               Book a visit <I.Arrow size={14} />
             </button>
             {isAuthenticated && (
@@ -141,6 +153,105 @@ const Navbar = () => {
                 )}
               </div>
             )}
+            
+            {/* Hamburger Button */}
+            <button
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              className={`ds-nav-hamburger${mobileMenuOpen ? ' active' : ''}`}
+              aria-label="Toggle navigation menu"
+            >
+              <span className="line" />
+              <span className="line" />
+              <span className="line" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Slide-out Mobile Menu Drawer */}
+      <div className={`ds-mobile-drawer-overlay${mobileMenuOpen ? ' active' : ''}`} onClick={() => setMobileMenuOpen(false)} />
+      <div className={`ds-mobile-drawer${mobileMenuOpen ? ' active' : ''}`}>
+        <div className="ds-mobile-drawer-header">
+          <button
+            onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); setMobileMenuOpen(false); }}
+            style={{ border: 'none', background: 'transparent', padding: 0, cursor: 'pointer' }}
+          >
+            <Logo size={40} />
+          </button>
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="ds-mobile-drawer-close"
+            aria-label="Close menu"
+          >
+            <I.Close size={22} />
+          </button>
+        </div>
+        
+        <nav className="ds-mobile-drawer-nav">
+          <button onClick={() => { handleSectionLink('specialties'); setMobileMenuOpen(false); }}>
+            <span>Specialties</span>
+            <I.Arrow size={14} />
+          </button>
+          <button onClick={() => { handleSectionLink('doctors'); setMobileMenuOpen(false); }}>
+            <span>Doctors</span>
+            <I.Arrow size={14} />
+          </button>
+          <button onClick={() => { handleSectionLink('services'); setMobileMenuOpen(false); }}>
+            <span>Services</span>
+            <I.Arrow size={14} />
+          </button>
+          <button onClick={() => { handleSectionLink('why'); setMobileMenuOpen(false); }}>
+            <span>Why choose us</span>
+            <I.Arrow size={14} />
+          </button>
+          <button onClick={() => { handleSectionLink('visit'); setMobileMenuOpen(false); }}>
+            <span>Visit clinic</span>
+            <I.Arrow size={14} />
+          </button>
+
+          <div className="ds-mobile-drawer-divider" />
+
+          {isAuthenticated ? (
+            <>
+              <button onClick={() => { navigate('/profile'); setMobileMenuOpen(false); }}>
+                <span>My Profile</span>
+                <I.Arrow size={14} />
+              </button>
+              <button onClick={() => { navigate('/my-appointment'); setMobileMenuOpen(false); }}>
+                <span>My Appointments</span>
+                <I.Arrow size={14} />
+              </button>
+              <button onClick={() => { handleLogout(); setMobileMenuOpen(false); }} className="danger">
+                <span>Logout</span>
+                <I.Arrow size={14} />
+              </button>
+            </>
+          ) : (
+            <button onClick={() => { navigate('/login'); setMobileMenuOpen(false); }} className="primary-color">
+              <span>Patient Portal / Login</span>
+              <I.Arrow size={14} />
+            </button>
+          )}
+        </nav>
+
+        <div className="ds-mobile-drawer-footer">
+          <div className="ds-mobile-drawer-contact-info">
+            <div className="contact-item">
+              <I.Clock size={14} />
+              <span>Mon–Fri 9:00 AM – 8:00 PM · Sat 9:00 – 2:00</span>
+            </div>
+            <div className="contact-item">
+              <I.Pin size={14} />
+              <span>Near Shreyas Cinema, Ghatkopar West</span>
+            </div>
+          </div>
+          <div className="ds-mobile-drawer-actions">
+            <a href={`tel:${CLINIC_PHONE_DIGITS}`} className="ds-btn ds-btn-outline">
+              <I.Phone size={14} /> Call clinic
+            </a>
+            <button className="ds-btn ds-btn-primary" onClick={() => { handleBook(); setMobileMenuOpen(false); }}>
+              Book a visit <I.Arrow size={14} />
+            </button>
           </div>
         </div>
       </div>

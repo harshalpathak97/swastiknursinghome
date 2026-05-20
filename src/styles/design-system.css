@@ -1097,3 +1097,384 @@
   }
 }
 
+/* =========================================================
+   NEW: Premium Mobile Navigation Drawer & Hamburger Toggler
+   ========================================================= */
+
+/* Hamburger Button */
+.ds-nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22px;
+  height: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+  position: relative;
+}
+.ds-nav-hamburger .line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--ink);
+  border-radius: 99px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease;
+}
+.ds-nav-hamburger.active .line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.ds-nav-hamburger.active .line:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+.ds-nav-hamburger.active .line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Drawer Overlay */
+.ds-mobile-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 31, 51, 0.32);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ds-mobile-drawer-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Slide-out Mobile Menu Drawer */
+.ds-mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 82%;
+  max-width: 380px;
+  background: rgba(243, 246, 251, 0.95);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border-left: 1px solid var(--line);
+  z-index: 100;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -12px 0 48px rgba(15, 31, 51, 0.15);
+  padding: 20px 24px 28px;
+}
+.ds-mobile-drawer.active {
+  transform: translateX(0);
+}
+.ds-mobile-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.ds-mobile-drawer-close {
+  background: rgba(31, 79, 122, 0.06);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ink-2);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.ds-mobile-drawer-close:active {
+  transform: scale(0.92);
+}
+.ds-mobile-drawer-close:hover {
+  background: rgba(31, 79, 122, 0.12);
+  color: var(--ink);
+}
+
+/* Mobile Navigation Links */
+.ds-mobile-drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 4px;
+}
+.ds-mobile-drawer-nav button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+  font-family: 'Geist', sans-serif;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease;
+}
+.ds-mobile-drawer-nav button svg {
+  opacity: 0.4;
+  transform: translateX(-4px);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.ds-mobile-drawer-nav button:hover svg,
+.ds-mobile-drawer-nav button:focus svg {
+  opacity: 0.8;
+  transform: translateX(0);
+}
+.ds-mobile-drawer-nav button:active {
+  transform: scale(0.98);
+}
+.ds-mobile-drawer-nav button:hover {
+  background: var(--surface-warm);
+  border-color: var(--line);
+  color: var(--ink);
+}
+.ds-mobile-drawer-nav button.primary-color {
+  background: var(--brand-soft);
+  border-color: rgba(31, 79, 122, 0.16);
+  color: var(--brand-deep);
+  font-weight: 600;
+}
+.ds-mobile-drawer-nav button.primary-color svg {
+  color: var(--brand-deep);
+  opacity: 0.7;
+}
+.ds-mobile-drawer-nav button.danger {
+  color: var(--danger);
+  background: rgba(177, 74, 60, 0.04);
+  border-color: rgba(177, 74, 60, 0.1);
+}
+.ds-mobile-drawer-nav button.danger svg {
+  color: var(--danger);
+}
+.ds-mobile-drawer-divider {
+  height: 1px;
+  background: var(--line-soft);
+  margin: 8px 0;
+}
+
+/* Mobile Drawer Footer */
+.ds-mobile-drawer-footer {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ds-mobile-drawer-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--ink-3);
+  font-family: 'Geist', sans-serif;
+}
+.ds-mobile-drawer-contact-info .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+.ds-mobile-drawer-contact-info .contact-item svg {
+  flex-shrink: 0;
+}
+.ds-mobile-drawer-actions {
+  display: flex;
+  gap: 8px;
+}
+.ds-mobile-drawer-actions > * {
+  flex: 1;
+  padding: 11px 16px;
+  font-size: 13.5px;
+}
+
+/* =========================================================
+   NEW: Mobile Booking Date Picker (Horizontal Swipe)
+   ========================================================= */
+.ds-date-picker-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.ds-date-picker-wrapper {
+  position: relative;
+  width: 100%;
+}
+.ds-date-picker-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  width: 100%;
+}
+
+/* =========================================================
+   NEW: Responsive Media Queries & Overrides
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .ds-nav-hamburger {
+    display: flex;
+  }
+  .hide-xs {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Scroll Snap Horizontal date picker for tablet/mobile */
+  .ds-date-picker-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 24px;
+    background: linear-gradient(to left, var(--surface) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+    border-radius: 0 var(--ds-radius-sm) var(--ds-radius-sm) 0;
+  }
+  .ds-date-picker-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 24px;
+    background: linear-gradient(to right, var(--surface) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.15;
+    border-radius: var(--ds-radius-sm) 0 0 var(--ds-radius-sm);
+  }
+  .ds-date-picker-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 8px;
+    padding-bottom: 6px;
+    scrollbar-width: none; /* Firefox */
+    -webkit-overflow-scrolling: touch;
+  }
+  .ds-date-picker-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+  .ds-date-btn {
+    flex: 0 0 64px;
+    scroll-snap-align: start;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Side Container Paddings */
+  .ds-container {
+    padding: 0 16px !important;
+  }
+  
+  /* Section Padding Tuning */
+  .ds-section {
+    padding: 56px 0 !important;
+  }
+  .ds-section-header {
+    margin-bottom: 24px !important;
+    gap: 16px !important;
+  }
+
+  /* Booking Container Padding adjustments for Galaxy Z Flip 5 / foldables */
+  .ds-booking-section {
+    padding: 24px 16px !important;
+  }
+  .ds-booking-form {
+    padding: 20px 16px !important;
+    gap: 14px !important;
+  }
+  .ds-choose-doctor label {
+    padding: 10px !important;
+  }
+  .ds-slot-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+  
+  /* Tall and Narrow Foldable (Flip 5) Fluid Font scaling rules */
+  .ds-hero-headline {
+    font-size: clamp(34px, 10.5vw, 44px) !important;
+    line-height: 1.05 !important;
+    margin: 12px 0 0 !important;
+  }
+  .ds-title-display {
+    font-size: clamp(28px, 9vw, 36px) !important;
+    line-height: 1.08 !important;
+  }
+  .ds-hero-sub {
+    font-size: 15.5px !important;
+    line-height: 1.4 !important;
+  }
+  .ds-hero-ctas {
+    gap: 10px !important;
+    margin-top: 4px !important;
+  }
+  .ds-hero-ctas .ds-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+  .ds-hero-trust {
+    margin-top: 20px !important;
+    padding-top: 20px !important;
+    gap: 16px 20px !important;
+    justify-content: space-between;
+  }
+  .ds-trust-stat {
+    flex: 1 1 30%;
+    min-width: 80px;
+  }
+  .ds-trust-stat .ts-n {
+    font-size: 28px !important;
+  }
+  .ds-trust-stat .ts-l {
+    font-size: 10.5px !important;
+    letter-spacing: 0.02em !important;
+  }
+  
+  /* Doctor Profile Card tuning */
+  .ds-doc-card .dc-body {
+    padding: 20px !important;
+  }
+  .ds-doc-card .dc-name {
+    font-size: 28px !important;
+  }
+  .ds-doc-card .dc-avail {
+    font-size: 11.5px !important;
+  }
+}
+
+
