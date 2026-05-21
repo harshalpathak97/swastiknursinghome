@@ -1502,9 +1502,15 @@
   /* Tighter nav height */
   .ds-nav { height: 64px !important; }
   .ds-nav-wrap.scrolled .ds-nav { height: 56px !important; }
-  .ds-brand-mark { width: 36px; height: 36px; font-size: 21px; }
-  .ds-brand-text .ds-brand-name { font-size: 18px !important; }
-  .ds-brand-text .ds-brand-sub { display: none; }
+
+  /* Logo — Logo uses inline styles so !important is required to override */
+  .ds-nav > button svg { width: 34px !important; height: 34px !important; }
+  .ds-nav .ds-logo-title { font-size: 17px !important; }
+  .ds-nav .ds-logo-subtitle { display: none !important; }
+
+  /* Scrolled state — shrink further to fit 56px */
+  .ds-nav-wrap.scrolled .ds-nav > button svg { width: 30px !important; height: 30px !important; }
+  .ds-nav-wrap.scrolled .ds-nav .ds-logo-title { font-size: 15px !important; }
 
   /* Hero */
   .ds-hero { padding-top: 20px; }
