@@ -6,7 +6,7 @@ import { useMapsPrompt } from '../MapsPrompt';
 import '../../styles/design-system.css';
 
 const CLINIC_PHONE = '022 2500 8858';
-const WHATSAPP_NUMBER = '+912225008858';
+const WHATSAPP_NUMBER = '+919821330087';
 
 const DOCTORS = [
   { id: 'dr-amit-shah', name: 'Dr. Amit Shah', specialty: 'Pediatrician', tag: 'pedi', photo: drAmitShah, consultFrom: '₹800' },

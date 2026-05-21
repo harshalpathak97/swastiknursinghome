@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import SEO from '../components/SEO';
 import useReveal from '../lib/useReveal';
+import useScrollAnalytics from '../lib/useScrollAnalytics';
 import HeroSection from '../components/home/HeroSection';
 import WalkinBanner from '../components/home/WalkinBanner';
 import SpecialtySection from '../components/home/SpecialtySection';
@@ -18,7 +19,7 @@ const clinicSchema = {
   name: 'Swastik Nursing Home',
   description: 'Trusted pediatric and orthopedic care in Ghatkopar West, Mumbai. Serving families for over 20 years.',
   url: 'https://www.swastiknursinghome.org/',
-  telephone: '+912225008858',
+  telephone: '+919821330087',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'C-101 / Room No. 101, 1st Floor, Bhaveshwar Plaza, L. B. S. Marg, opposite Shreyas Theatre',
@@ -31,6 +32,7 @@ const clinicSchema = {
 
 const Home = () => {
   useReveal();
+  useScrollAnalytics();
   const [bookingDocId, setBookingDocId] = useState(null);
 
   const scrollToBook = useCallback(() => {

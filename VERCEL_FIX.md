@@ -15,14 +15,14 @@ The deployed website shows a blank page because **Supabase environment variables
 **Variable 1:**
 ```
 Name: VITE_SUPABASE_URL
-Value: https://xtpurzruyycbkdfdhblr.supabase.co
+Value: https://jlbfjddcacaazcahgkhz.supabase.co
 Environment: Production, Preview, Development (select all)
 ```
 
 **Variable 2:**
 ```
 Name: VITE_SUPABASE_ANON_KEY  
-Value: sb_publishable_xWMVsh8pKNwqhujP2Hr3Gg_b5v3wGkF
+Value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsYmZqZGRjYWNhYXpjYWhna2h6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzMTMwMTMsImV4cCI6MjA5NDg4OTAxM30.OomH9HyNrw_pKfxaQ8fHrWR029nYulKYpCdh2Zua1cA
 Environment: Production, Preview, Development (select all)
 ```
 

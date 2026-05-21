@@ -15,8 +15,8 @@
 Add these to your Vercel project:
 
 ```
-VITE_SUPABASE_URL=https://xtpurzruyycbkdfdhblr.supabase.co
-VITE_SUPABASE_ANON_KEY=sb_publishable_xWMVsh8pKNwqhujP2Hr3Gg_b5v3wGkF
+VITE_SUPABASE_URL=https://jlbfjddcacaazcahgkhz.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsYmZqZGRjYWNhYXpjYWhna2h6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzMTMwMTMsImV4cCI6MjA5NDg4OTAxM30.OomH9HyNrw_pKfxaQ8fHrWR029nYulKYpCdh2Zua1cA
 ```
 
 **How to add:**
@@ -54,13 +54,13 @@ In [Google Cloud Console](https://console.cloud.google.com/):
 3. Add to **Authorized JavaScript origins**:
    ```
    https://swastiknursinghome.org
-   https://xtpurzruyycbkdfdhblr.supabase.co
+   https://jlbfjddcacaazcahgkhz.supabase.co
    ```
 
 #### B. Authorized Redirect URIs
 Already set to:
 ```
-https://xtpurzruyycbkdfdhblr.supabase.co/auth/v1/callback
+https://jlbfjddcacaazcahgkhz.supabase.co/auth/v1/callback
 ```
 
 ---

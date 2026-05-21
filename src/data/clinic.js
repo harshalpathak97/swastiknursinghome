@@ -7,7 +7,7 @@ export const clinicData = {
 
     // Contact Information
     phone: '022 2500 8858',
-    whatsappNumber: '+912225008858',
+    whatsappNumber: '+919821330087',
     email: 'info@swastiknursinghome.org',
 
     addressText: 'C-101 / Room No. 101, 1st Floor, Bhaveshwar Plaza, L. B. S. Marg, opposite Shreyas Theatre, Ghatkopar West, Mumbai 400086',

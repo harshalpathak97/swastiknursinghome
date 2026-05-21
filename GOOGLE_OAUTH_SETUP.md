@@ -36,16 +36,16 @@ To make Google login work, you need to enable it in your Supabase dashboard:
 6. For **Application type**, select **Web application**
 7. Add **Authorized JavaScript origins**:
    ```
-   https://xtpurzruyycbkdfdhblr.supabase.co
+   https://jlbfjddcacaazcahgkhz.supabase.co
    ```
 
 8. Add **Authorized redirect URIs**:
    ```
-   https://xtpurzruyycbkdfdhblr.supabase.co/auth/v1/callback
+   https://jlbfjddcacaazcahgkhz.supabase.co/auth/v1/callback
    ```
 
 9. Click **Create**
-10. Copy the **Client ID** and **Client Secret**
+10: Copy the **Client ID** and **Client Secret**
 
 ### Step 4: Add to Supabase
 
@@ -60,8 +60,8 @@ Back in Supabase:
 Once your site is live, add your production URL:
 
 **In Google Cloud Console:**
-- Authorized JavaScript origins: `https://your-site.vercel.app`
-- Authorized redirect URIs: `https://xtpurzruyycbkdfdhblr.supabase.co/auth/v1/callback`
+- Authorized JavaScript origins: `https://swastiknursinghome.org`
+- Authorized redirect URIs: `https://jlbfjddcacaazcahgkhz.supabase.co/auth/v1/callback`
 
 ---
 

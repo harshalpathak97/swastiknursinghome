@@ -1477,4 +1477,143 @@
   }
 }
 
+/* =========================================================
+   Galaxy Z Flip 5 & narrow phones (≤ 390px inner screen)
+   ========================================================= */
+@media (max-width: 390px) {
+  /* Tighten container */
+  .ds-container {
+    padding: 0 14px !important;
+  }
 
+  /* Utility bar — show open status only */
+  .ds-utility .ds-container {
+    height: auto;
+    padding: 8px 14px;
+  }
+  .ds-utility .u-left {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .ds-utility .u-left > span:last-of-type {
+    display: none;
+  }
+
+  /* Tighter nav height */
+  .ds-nav { height: 64px !important; }
+  .ds-nav-wrap.scrolled .ds-nav { height: 56px !important; }
+  .ds-brand-mark { width: 36px; height: 36px; font-size: 21px; }
+  .ds-brand-text .ds-brand-name { font-size: 18px !important; }
+  .ds-brand-text .ds-brand-sub { display: none; }
+
+  /* Hero */
+  .ds-hero { padding-top: 20px; }
+  .ds-hero-headline {
+    font-size: clamp(30px, 9.5vw, 38px) !important;
+    margin: 10px 0 0 !important;
+  }
+  .ds-hero-sub {
+    font-size: 14px !important;
+  }
+  .ds-hero-ctas {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .ds-hero-ctas .ds-btn {
+    width: 100%;
+    padding: 11px 16px !important;
+    font-size: 13.5px !important;
+  }
+  .ds-hero-trust {
+    gap: 12px 16px !important;
+  }
+  .ds-trust-stat .ts-n {
+    font-size: 26px !important;
+  }
+
+  /* Walkin banner */
+  .ds-walkin-banner .ds-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px;
+    gap: 10px;
+  }
+  .ds-walkin-banner .wb-right { display: none; }
+  .ds-walkin-banner .wb-text { font-size: 13px; }
+
+  /* Section spacing */
+  .ds-section { padding: 44px 0 !important; }
+  .ds-section-header {
+    margin-bottom: 20px !important;
+    gap: 12px !important;
+  }
+  .ds-title-display {
+    font-size: clamp(26px, 8.5vw, 32px) !important;
+  }
+
+  /* Specialty pillars */
+  .ds-pillar { padding: 24px 18px; min-height: unset; }
+  .ds-pillar h3 { font-size: clamp(28px, 8vw, 36px) !important; }
+
+  /* Doctor cards */
+  .ds-doc-card .dc-body { padding: 16px !important; gap: 10px !important; }
+  .ds-doc-card .dc-name { font-size: 24px !important; }
+
+  /* Services */
+  .ds-svc-card { padding: 18px; min-height: unset; }
+  .ds-svc-card h4 { font-size: 20px; }
+
+  /* Booking section */
+  .ds-booking-section { padding: 20px 12px !important; }
+  .ds-booking-form { padding: 16px 12px !important; gap: 12px !important; }
+  .ds-booking-section h2 {
+    font-size: clamp(28px, 8vw, 36px) !important;
+  }
+
+  /* Testimonials */
+  .ds-testi blockquote { font-size: 18px; }
+  .ds-testi { padding: 20px 18px; }
+
+  /* Footer */
+  .ds-footer { padding: 44px 0 22px; margin-top: 48px; }
+  .ds-foot-grid { gap: 24px; }
+
+  /* Trust stats grid */
+  .ds-trust-stats { grid-template-columns: 1fr 1fr; }
+  .ds-trust-stats .ts-cell .ts-big { font-size: 40px; }
+  .ds-trust-stats .ts-cell { padding: 20px; }
+}
+
+/* =========================================================
+   Very narrow screens ≤ 320px (Z Flip 5 cover + budget phones)
+   ========================================================= */
+@media (max-width: 320px) {
+  .ds-container { padding: 0 10px !important; }
+
+  .ds-brand-text .ds-brand-name { font-size: 15px !important; }
+
+  .ds-hero-headline {
+    font-size: clamp(26px, 9vw, 32px) !important;
+  }
+  .ds-hero-sub { font-size: 13px !important; }
+
+  .ds-walkin-banner .wb-text { font-size: 12px; }
+
+  .ds-booking-section { padding: 16px 10px !important; }
+  .ds-booking-form { padding: 14px 10px !important; }
+
+  .ds-pillar { padding: 18px 14px; }
+  .ds-pillar h3 { font-size: clamp(24px, 8vw, 30px) !important; }
+
+  .ds-title-display { font-size: clamp(22px, 8vw, 28px) !important; }
+
+  .ds-btn { font-size: 13px; padding: 10px 14px; }
+  .ds-btn-lg { padding: 13px 18px; font-size: 14px; }
+
+  .ds-testi blockquote { font-size: 16px; }
+
+  /* Ensure nothing overflows horizontally */
+  .ds-hero, .ds-section, .ds-walkin-banner, .ds-footer {
+    overflow-x: hidden;
+  }
+}

@@ -2,157 +2,100 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
-import RelatedDoctors from "../components/RelatedDoctors";
 import I from "../components/Icons";
+import { useMapsPrompt } from "../components/MapsPrompt";
+
+const WHATSAPP = '919821330087';
+const PHONE = '022 2500 8858';
+const ADDRESS = 'C-101, Bhaveshwar Plaza, L.B.S. Marg, Ghatkopar West, Mumbai 400086';
 
 const Appointment = () => {
-  const { docId } = useParams(); // URL parameter
-  const { doctors, currencySymbol, clinicData } = useContext(AppContext); // AppContext values
-
-  const [docInfo, setDocInfo] = useState(null); // State for selected doctor
+  const { docId } = useParams();
+  const { doctors } = useContext(AppContext);
+  const { open: openMaps } = useMapsPrompt();
+  const [docInfo, setDocInfo] = useState(null);
 
   useEffect(() => {
-    const fetchDocInfo = () => {
-      const foundDoc = doctors.find(doc => doc._id === docId); // Find doctor by ID
-      setDocInfo(foundDoc); // Set state
-    };
+    const found = doctors.find(doc => doc._id === docId);
+    setDocInfo(found);
+  }, [doctors, docId]);
 
-    fetchDocInfo();
-  }, [doctors, docId]); // Dependencies: doctors array and docId
-
-  if (!docInfo) {
-    return (
-      <div className="pt-32 pb-20 text-center">
-        <p className="text-gray-500 font-medium">Loading doctor information...</p>
-      </div>
-    );
-  }
-
-  // Generate dynamic phone and WhatsApp values
-  const rawPhone = clinicData?.clinic?.phone || "022 2500 8858";
-  const telLink = `tel:${rawPhone.replace(/\s+/g, "")}`;
-  const rawWhatsapp = clinicData?.clinic?.whatsappNumber || "+912225008858";
-  const whatsappLink = `https://wa.me/${rawWhatsapp.replace(/[^0-9]/g, "")}?text=Hi,%20I'd%20like%20to%20book%20an%20appointment%20with%20Dr.%20${docInfo.name.split(" ").slice(1).join(" ")}`;
+  const doctorName = docInfo ? docInfo.name.split(" ").slice(1).join(" ") : null;
+  const waMessage = doctorName
+    ? `Hi, I'd like to book an appointment with Dr. ${doctorName}.`
+    : `Hi, I'd like to book an appointment.`;
+  const waLink = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(waMessage)}`;
 
   return (
-    <div className="pt-24 sm:pt-28 pb-12 container mx-auto px-4 max-w-5xl">
-      {/* Doctor Card */}
-      <div className="flex flex-col md:flex-row gap-6 bg-white border border-gray-200 rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm">
-        {/* Doctor Image */}
-        <div className="flex justify-center md:justify-start flex-shrink-0">
+    <div className="pt-24 sm:pt-28 pb-16 container mx-auto px-4 max-w-xl">
+      {/* Doctor badge if came from doctor profile */}
+      {docInfo && (
+        <div className="flex items-center gap-3 mb-6 bg-white border border-gray-100 rounded-2xl px-4 py-3 shadow-sm">
           <img
-            className="bg-primary w-full max-w-[280px] sm:max-w-72 h-72 sm:h-80 md:h-84 rounded-xl object-cover object-top shadow-sm border border-gray-100"
             src={docInfo.image}
             alt={docInfo.name}
+            className="w-12 h-12 rounded-full object-cover object-top border border-gray-200 flex-shrink-0"
           />
-        </div>
-
-        {/* Doctor Information */}
-        <div className="flex-1 flex flex-col justify-between py-2">
           <div>
-            <p className="flex items-center justify-center md:justify-start gap-2 text-xl sm:text-2xl font-bold text-neutral-dark text-center md:text-left">
-              {docInfo.name} 
-              <img className="w-5 h-5 flex-shrink-0" src={assets.verified_icon} alt="Verified" />
+            <p className="font-bold text-neutral-dark text-sm flex items-center gap-1.5">
+              {docInfo.name}
+              <img src={assets.verified_icon} alt="Verified" className="w-4 h-4" />
             </p>
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 text-xs sm:text-sm mt-2 text-gray-600">
-              <span className="font-semibold">{docInfo.degree}</span>
-              <span className="text-gray-300">•</span>
-              <span className="text-primary font-medium">{docInfo.speciality}</span>
-              <span className="text-gray-300">•</span>
-              <button className="py-0.5 px-2.5 bg-neutral-light border border-gray-200 text-xs rounded-full whitespace-nowrap font-medium text-neutral-dark">
-                {docInfo.experience}
-              </button>
-            </div>
-
-            {/* Doctor About */}
-            <div className="mt-5 border-t border-gray-100 pt-4">
-              <p className="flex items-center justify-center md:justify-start gap-1.5 text-sm font-semibold text-neutral-dark mb-2">
-                About 
-                <img className="w-4 h-4 flex-shrink-0 opacity-60" src={assets.info_icon} alt="Info" />
-              </p>
-              <p className="text-xs sm:text-sm text-gray-500 max-w-[650px] text-center md:text-left leading-relaxed">
-                {docInfo.about}
-              </p>
-            </div>
-          </div>
-          
-          <div className="mt-5 pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm text-gray-500">
-            <span className="font-medium text-center sm:text-left">
-              Consultation Fee: <span className="text-neutral-dark font-bold text-base">{currencySymbol}{docInfo.fees}</span>
-            </span>
-            <span className="text-green-600 font-semibold flex items-center gap-1.5 bg-green-50 px-3 py-1 rounded-full text-xs">
-              <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-              Available for Consultation
-            </span>
+            <p className="text-xs text-gray-400">{docInfo.speciality}</p>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* Book Appointment Action Section */}
-      <div className="mt-6 bg-white border border-gray-200 rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm">
-        <h3 className="text-lg sm:text-xl font-bold text-neutral-dark mb-2 font-serif text-center md:text-left">Book a Consultation</h3>
-        <p className="text-gray-500 text-xs sm:text-sm mb-6 leading-relaxed text-center md:text-left">
-          To ensure the best possible care and avoid long wait times, appointments with Dr. {docInfo.name.split(" ").slice(1).join(" ")} are scheduled directly over the phone or via WhatsApp messages. Reach out to our receptionist, and we will confirm a convenient slot for you immediately.
+      {/* Main CTA Card */}
+      <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm text-center">
+        <h1 className="text-2xl sm:text-3xl font-serif font-bold text-neutral-dark mb-2">
+          Book a Consultation
+        </h1>
+        <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-xs mx-auto">
+          Reach out directly to schedule your visit. No online form needed — our team will confirm your slot right away.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto md:mx-0">
-          {/* Call Option */}
+        <div className="flex flex-col gap-3">
+          {/* WhatsApp */}
           <a
-            href={telLink}
-            className="flex items-center justify-center gap-3 bg-primary text-white py-3 sm:py-3.5 px-6 rounded-xl font-semibold hover:bg-primary/95 transition-all shadow-sm hover:shadow-md min-h-[48px]"
-          >
-            <I.Phone size={18} />
-            <span className="text-xs sm:text-sm whitespace-nowrap">Call Clinic: {rawPhone}</span>
-          </a>
-
-          {/* WhatsApp Option */}
-          <a
-            href={whatsappLink}
+            href={waLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 bg-[#25D366] text-white py-3 sm:py-3.5 px-6 rounded-xl font-semibold hover:bg-[#20BA5A] transition-all shadow-sm hover:shadow-md min-h-[48px]"
+            className="flex items-center justify-center gap-3 bg-[#25D366] text-white py-3.5 px-6 rounded-xl font-semibold hover:bg-[#20BA5A] transition-all shadow-sm hover:shadow-md min-h-[52px] text-sm sm:text-base"
           >
-            <I.WhatsApp size={18} />
-            <span className="text-xs sm:text-sm whitespace-nowrap">Book via WhatsApp</span>
+            <I.WhatsApp size={20} />
+            WhatsApp: +91 98213 30087
           </a>
+
+          {/* Call */}
+          <a
+            href={`tel:${PHONE.replace(/\s+/g, '')}`}
+            className="flex items-center justify-center gap-3 bg-primary text-white py-3.5 px-6 rounded-xl font-semibold hover:bg-primary/90 transition-all shadow-sm hover:shadow-md min-h-[52px] text-sm sm:text-base"
+          >
+            <I.Phone size={20} />
+            Call: {PHONE}
+          </a>
+
+          {/* Visit */}
+          <button
+            onClick={openMaps}
+            className="flex items-center justify-center gap-3 bg-gray-50 border border-gray-200 text-gray-700 py-3.5 px-6 rounded-xl font-semibold hover:bg-gray-100 transition-all min-h-[52px] text-sm sm:text-base w-full"
+          >
+            <I.Pin size={20} />
+            <span className="text-left leading-tight">
+              Visit: {ADDRESS}
+            </span>
+          </button>
         </div>
 
-        {/* Quick Info Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 pt-6 border-t border-gray-100">
-          <div className="flex gap-3 text-xs sm:text-sm text-gray-500">
-            <I.Clock className="text-primary flex-shrink-0 mt-0.5" size={16} />
-            <div>
-              <p className="font-semibold text-neutral-dark">Clinic Hours</p>
-              <p className="mt-0.5">Mon - Sat: 9 AM - 8 PM</p>
-              <p className="text-gray-400 text-xs mt-0.5">Sundays: Closed</p>
-            </div>
-          </div>
-
-          <div className="flex gap-3 text-xs sm:text-sm text-gray-500">
-            <I.Shield className="text-primary flex-shrink-0 mt-0.5" size={16} />
-            <div>
-              <p className="font-semibold text-neutral-dark">No Prepayment Needed</p>
-              <p className="mt-0.5">Pay at the clinic after visit</p>
-              <p className="text-gray-400 text-xs mt-0.5">Cash / UPI accepted</p>
-            </div>
-          </div>
-
-          <div className="flex gap-3 text-xs sm:text-sm text-gray-500">
-            <I.Pin className="text-primary flex-shrink-0 mt-0.5" size={16} />
-            <div>
-              <p className="font-semibold text-neutral-dark">Location</p>
-              <p className="mt-0.5">Bhaveshwar Plaza, L.B.S. Marg</p>
-              <p className="text-gray-400 text-xs mt-0.5">Ghatkopar West, Mumbai 400086</p>
-            </div>
-          </div>
+        {/* Hours note */}
+        <div className="mt-6 pt-5 border-t border-gray-100 flex items-center justify-center gap-2 text-xs text-gray-400">
+          <I.Clock size={13} />
+          <span>Mon–Sat: 9 AM – 8 PM &nbsp;·&nbsp; Closed Sundays</span>
         </div>
       </div>
-
-      {/* Related Doctors */}
-      <RelatedDoctors docId={docId} speciality={docInfo.speciality} />
     </div>
   );
 };
 
 export default Appointment;
-

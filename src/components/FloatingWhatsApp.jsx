@@ -4,7 +4,7 @@ import '../styles/design-system.css';
 const FloatingWhatsApp = () => (
   <a
     className="ds-wa-float"
-    href="https://wa.me/912225008858"
+    href="https://wa.me/919821330087"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Chat with us on WhatsApp"

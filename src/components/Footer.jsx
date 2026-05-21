@@ -5,7 +5,7 @@ import '../styles/design-system.css';
 const CLINIC = {
   phone: '022 2500 8858',
   phoneDigits: '+912225008858',
-  whatsapp: '912225008858',
+  whatsapp: '919821330087',
   email: 'info@swastiknursinghome.org',
   mapsLink: 'https://www.google.com/maps/search/?api=1&query=Swastik+Nursing+Home+Room+101+1st+Floor+Bhaveshwar+Plaza+L+B+S+Marg+opposite+Shreyas+Theatre+Ghatkopar+West+Mumbai+400086',
 };

@@ -7,7 +7,7 @@ import '../../styles/design-system.css';
 const CLINIC = {
   phone: '022 2500 8858',
   phoneDigits: '+912225008858',
-  whatsapp: '912225008858',
+  whatsapp: '919821330087',
   mapsLink: 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9',
   hours: [
     { d: 'Monday', h: '9:00 AM – 8:00 PM' },
