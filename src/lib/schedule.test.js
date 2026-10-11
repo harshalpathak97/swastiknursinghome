@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { status, fmtTime } from './hours.js'
-import { addAge, dueDates } from './vaccines.js'
+import { addAge, daysUntil, dueDates, progress } from './vaccines.js'
 import { clinic } from '../data/clinic.js'
 
 const at = (s) => status(clinic.hours, new Date(s))
@@ -36,4 +36,16 @@ test('vaccine due dates', () => {
   assert.equal(by('16 to 18 months').status, 'upcoming')
   assert.equal(by('16 to 18 months').date, '2026-10-15')
   assert.equal(dueDates('2025-06-15', '2026-11-01').find((r) => r.label.en === '16 to 18 months').status, 'now')
+})
+
+test('vaccine progress and countdown', () => {
+  assert.equal(daysUntil('2026-09-20', '2026-10-15'), 25)
+  assert.equal(daysUntil('2024-02-28', '2024-03-01'), 2) // leap day
+  const p = progress(dueDates('2025-06-15', '2026-09-20'))
+  assert.equal(p.total, 18)
+  assert.equal(p.done, 11) // birth .. 15 months
+  assert.equal(p.next.label.en, '16 to 18 months')
+  const grown = progress(dueDates('2007-01-01', '2026-01-01'))
+  assert.equal(grown.done, 18)
+  assert.equal(grown.next, undefined)
 })

@@ -59,3 +59,14 @@ export function dueDates(dobISO, today) {
     return { ...row, date, until, status }
   })
 }
+
+export const daysUntil = (fromISO, toISO) => Math.round((parse(toISO) - parse(fromISO)) / DAY)
+
+// How far through the schedule a child is: milestones whose window has closed, and the next one.
+export function progress(rows) {
+  return { done: rows.filter((r) => r.status === 'past').length, total: rows.length, next: rows.find((r) => r.status !== 'past') }
+}
+
+// A date of birth we can plan for: real ISO date, not in the future, within 18 years.
+export const isValidDob = (dob, today) =>
+  /^\d{4}-\d{2}-\d{2}$/.test(dob || '') && dob <= today && dob > `${Number(today.slice(0, 4)) - 19}${today.slice(4)}`

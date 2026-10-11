@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Form, useSearchParams } from 'react-router'
 import { doctors } from '../data/clinic.js'
-import { dueDates, schedule, scheduleReviewed, todayIST } from '../lib/vaccines.js'
+import { dueDates, isValidDob, progress, schedule, scheduleReviewed, todayIST } from '../lib/vaccines.js'
 import { fmtDate, langOf, useT } from '../lib/i18n.js'
 import { crumbsLd, seo } from '../lib/seo.js'
-import { waHref } from '../lib/links.js'
 import { Crumbs } from '../components/Site.jsx'
-import { WhatsAppIcon } from '../components/Icons.jsx'
+import VaccineRing from '../components/VaccineRing.jsx'
 
 const CRUMBS = [[{ en: 'Home', hi: 'होम' }, '/'], [{ en: 'Vaccination schedule', hi: 'टीकाकरण शेड्यूल' }, '/vaccination-schedule']]
 const PEDIATRICIAN = doctors.find((d) => d.specialty === 'peds')
@@ -28,9 +27,9 @@ export default function Vaccines() {
   useEffect(() => setToday(todayIST()), [])
 
   const dob = today ? params.get('dob') || '' : ''
-  const valid = /^\d{4}-\d{2}-\d{2}$/.test(dob) && dob <= today && dob > `${Number(today.slice(0, 4)) - 19}${today.slice(4)}`
+  const valid = !!today && isValidDob(dob, today)
   const rows = valid ? dueDates(dob, today) : schedule
-  const next = valid ? rows.find((r) => r.status !== 'past') : null
+  const next = valid ? progress(rows).next : null
 
   return (
     <>
@@ -68,24 +67,7 @@ export default function Vaccines() {
           <p className="note alert">{tx({ en: 'Please enter a date of birth in the past 18 years.', hi: 'कृपया पिछले 18 वर्षों के भीतर की जन्मतिथि डालें।' })}</p>
         )}
 
-        {next && (
-          <div className="next-due" aria-live="polite">
-            <p className="muted">{next.status === 'now' ? tx({ en: 'Due now', hi: 'अभी लगना है' }) : tx({ en: 'Next due', hi: 'अगला टीका' })}</p>
-            <p className="big">{next.vaccines.join(', ')}</p>
-            <p>
-              {tx(next.label)} · <span className="num">{range(next, lang)}</span>
-            </p>
-            <div className="btns" style={{ marginTop: '1rem' }}>
-              <a
-                className="btn btn-wa"
-                href={waHref(`Hello, I would like to book a vaccination with ${PEDIATRICIAN.name}. Due at ${next.label.en}: ${next.vaccines.join(', ')}.`)}
-              >
-                <WhatsAppIcon />
-                {tx({ en: 'Book on WhatsApp', hi: 'WhatsApp पर बुक करें' })}
-              </a>
-            </div>
-          </div>
-        )}
+        {valid && <VaccineRing dob={dob} today={today} showScheduleLink={false} />}
 
         <div className="scroll-x">
           <table className="vtable">

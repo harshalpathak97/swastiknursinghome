@@ -1,6 +1,7 @@
-import { Form, Link } from 'react-router'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 import { clinic, doctors, faqs } from '../data/clinic.js'
-import { schedule } from '../lib/vaccines.js'
+import { isValidDob, todayIST } from '../lib/vaccines.js'
 import { langOf, useT } from '../lib/i18n.js'
 import { directionsHref, mapEmbedSrc, telHref, waHref } from '../lib/links.js'
 import { clinicLd, doctorLd, faqLd, seo } from '../lib/seo.js'
@@ -8,6 +9,8 @@ import { BookButtons, DoctorPanel, Portrait } from '../components/Doctor.jsx'
 import { HoursTable, OpenStatus } from '../components/Hours.jsx'
 import { PhoneIcon, PinIcon, WhatsAppIcon } from '../components/Icons.jsx'
 import { FaqList } from './Faq.jsx'
+import BodyMap from '../components/BodyMap.jsx'
+import VaccineRing from '../components/VaccineRing.jsx'
 
 export const meta = ({ location }) =>
   seo(location, {
@@ -72,6 +75,19 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section alt" aria-labelledby="map-h">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">{tx({ en: 'Find the right doctor', hi: 'सही डॉक्टर चुनें' })}</p>
+              <h2 id="map-h">{tx({ en: 'Where does it hurt?', hi: 'कहाँ तकलीफ़ है?' })}</h2>
+            </div>
+            <p>{tx({ en: 'Tap the body to see what it might be, when to come in, and who to see.', hi: 'शरीर पर छुएँ और जानें कि क्या हो सकता है, कब आना चाहिए, और किसे दिखाना है।' })}</p>
+          </div>
+          <BodyMap />
+        </div>
+      </section>
+
       <section className="section" aria-labelledby="doctors-h">
         <div className="wrap">
           <div className="section-head">
@@ -89,35 +105,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section dark" aria-labelledby="vax-h">
-        <div className="wrap vax-grid">
-          <div>
-            <p className="eyebrow">{tx({ en: 'For parents', hi: 'माता-पिता के लिए' })}</p>
-            <h2 id="vax-h">{tx({ en: 'Which vaccine is your child due for?', hi: 'आपके बच्चे का अगला टीका कौन-सा है?' })}</h2>
-            <p className="lede" style={{ marginTop: '1.25rem' }}>
-              {tx({
-                en: 'Enter the date of birth to see every vaccine in the IAP 2023 schedule, with the date each one is due. Nothing you type leaves your phone.',
-                hi: 'जन्मतिथि डालें और IAP 2023 शेड्यूल का हर टीका उसकी तारीख़ के साथ देखें। आपकी डाली जानकारी आपके फ़ोन से बाहर नहीं जाती।',
-              })}
-            </p>
-            <Form method="get" action={href('/vaccination-schedule')} className="dob">
-              <label>
-                {tx({ en: 'Date of birth', hi: 'जन्मतिथि' })}
-                <input type="date" name="dob" required />
-              </label>
-              <button className="btn btn-ink" type="submit">{tx({ en: 'Show due dates', hi: 'तारीख़ें देखें' })}</button>
-            </Form>
-          </div>
-          <ol className="timeline" aria-label={tx({ en: 'First-year vaccines', hi: 'पहले साल के टीके' })}>
-            {schedule.slice(0, 9).map((r) => (
-              <li key={r.label.en + r.vaccines[0]}>
-                <b>{tx(r.label)}</b>
-                <span>{r.vaccines.join(', ')}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <VaccineSection />
 
       <section className="section alt" aria-labelledby="visit-h">
         <div className="wrap">
@@ -182,5 +170,42 @@ export default function Home() {
         </div>
       </section>
     </>
+  )
+}
+
+// The ring updates in place as the date is picked. Without JS the form still posts to the schedule page.
+function VaccineSection() {
+  const { tx, href } = useT()
+  const [today, setToday] = useState(null)
+  const [dob, setDob] = useState('')
+  useEffect(() => setToday(todayIST()), [])
+  const ok = today && isValidDob(dob, today)
+  return (
+    <section className="section dark" aria-labelledby="vax-h">
+      <div className="wrap vax-grid">
+        <div>
+          <p className="eyebrow">{tx({ en: 'For parents', hi: 'माता-पिता के लिए' })}</p>
+          <h2 id="vax-h">{tx({ en: 'Which vaccine is your child due for?', hi: 'आपके बच्चे का अगला टीका कौन-सा है?' })}</h2>
+          <p className="lede" style={{ marginTop: '1.25rem' }}>
+            {tx({
+              en: 'Enter the date of birth to see how far along the IAP 2023 schedule your child is, and what is due next. Nothing you type leaves your phone.',
+              hi: 'जन्मतिथि डालें और देखें कि बच्चा IAP 2023 शेड्यूल में कहाँ है और अगला टीका कौन-सा है। आपकी डाली जानकारी आपके फ़ोन से बाहर नहीं जाती।',
+            })}
+          </p>
+          <form method="get" action={href('/vaccination-schedule')} className="dob" onSubmit={(e) => e.preventDefault()}>
+            <label>
+              {tx({ en: 'Date of birth', hi: 'जन्मतिथि' })}
+              <input type="date" name="dob" required max={today ?? undefined} value={dob} onChange={(e) => setDob(e.target.value)} />
+            </label>
+          </form>
+          {dob && today && !ok && (
+            <p className="small" style={{ marginTop: '0.75rem', color: '#f6c48a' }}>
+              {tx({ en: 'Please enter a date of birth in the past 18 years.', hi: 'कृपया पिछले 18 वर्षों के भीतर की जन्मतिथि डालें।' })}
+            </p>
+          )}
+        </div>
+        {today ? <VaccineRing dob={ok ? dob : ''} today={today} /> : <div className="ring-card" style={{ minHeight: '13rem' }} />}
+      </div>
+    </section>
   )
 }
