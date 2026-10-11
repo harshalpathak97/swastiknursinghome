@@ -64,7 +64,7 @@ export const doctors = [
   {
     id: 'dr-amit-shah',
     // AI-retouched (Gemini mark bottom-right). Replace with an unedited photo.
-    photo: '/doctors/dr-amit-shah.jpg',
+    photo: '/photos/dr-amit-shah.jpg',
     name: 'Dr. Amit Shah',
     nameHi: 'डॉ. अमित शाह',
     specialty: 'peds',
@@ -87,7 +87,7 @@ export const doctors = [
   },
   {
     id: 'dr-swapnil-shah',
-    photo: '/doctors/dr-swapnil-shah.jpg',
+    photo: '/photos/dr-swapnil-shah.jpg',
     name: 'Dr. Swapnil Shah',
     nameHi: 'डॉ. स्वप्निल शाह',
     specialty: 'ortho',
