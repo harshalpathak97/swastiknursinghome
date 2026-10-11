@@ -5,7 +5,6 @@ import { langOf, useT } from '../lib/i18n.js'
 import { directionsHref, mapEmbedSrc, telHref, waHref } from '../lib/links.js'
 import { clinicLd, doctorLd, faqLd, seo } from '../lib/seo.js'
 import { BookButtons, DoctorPanel, Portrait } from '../components/Doctor.jsx'
-import Kolam from '../components/Kolam.jsx'
 import { HoursTable, OpenStatus } from '../components/Hours.jsx'
 import { PhoneIcon, PinIcon, WhatsAppIcon } from '../components/Icons.jsx'
 import { FaqList } from './Faq.jsx'
@@ -66,7 +65,6 @@ export default function Home() {
             </div>
           </div>
           <div className="portraits">
-            <Kolam />
             {doctors.map((d) => (
               <Portrait key={d.id} d={d} eager />
             ))}
@@ -91,7 +89,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section dark kolam" aria-labelledby="vax-h">
+      <section className="section dark" aria-labelledby="vax-h">
         <div className="wrap vax-grid">
           <div>
             <p className="eyebrow">{tx({ en: 'For parents', hi: 'माता-पिता के लिए' })}</p>
@@ -177,7 +175,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section dark kolam">
+      <section className="section dark">
         <div className="wrap section-head" style={{ marginBottom: 0 }}>
           <h2 style={{ maxWidth: '18ch' }}>{tx({ en: 'Call or WhatsApp to book your visit.', hi: 'अपॉइंटमेंट के लिए कॉल या WhatsApp करें।' })}</h2>
           <BookButtons />

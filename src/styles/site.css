@@ -1,6 +1,6 @@
 /* Swastik Nursing Home
    Warm cream paper, deep teal, marigold. Tiro Devanagari Hindi for display
-   (one serif for English and Hindi), Mukta for text. Kolam dot-grid motif.
+   (one serif for English and Hindi), Mukta for text.
    Teal = orthopedics, marigold = pediatrics. */
 
 :root {
@@ -62,8 +62,6 @@ a:hover { text-decoration-thickness: 2px; }
 .ortho { --tone: var(--teal); --tint: var(--teal-tint); --accent: var(--teal); }
 .peds { --tone: var(--marigold-ink); --tint: var(--marigold-tint); --accent: var(--marigold); }
 
-/* Kolam dot grid */
-.kolam { background-image: radial-gradient(circle, rgb(255 253 248 / 0.16) 1.5px, transparent 1.6px); background-size: 22px 22px; }
 
 /* ── Utility bar + header ───────────────────────────────── */
 .util { background: var(--teal); color: #e9f1ee; font-size: 0.875rem; }
@@ -356,29 +354,7 @@ a:hover { text-decoration-thickness: 2px; }
 .page-head.ortho .tag { background: var(--teal); color: #fff; }
 .next-due .btn-wa { background: #fff; color: var(--wa); }
 
-/* ── Hero kolam: draws itself, then turns slowly ────────── */
-.portraits { position: relative; }
-.portraits figure { position: relative; z-index: 1; animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-.portraits figure:nth-of-type(1) { animation-delay: 0.9s; }
-.portraits figure:nth-of-type(2) { animation-delay: 1.15s; }
-.kolam-art {
-  position: absolute; z-index: 0; left: 50%; top: 50%; width: 132%; max-width: 46rem; aspect-ratio: 1;
-  translate: -50% -50%; overflow: visible; pointer-events: none;
-}
-.kolam-art path {
-  fill: none; stroke: var(--marigold); stroke-width: 0.55; stroke-linecap: round; stroke-linejoin: round;
-  stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0.7;
-  animation: draw 1.4s cubic-bezier(0.45, 0, 0.2, 1) forwards; animation-delay: calc(var(--i) * 45ms);
-}
-.kolam-art .dot { fill: var(--teal-2); opacity: 0; animation: pop 0.4s ease-out forwards; animation-delay: calc(0.6s + var(--i) * 40ms); }
-.kolam-spin { transform-origin: 0 0; animation: spin 160s linear 2.6s infinite; }
-@keyframes draw { to { stroke-dashoffset: 0; } }
-@keyframes pop { from { opacity: 0; transform: scale(0); } to { opacity: 0.9; transform: scale(1); } }
-@keyframes spin { to { transform: rotate(360deg); } }
+/* ── Hero portraits rise in on load ─────────────────────── */
+.portraits figure { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.portraits figure:nth-of-type(2) { animation-delay: 0.15s; }
 @keyframes rise { from { opacity: 0; transform: translateY(28px); } }
-.kolam-art .dot { transform-box: fill-box; transform-origin: center; }
-@media (max-width: 959px) { .kolam-art { width: 118%; } }
-@media (prefers-reduced-motion: reduce) {
-  .kolam-art path { stroke-dashoffset: 0; }
-  .kolam-art .dot { opacity: 0.9; }
-}
