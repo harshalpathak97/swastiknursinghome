@@ -5,6 +5,7 @@ import { langOf, useT } from '../lib/i18n.js'
 import { directionsHref, mapEmbedSrc, telHref, waHref } from '../lib/links.js'
 import { clinicLd, doctorLd, faqLd, seo } from '../lib/seo.js'
 import { BookButtons, DoctorPanel, Portrait } from '../components/Doctor.jsx'
+import Kolam from '../components/Kolam.jsx'
 import { HoursTable, OpenStatus } from '../components/Hours.jsx'
 import { PhoneIcon, PinIcon, WhatsAppIcon } from '../components/Icons.jsx'
 import { FaqList } from './Faq.jsx'
@@ -65,6 +66,7 @@ export default function Home() {
             </div>
           </div>
           <div className="portraits">
+            <Kolam />
             {doctors.map((d) => (
               <Portrait key={d.id} d={d} eager />
             ))}
