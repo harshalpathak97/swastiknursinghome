@@ -1,168 +1,38 @@
-import { useContext, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { AppContext } from '../context/AppContext';
-import SEO from '../components/SEO';
+import { doctors } from '../data/clinic.js'
+import { langOf, useT } from '../lib/i18n.js'
+import { crumbsLd, doctorLd, seo } from '../lib/seo.js'
+import { Crumbs } from '../components/Site.jsx'
+import { DoctorPanel } from '../components/Doctor.jsx'
 
-const Doctors = () => {
-  const { speciality } = useParams();
-  const navigate = useNavigate();
-  const [filterDoc, setFilterDoc] = useState([]);
-  const [showFilters, setShowFilters] = useState(false);
-  const { doctors } = useContext(AppContext);
+const CRUMBS = [[{ en: 'Home', hi: 'होम' }, '/'], [{ en: 'Doctors', hi: 'डॉक्टर' }, '/doctors']]
 
-  const applyFilter = () => {
-    if (speciality) {
-      setFilterDoc(doctors.filter(doc => doc.speciality === speciality));
-    } else {
-      setFilterDoc(doctors);
-    }
-  };
+export const meta = ({ location }) =>
+  seo(location, {
+    title: { en: 'Doctors: Dr. Amit Shah (Pediatrics) and Dr. Swapnil Shah (Orthopedics) | Swastik Nursing Home', hi: 'डॉक्टर: डॉ. अमित शाह (बाल रोग) और डॉ. स्वप्निल शाह (हड्डी रोग) | स्वस्तिक नर्सिंग होम' },
+    description: { en: 'Qualifications, registration, languages, fees and hours for the pediatrician and orthopedic surgeon at Swastik Nursing Home, Ghatkopar West.', hi: 'स्वस्तिक नर्सिंग होम, घाटकोपर पश्चिम के बाल रोग विशेषज्ञ और ऑर्थोपेडिक सर्जन की योग्यता, पंजीकरण, भाषाएँ, फ़ीस और समय।' },
+    jsonLd: [...doctors.map(doctorLd), crumbsLd(langOf(location.pathname), CRUMBS)],
+  })
 
-  useEffect(() => {
-    applyFilter();
-  }, [doctors, speciality]);
-
-  const doctorsSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Doctors at Swastik Nursing Home",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "Physician",
-          "@id": "https://www.swastiknursinghome.org/doctor/dr-amit-shah",
-          "name": "Dr. Amit Shah",
-          "medicalSpecialty": "Pediatrics",
-          "jobTitle": "Pediatrician",
-          "description": "Experienced pediatrician at Swastik Nursing Home, Ghatkopar West, Mumbai. MD Pediatrics. Specializes in newborn care, vaccinations, and childhood illnesses."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "Physician",
-          "@id": "https://www.swastiknursinghome.org/doctor/dr-swapnil-shah",
-          "name": "Dr. Swapnil Shah",
-          "medicalSpecialty": "Orthopedic Surgery",
-          "jobTitle": "Orthopedic Surgeon",
-          "description": "Orthopedic surgeon with 27+ years of experience at Swastik Nursing Home, Ghatkopar West, Mumbai. MS Orthopedic Surgery. Specializes in joint care, sports injuries, and fracture management."
-        }
-      }
-    ]
-  }
-
+export default function Doctors() {
+  const { tx } = useT()
   return (
-    <div className="pt-24 sm:pt-28 pb-10 container mx-auto px-4 max-w-7xl">
-      <SEO
-        title="Our Doctors - Dr. Amit Shah &amp; Dr. Swapnil Shah"
-        description="Meet our expert doctors: Dr. Amit Shah (MD Pediatrics) and Dr. Swapnil Shah (MS Orthopedic Surgery, 27+ years). Trusted healthcare in Ghatkopar West, Mumbai."
-        canonical="/doctors"
-        schema={doctorsSchema}
-      />
-      <div className="text-center mb-8 sm:mb-12">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-dark mb-3 sm:mb-4">Our Expert Doctors</h1>
-        <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-3 sm:px-4">
-          Meet our experienced doctors providing specialized care in pediatrics and orthopedics.
-        </p>
-      </div>
-
-      <div className="flex flex-col md:flex-row items-start gap-4 sm:gap-6 md:gap-8">
-        {/* Filter Sidebar */}
-        <div className={`w-full md:w-64 flex-shrink-0${showFilters ? 'block' : 'hidden md:block'}`}>
-          <div className="bg-white rounded-lg shadow-sm p-4 sm:p-5">
-            <h3 className="text-base sm:text-lg font-semibold text-neutral-dark mb-3 sm:mb-4 text-center md:text-left">Filter by Specialty</h3>
-            <div className="space-y-2">
-              <button
-                onClick={() => { navigate('/doctors'); setShowFilters(false); }}
-                className={`w-full text-left px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base ${!speciality ? 'bg-primary text-white' : 'bg-neutral-light text-neutral-dark hover:bg-gray-200'
-                  }`}
-              >
-                All Doctors
-              </button>
-              <button
-                onClick={() => { speciality === 'Pediatrician' ? navigate('/doctors') : navigate('/doctors/Pediatrician'); setShowFilters(false); }}
-                className={`w-full text-left px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base ${speciality === 'Pediatrician' ? 'bg-primary text-white' : 'bg-neutral-light text-neutral-dark hover:bg-gray-200'
-                  }`}
-              >
-                Pediatrician
-              </button>
-              <button
-                onClick={() => { speciality === 'Orthopedic Surgeon' ? navigate('/doctors') : navigate('/doctors/Orthopedic Surgeon'); setShowFilters(false); }}
-                className={`w-full text-left px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base ${speciality === 'Orthopedic Surgeon' ? 'bg-primary text-white' : 'bg-neutral-light text-neutral-dark hover:bg-gray-200'
-                  }`}
-              >
-                Orthopedic Surgeon
-              </button>
-            </div>
-          </div>
+    <>
+      <header className="page-head">
+        <div className="wrap">
+          <Crumbs items={CRUMBS} />
+          <h1>{tx({ en: 'Doctors', hi: 'डॉक्टर' })}</h1>
+          <p className="lede">{tx({ en: 'Both doctors consult in English, Hindi and Marathi.', hi: 'दोनों डॉक्टर हिंदी, मराठी और अंग्रेज़ी में बात करते हैं।' })}</p>
         </div>
-
-        {/* Doctors Grid */}
-        <div className="flex-1 w-full">
-          {/* Mobile Filter Toggle */}
-          <button
-            onClick={() => setShowFilters(!showFilters)}
-            className="md:hidden w-full bg-primary text-white py-2.5 px-4 rounded-lg font-medium mb-4 flex items-center justify-center gap-2"
-          >
-            <span>Filter by Specialty</span>
-            <span>{showFilters ? '▲' : '▼'}</span>
-          </button>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            {filterDoc.map((item, index) => (
-              <div
-                key={index}
-                className="bg-white border border-neutral-light rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-colors duration-200"
-
-              >
-                <img className="w-full h-40 sm:h-56 object-cover object-top bg-neutral-light" src={item.image} alt={item.name} />
-                <div className="p-4 sm:p-6">
-                  <div className="flex items-center gap-2 text-xs sm:text-sm text-secondary mb-2 sm:mb-3">
-                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary rounded-full"></div>
-                    <span>Available for Consultation</span>
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-neutral-dark mb-1">{item.name}</h3>
-                  <p className="text-primary font-medium mb-2 text-sm sm:text-base">{item.speciality}</p>
-                  <p className="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3">{item.degree}</p>
-                  <p className="text-gray-500 text-xs sm:text-sm mb-3 sm:mb-4">{item.experience}</p>
-
-                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                    <button
-                      onClick={() => navigate(`/doctor/${item._id}`)}
-                      className="flex-1 bg-primary text-white py-2 px-3 sm:px-4 rounded-lg font-medium text-sm sm:text-base hover:bg-primary/90 transition-colors"
-                    >
-                      View Profile
-                    </button>
-                    <button
-                      onClick={() => navigate(`/appointment/${item._id}`)}
-                      className="flex-1 bg-[#25D366] text-white py-2 px-3 sm:px-4 rounded-lg font-medium text-sm sm:text-base hover:bg-[#20BA5A] transition-colors"
-                    >
-                      Book Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {filterDoc.length === 0 && (
-            <div className="text-center py-8 sm:py-12">
-              <p className="text-gray-500 text-base sm:text-lg">No doctors found for this specialty.</p>
-              <button
-                onClick={() => navigate('/doctors')}
-                className="mt-3 sm:mt-4 bg-primary text-white px-5 sm:px-6 py-2 rounded-full text-sm sm:text-base hover:bg-primary/90 transition-colors"
-              >
-                View All Doctors
-              </button>
-            </div>
-          )}
+      </header>
+      <div className="wrap">
+      <section className="section">
+        <div className="split">
+          {doctors.map((d) => (
+            <DoctorPanel key={d.id} d={d} />
+          ))}
         </div>
+      </section>
       </div>
-    </div>
-  );
-};
-
-export default Doctors;
+    </>
+  )
+}

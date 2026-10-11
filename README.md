@@ -1,45 +1,16 @@
-🏥 CarePlos – Medical & Health Care Web Template (React + Tailwind CSS)
-CarePlos is a clean, modern, and responsive web template specially designed for the healthcare and medical industry. Built with React and Tailwind CSS, it’s ideal for hospitals, clinics, doctors, or any medical professionals who want a sleek and professional online presence.
+# Swastik Nursing Home — swastiknursinghome.org
 
-✨ Features:
-✅ 5+ Pages – Home, About, Services, Departments, Contact, etc.
+Static, prerendered clinic site (React Router 7, `ssr: false`). Deployed on Vercel from `main`; domain DNS at Hostinger.
 
-⚛️ Built with React.js – Reusable, component-based structure
+```
+npm run dev     # local dev
+npm test        # hours + vaccine due-date checks
+npm run build   # prerenders every route (EN + /hi) to build/client, writes sitemap.xml + 404.html
+```
 
-🎨 Tailwind CSS – Utility-first responsive design
-
-🌐 SEO-friendly & mobile optimized
-
-🧩 Easy to customize and scale
-
-🚀 Fast loading performance
-
-🌙 Optional dark mode ready (with small changes)
-
-⚙️ Installation Guide:
-To set up and run the CarePlos template on your local machine, follow these simple steps:
-
-
-# 1. Clone the repository or download the source code
-git clone https://github.com/your-username/careplos-template.git
-
-# 2. Navigate into the project directory
-cd careplos-template
-
-# 3. Install the dependencies
-npm install
-# or
-yarn install
-
-# 4. Start the development server
-npm run dev
-# or
-yarn dev
-The site should now be running on http://localhost:3000/
-
-💡 Note: Make sure you have Node.js (v14 or later) and npm/yarn installed on your system before you begin.
-
-This template gives you a professional head start without the hassle of starting from scratch. Whether you're building for a clinic, healthcare app landing page, or a doctor's portfolio — CarePlos has you covered.
-
-👉 Try the live demo now: https://careplos.netlify.app/
-👉 Deploy your own version today and customize with ease!
+- **All clinic facts** (phone, hours, fees, doctors, registration numbers): `src/data/clinic.js`. Pages, JSON-LD and the sitemap read from it; `public/llms.txt` is hand-maintained to match.
+- **Health guides**: `src/data/conditions.js`. Set `reviewed: 'YYYY-MM-DD'` once the doctor approves a page.
+- **Vaccine schedule** (IAP 2023): `src/lib/vaccines.js`. Set `scheduleReviewed` after the pediatrician checks it.
+- **Routes**: `src/routes.js` (every page exists at `/x` and `/hi/x`); URL list in `src/data/paths.js`.
+- **Styles**: one file, `src/styles/site.css`.
+- Analytics: Vercel Web Analytics + `call` / `whatsapp` / `directions` click events (`src/root.jsx`).

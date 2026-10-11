@@ -1,147 +1,79 @@
-import { assets } from '../assets/assets';
-import { useContext } from 'react';
-import { AppContext } from '../context/AppContext';
-import SEO from '../components/SEO';
+import { Link } from 'react-router'
+import { clinic, doctors } from '../data/clinic.js'
+import { langOf, useT } from '../lib/i18n.js'
+import { clinicLd, crumbsLd, seo } from '../lib/seo.js'
+import { Crumbs } from '../components/Site.jsx'
+import { BookButtons, SPECIALTY } from '../components/Doctor.jsx'
 
-const About = () => {
-  const { clinicData } = useContext(AppContext);
+const CRUMBS = [[{ en: 'Home', hi: 'होम' }, '/'], [{ en: 'About', hi: 'परिचय' }, '/about']]
 
+export const meta = ({ location }) =>
+  seo(location, {
+    title: { en: `About Swastik Nursing Home, Ghatkopar West (since ${clinic.founded})`, hi: `स्वस्तिक नर्सिंग होम, घाटकोपर पश्चिम का परिचय (${clinic.founded} से)` },
+    description: { en: `A pediatric and orthopedic nursing home on L.B.S. Marg, Ghatkopar West, Mumbai, since ${clinic.founded}. Doctors, registration, languages and payment.`, hi: `${clinic.founded} से एल.बी.एस. मार्ग, घाटकोपर पश्चिम, मुंबई में बाल रोग और हड्डी रोग नर्सिंग होम। डॉक्टर, पंजीकरण, भाषाएँ और भुगतान।` },
+    jsonLd: [clinicLd(), crumbsLd(langOf(location.pathname), CRUMBS)],
+  })
+
+export default function About() {
+  const { tx, href } = useT()
+  const a = clinic.address
   return (
-    <div className="py-6 sm:py-8 px-3 sm:px-4">
-      <SEO
-        title="About Us - Over 20 Years of Trusted Healthcare"
-        description="Swastik Nursing Home has served Ghatkopar West, Mumbai for over 20 years. Learn about our mission, our doctors Dr. Amit Shah and Dr. Swapnil Shah, and our commitment to family-centered care."
-        canonical="/about"
-      />
-      {/* Hero Section */}
-      <div className="text-center mb-10 sm:mb-12 md:mb-16">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-3 sm:mb-4">
-          About <span className="text-primary">{clinicData.clinic.name}</span>
-        </h1>
-        <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-3 sm:px-4">
-          Your trusted healthcare partner in Ghatkopar West, providing specialized pediatric and orthopedic care with compassion and expertise.
-        </p>
-      </div>
-
-      {/* Main Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 mb-12 sm:mb-16 md:mb-20">
-        <div className="flex justify-center">
-          <img
-            className="w-full max-w-md rounded-lg shadow-lg"
-            src={assets.about_image}
-            alt="Swastik Nursing Home Clinic"
-          />
-        </div>
-
-        <div className="flex flex-col justify-center gap-4 sm:gap-6 text-gray-600 px-2 sm:px-4">
-          <div className="text-center lg:text-left">
-            <h2 className="text-xl sm:text-2xl font-bold text-neutral-dark mb-3 sm:mb-4">Our Story</h2>
-            <p className="leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">
-              Swastik Nursing Home has been serving the Ghatkopar West community for over 20 years, providing quality healthcare
-              services with a focus on family-centered care. Located conveniently near Shreyas Cinema on Lal Bahadur Shastri Marg,
-              we are committed to delivering personalized medical attention in a comfortable and welcoming environment.
-            </p>
-            <p className="leading-relaxed text-sm sm:text-base">
-              Our experienced doctors, Dr. Amit Shah (MD Pediatrics, Pediatrician) and Dr. Swapnil Shah (MS Orthopedic Surgery, 27+ years experience), bring deep expertise and dedication to ensure the best possible outcomes for our patients. We understand that each family
-              has unique healthcare needs, and we strive to provide comprehensive care that addresses both physical and
-              emotional well-being.
-            </p>
-          </div>
-
-          <div className="text-center lg:text-left">
-            <h3 className="text-lg sm:text-xl font-semibold text-neutral-dark mb-2 sm:mb-3">Our Mission</h3>
-            <p className="leading-relaxed text-sm sm:text-base">
-              To provide accessible, high-quality healthcare services to families in Ghatkopar West, combining medical expertise
-              with compassionate care. We are dedicated to building lasting relationships with our patients and being a trusted
-              healthcare partner for every stage of life.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Why Choose Us Section */}
-      <div className="mb-12 sm:mb-16 md:mb-20 px-2 sm:px-4">
-        <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-dark mb-3 sm:mb-4">Why Choose Swastik Nursing Home</h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 px-3 sm:px-4">
-            What makes us the preferred healthcare choice for families in Ghatkopar West
+    <>
+      <header className="page-head">
+        <div className="wrap">
+          <Crumbs items={CRUMBS} />
+          <h1>{tx({ en: 'About the clinic', hi: 'क्लिनिक का परिचय' })}</h1>
+          <p className="lede">
+            {tx({
+              en: `Swastik Nursing Home opened on L.B.S. Marg in Ghatkopar West in ${clinic.founded}. It has two specialties: care for children, and treatment of bones, joints and the spine.`,
+              hi: `स्वस्तिक नर्सिंग होम ${clinic.founded} में घाटकोपर पश्चिम के एल.बी.एस. मार्ग पर शुरू हुआ। यहाँ दो विभाग हैं: बच्चों की देखभाल, और हड्डी, जोड़ व रीढ़ का इलाज।`,
+            })}
           </p>
         </div>
+      </header>
+      <div className="wrap">
+      <section className="section side">
+        <div className="prose">
+          <h2 style={{ marginTop: 0 }}>{tx({ en: 'At a glance', hi: 'एक नज़र में' })}</h2>
+          <dl className="facts">
+            <dt>{tx({ en: 'Name', hi: 'नाम' })}</dt>
+            <dd>{clinic.name}</dd>
+            <dt>{tx({ en: 'Since', hi: 'स्थापना' })}</dt>
+            <dd>{clinic.founded}</dd>
+            <dt>{tx({ en: 'Address', hi: 'पता' })}</dt>
+            <dd>{a.line1}, {a.line2}, {a.locality}, {a.city} {a.pin}</dd>
+            <dt>{tx({ en: 'Languages', hi: 'भाषाएँ' })}</dt>
+            <dd>{tx({ en: 'English, Hindi, Marathi', hi: 'हिंदी, मराठी, अंग्रेज़ी' })}</dd>
+            <dt>{tx({ en: 'Payment', hi: 'भुगतान' })}</dt>
+            <dd>{tx(clinic.payment)}</dd>
+            <dt>{tx({ en: 'Emergencies', hi: 'इमरजेंसी' })}</dt>
+            <dd>{tx({ en: 'Not an emergency facility. Call 108.', hi: 'इमरजेंसी सुविधा नहीं। 108 पर कॉल करें।' })}</dd>
+          </dl>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-          {clinicData.whyChooseUs.map((reason, index) => (
-            <div
-              key={index}
-              className="bg-white border border-gray-200 rounded-lg p-5 sm:p-6 md:p-8 hover:shadow-lg hover:border-primary/20 transition-colors duration-200 text-center group"
-            >
-              <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 text-primary">
-                {reason.icon}
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-neutral-dark mb-2 sm:mb-3">{reason.title}</h3>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{reason.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+          <h2>{tx({ en: 'Doctors', hi: 'डॉक्टर' })}</h2>
+          <ul className="ticks">
+            {doctors.map((d) => (
+              <li key={d.id} className={d.specialty}>
+                <Link to={href(`/doctor/${d.id}`)}>{tx({ en: d.name, hi: d.nameHi })}</Link>, {d.degrees} · {tx(SPECIALTY[d.specialty])}
+                {d.regNo && <> · {tx({ en: 'MMC Reg. No.', hi: 'MMC पंजीकरण' })} <span className="num">{d.regNo}</span></>}
+              </li>
+            ))}
+          </ul>
 
-      {/* Facility Highlights */}
-      <div className="bg-neutral-light rounded-2xl p-4 sm:p-6 md:p-8 lg:p-12 mb-12 sm:mb-16 md:mb-20 mx-2 sm:mx-4">
-        <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-dark mb-3 sm:mb-4">Our Facility</h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 px-3 sm:px-4">
-            A modern, patient-friendly clinic designed for comfort and care
+          <h2>{tx({ en: 'What this website does not do', hi: 'यह वेबसाइट क्या नहीं करती' })}</h2>
+          <p>
+            {tx({
+              en: 'We do not publish patient testimonials, ratings or success claims, in line with the National Medical Commission’s rules for doctors. You can read independent reviews on Google and other directories.',
+              hi: 'नेशनल मेडिकल कमीशन के डॉक्टरों के नियमों के अनुसार, हम मरीज़ों के प्रशंसापत्र, रेटिंग या सफलता के दावे प्रकाशित नहीं करते। स्वतंत्र समीक्षाएँ आप Google और अन्य डायरेक्टरी पर पढ़ सकते हैं।',
+            })}
           </p>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
-          <div className="text-center">
-            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-primary">🏥</div>
-            <h4 className="font-semibold text-neutral-dark mb-1 sm:mb-2 text-sm sm:text-base">Modern Clinic</h4>
-            <p className="text-xs sm:text-sm text-gray-600">Well-equipped facility with hygienic environment</p>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-primary">🅿️</div>
-            <h4 className="font-semibold text-neutral-dark mb-1 sm:mb-2 text-sm sm:text-base">Parking Available</h4>
-            <p className="text-xs sm:text-sm text-gray-600">Dedicated parking space for patient convenience</p>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-primary">📍</div>
-            <h4 className="font-semibold text-neutral-dark mb-1 sm:mb-2 text-sm sm:text-base">Prime Location</h4>
-            <p className="text-xs sm:text-sm text-gray-600">Conveniently located near Shreyas Cinema</p>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-primary">👨‍👩‍👧‍👦</div>
-            <h4 className="font-semibold text-neutral-dark mb-1 sm:mb-2 text-sm sm:text-base">Family-Friendly</h4>
-            <p className="text-xs sm:text-sm text-gray-600">Welcoming atmosphere for families and children</p>
-          </div>
-        </div>
+        <aside className="card">
+          <h2>{tx({ en: 'Book a visit', hi: 'अपॉइंटमेंट लें' })}</h2>
+          <BookButtons />
+        </aside>
+      </section>
       </div>
-
-      {/* CTA Section */}
-      <div className="text-center bg-primary text-white rounded-2xl p-5 sm:p-6 md:p-8 lg:p-12 mx-2 sm:mx-4">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 px-3 sm:px-4">Experience Quality Healthcare</h2>
-        <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90 px-3 sm:px-4">
-          Join the families who trust Swastik Nursing Home for their healthcare needs
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-3 sm:px-4">
-          <a
-            href={`https://wa.me/${clinicData.clinic.whatsappNumber.replace(/[^0-9]/g, '')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#25D366] hover:bg-[#20BA5A] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-colorsw-full sm:w-auto"
-          >
-            Book Your Appointment
-          </a>
-          <a
-            href={`tel:${clinicData.clinic.phone}`}
-            className="bg-white text-neutral-dark px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-gray-100 transition-colorsw-full sm:w-auto"
-          >
-            Call Us: {clinicData.clinic.phone}
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default About;
+    </>
+  )
+}

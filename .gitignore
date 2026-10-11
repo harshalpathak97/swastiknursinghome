@@ -28,3 +28,7 @@ dist-ssr
 .env
 .env.local
 .env.*.local
+
+# React Router build output
+build
+.react-router

@@ -1,351 +1,157 @@
-export const clinicData = {
-  // Clinic Information
-  clinic: {
-    name: 'Swastik Nursing Home',
-    tagline: 'Trusted Pediatric and Orthopedic Care in Ghatkopar West',
-    description: 'A family-focused healthcare facility providing specialized pediatric and orthopedic services with experienced doctors and modern medical care.',
+// Single source of truth for every clinic fact. Pages, JSON-LD, sitemap and
+// llms.txt must agree with this file. Text that is shown to patients is
+// { en, hi }; pick with tx() from src/lib/i18n.js.
 
-    // Contact Information
-    phone: '022 2500 8858',
-    whatsappNumber: '+919821330087',
-    email: 'info@swastiknursinghome.org',
+export const SITE = 'https://www.swastiknursinghome.org'
 
-    addressText: 'C-101 / Room No. 101, 1st Floor, Bhaveshwar Plaza, L. B. S. Marg, opposite Shreyas Theatre, Ghatkopar West, Mumbai 400086',
-    addressShort: 'C-101 / Room No. 101, 1st Floor, Bhaveshwar Plaza, L. B. S. Marg, opposite Shreyas Theatre, Ghatkopar West, Mumbai 400086',
-    googleMapsQuery: 'Swastik Nursing Home C-101 Room No 101 1st Floor Bhaveshwar Plaza L B S Marg opposite Shreyas Theatre Ghatkopar West Mumbai 400086',
-    googleMapsLink: 'https://www.google.com/maps/search/?api=1&query=Swastik+Nursing+Home+Room+101+1st+Floor+Bhaveshwar+Plaza+L+B+S+Marg+opposite+Shreyas+Theatre+Ghatkopar+West+Mumbai+400086',
+export const clinic = {
+  name: 'Swastik Nursing Home',
+  nameHi: 'स्वस्तिक नर्सिंग होम',
+  founded: 2002,
 
-    // Clinic Hours
-    timings: {
-      monday: '9:00 AM - 8:00 PM',
-      tuesday: '9:00 AM - 8:00 PM',
-      wednesday: '9:00 AM - 8:00 PM',
-      thursday: '9:00 AM - 8:00 PM',
-      friday: '9:00 AM - 8:00 PM',
-      saturday: '9:00 AM - 2:00 PM',
-      sunday: 'Closed'
-    },
-    emergencyNote: '⚠️ We provide non-emergency care only. For life-threatening emergencies, please call 108 (ambulance) or visit the nearest emergency facility immediately.',
+  phone: '022 2500 8858',
+  phoneE164: '+912225008858',
+  whatsapp: '+91 98213 30087',
+  whatsappE164: '919821330087',
+  // No MX record on the domain yet (see .context/hostinger-checklist.md).
+  // Keep this out of the UI until mail actually arrives.
+  email: 'info@swastiknursinghome.org',
 
-    // Social Links (placeholders)
-    social: {
-      facebook: '',
-      instagram: '',
-      linkedin: ''
-    },
-
-    // Hospital Images for Carousel
-    images: [
-      {
-        url: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&h=800&fit=crop',
-        alt: 'Modern hospital reception area',
-        caption: 'Welcoming Reception Area'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=800&fit=crop',
-        alt: 'Clean and modern clinic interior',
-        caption: 'Modern Clinic Facilities'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1200&h=800&fit=crop',
-        alt: 'Professional medical consultation room',
-        caption: 'Comfortable Consultation Rooms'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=1200&h=800&fit=crop',
-        alt: 'Well-equipped medical facility',
-        caption: 'Well-Equipped Medical Facility'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=1200&h=800&fit=crop',
-        alt: 'Pediatric care area',
-        caption: 'Specialized Pediatric Care'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=1200&h=800&fit=crop',
-        alt: 'Orthopedic treatment room',
-        caption: 'Orthopedic Treatment Center'
-      }
-    ]
+  address: {
+    line1: 'C-101 / Room No. 101, 1st Floor, Bhaveshwar Plaza',
+    line2: 'L. B. S. Marg, opposite Shreyas Theatre',
+    locality: 'Ghatkopar West',
+    city: 'Mumbai',
+    pin: '400086',
+    region: 'Maharashtra',
   },
-
-  // Doctors Information
-  doctors: [
-    {
-      id: 'dr-amit-shah',
-      name: 'Dr. Amit Shah',
-      degree: 'MD Pediatrics',
-      specialty: 'Pediatrician',
-      shortBio: 'Experienced pediatrician specializing in child healthcare, vaccination, and growth monitoring.',
-      longBio: `Dr. Amit Shah is a dedicated pediatrician with extensive experience in child healthcare. He specializes in newborn care, vaccination programs, and monitoring child development. Dr. Shah believes in a holistic approach to pediatric care, focusing on both physical and emotional well-being of children.
-
-His areas of expertise include:
-• Newborn and infant care
-• Vaccination and immunization guidance
-• Growth and nutrition counseling
-• Common childhood illnesses
-• Developmental assessments
-• Allergy and asthma management
-
-Dr. Shah is committed to providing compassionate, family-centered care and building lasting relationships with his young patients and their families.`,
-      languages: ['English', 'Hindi', 'Marathi'],
-      areasOfFocus: ['Newborn Care', 'Vaccinations', 'Growth Monitoring', 'Child Nutrition', 'Allergy Management'],
-      availability: 'Mon-Sat: 9:00 AM - 8:00 PM',
-      image: '/src/assets/dr_amit_shah.jpg',
-      experience: '15+ Years Experience',
-      credentials: 'MD Pediatrics, MBBS',
-      consultationCTA: 'Book Pediatric Consultation'
-    },
-    {
-      id: 'dr-swapnil-shah',
-      name: 'Dr. Swapnil Shah',
-      degree: 'MS Orthopedic Surgery',
-      specialty: 'Orthopedic Surgeon',
-      shortBio: 'Expert orthopedic surgeon specializing in joint care, sports injuries, and fracture management.',
-      longBio: `Dr. Swapnil Shah is a skilled orthopedic surgeon with specialization in musculoskeletal disorders and injuries. He provides comprehensive orthopedic care with a focus on minimally invasive procedures and patient rehabilitation.
-
-His areas of expertise include:
-• Joint pain evaluation and treatment
-• Sports injury assessment and rehabilitation
-• Fracture care and follow-up
-• Back and neck pain management
-• Arthritis treatment
-• Post-operative orthopedic care
-
-Dr. Shah combines surgical expertise with conservative treatment approaches to ensure the best possible outcomes for his patients. He believes in educating patients about their conditions and involving them in their treatment decisions.`,
-      languages: ['English', 'Hindi', 'Marathi'],
-      areasOfFocus: ['Joint Care', 'Sports Injuries', 'Fracture Management', 'Back Pain', 'Arthritis Treatment'],
-      availability: 'Mon-Sat: 9:00 AM - 8:00 PM',
-      image: '/src/assets/dr_swapnil_shah_new.jpg',
-      experience: '27+ Years Experience',
-      credentials: 'MS Orthopedic Surgery, MBBS',
-      consultationCTA: 'Book Orthopedic Consultation'
-    }
+  landmark: {
+    en: 'Opposite Shreyas Theatre on L.B.S. Marg. First floor of Bhaveshwar Plaza.',
+    hi: 'एल.बी.एस. मार्ग पर श्रेयस थिएटर के सामने। भावेश्वर प्लाज़ा की पहली मंज़िल।',
+  },
+  geo: { lat: 19.08727, lng: 72.90132 },
+  // Tuned query string — geocodes correctly in Google and Apple Maps.
+  mapsQuery:
+    'Swastik Nursing Home C-101 Room No 101 1st Floor Bhaveshwar Plaza L B S Marg opposite Shreyas Theatre Ghatkopar West Mumbai 400086',
+  gbp: 'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9',
+  sameAs: [
+    'https://maps.app.goo.gl/XhjxgoR9ndcL98GB9',
+    'https://www.practo.com/mumbai/hospital/swastic-nursing-home-ghatkopar-west',
+    'https://www.justdial.com/Mumbai/Swastik-Nursing-Home-Opposite-Shreyas-Theatre-Surya-Nagar-Chandan-Nagar-Ghatkopar-West/022PXX22-XX22-180713104007-I7H7_BZDET',
   ],
 
-  // Services/Departments
-  services: {
-    pediatrics: [
-      {
-        id: 'newborn-care',
-        title: 'Newborn & Infant Care',
-        description: 'Comprehensive care for newborns and infants including health checkups, feeding guidance, and developmental monitoring.',
-        icon: '👶'
-      },
-      {
-        id: 'vaccinations',
-        title: 'Vaccinations & Immunization',
-        description: 'Complete vaccination programs following national immunization schedules and travel vaccination guidance.',
-        icon: '💉'
-      },
-      {
-        id: 'common-illnesses',
-        title: 'Common Illnesses Treatment',
-        description: 'Diagnosis and treatment of common childhood illnesses including fever, cough, infections, and respiratory conditions.',
-        icon: '🌡️'
-      },
-      {
-        id: 'growth-monitoring',
-        title: 'Growth & Nutrition Counseling',
-        description: 'Regular monitoring of child growth patterns and personalized nutrition advice for optimal development.',
-        icon: '📏'
-      },
-      {
-        id: 'allergy-care',
-        title: 'Allergy & Asthma Care',
-        description: 'Evaluation and management of allergies and asthma in children with appropriate treatment plans.',
-        icon: '🌿'
-      },
-      {
-        id: 'school-health',
-        title: 'School Health Guidance',
-        description: 'Health assessments for school readiness and guidance on maintaining health during school years.',
-        icon: '🎒'
-      }
-    ],
-    orthopedics: [
-      {
-        id: 'joint-pain',
-        title: 'Joint Pain Evaluation',
-        description: 'Comprehensive assessment and treatment of joint pain including arthritis and degenerative joint conditions.',
-        icon: '🦴'
-      },
-      {
-        id: 'sports-injuries',
-        title: 'Sports Injury Treatment',
-        description: 'Diagnosis and rehabilitation of sports-related injuries including sprains, strains, and ligament tears.',
-        icon: '⚽'
-      },
-      {
-        id: 'fracture-care',
-        title: 'Fracture Care & Follow-up',
-        description: 'Treatment and rehabilitation following fractures with proper healing assessment and physiotherapy guidance.',
-        icon: '🩹'
-      },
-      {
-        id: 'back-neck-pain',
-        title: 'Back & Neck Pain Management',
-        description: 'Evaluation and conservative treatment of back and neck pain including posture correction and exercise therapy.',
-        icon: '🦾'
-      },
-      {
-        id: 'arthritis-care',
-        title: 'Arthritis Care',
-        description: 'Management of various forms of arthritis with medication, lifestyle modifications, and joint preservation techniques.',
-        icon: '🦵'
-      },
-      {
-        id: 'post-op-care',
-        title: 'Post-Operative Care',
-        description: 'Follow-up care after orthopedic surgeries including wound care, rehabilitation, and recovery monitoring.',
-        icon: '🏥'
-      }
-    ]
-  },
-
-  // Testimonials
-  testimonials: [
-    {
-      id: 1,
-      name: 'Mrs. Priya Sharma',
-      location: 'Ghatkopar West',
-      text: 'Excellent care for my 3-year-old daughter. Dr. Amit Shah is very patient and explains everything clearly. The clinic is clean and the staff is very friendly.',
-      rating: 5,
-      service: 'Pediatrics'
-    },
-    {
-      id: 2,
-      name: 'Mr. Rajesh Kumar',
-      location: 'Chandan Nagar',
-      text: 'Dr. Swapnil Shah treated my knee pain very effectively. The treatment was conservative and I avoided surgery. Highly recommend for orthopedic issues.',
-      rating: 5,
-      service: 'Orthopedics'
-    },
-    {
-      id: 3,
-      name: 'Mrs. Sunita Patel',
-      location: 'Ghatkopar West',
-      text: 'Very convenient location at Bhaveshwar Plaza. Both doctors are excellent and the clinic maintains high standards of hygiene. Family-friendly environment.',
-      rating: 5,
-      service: 'General'
-    },
-    {
-      id: 4,
-      name: 'Mr. Vikram Singh',
-      location: 'Ghatkopar',
-      text: 'Professional service and reasonable consultation fees. The doctors take time to understand the problem and provide appropriate treatment.',
-      rating: 5,
-      service: 'Orthopedics'
-    },
-    {
-      id: 5,
-      name: 'Mrs. Meera Joshi',
-      location: 'Ghatkopar West',
-      text: 'Great experience with vaccination services. The clinic follows proper protocols and the pediatrician explained the vaccine schedule very well.',
-      rating: 5,
-      service: 'Pediatrics'
-    },
-    {
-      id: 6,
-      name: 'Mr. Anil Desai',
-      location: 'Chandan Nagar',
-      text: 'Recovered well from my sports injury under Dr. Shah\'s care. The rehabilitation program was very effective. Clean clinic with modern facilities.',
-      rating: 5,
-      service: 'Orthopedics'
-    }
+  // 24h minutes per weekday, 0 = Sunday. null = closed.
+  hours: [
+    null,
+    [9 * 60, 20 * 60],
+    [9 * 60, 20 * 60],
+    [9 * 60, 20 * 60],
+    [9 * 60, 20 * 60],
+    [9 * 60, 20 * 60],
+    [9 * 60, 14 * 60],
   ],
 
-  // FAQs
-  faqs: [
-    {
-      id: 1,
-      question: 'Do you accept walk-in appointments?',
-      answer: 'Yes, we accept walk-in patients for urgent consultations. However, we recommend booking appointments in advance for better service, especially for specialized consultations.'
-    },
-    {
-      id: 2,
-      question: 'What are your consultation fees?',
-      answer: 'Our consultation fees vary by doctor and service type. Pediatric consultations start from ₹800, and orthopedic consultations start from ₹1000. Please contact us for specific pricing.'
-    },
-    {
-      id: 3,
-      question: 'Do you provide emergency services?',
-      answer: 'We provide non-emergency medical care only. For medical emergencies, please visit the nearest emergency facility or call emergency services immediately.'
-    },
-    {
-      id: 4,
-      question: 'Do you accept health insurance?',
-      answer: 'We accept most major health insurance plans. Please bring your insurance card and ID proof. Our staff will help you with the insurance claim process.'
-    },
-    {
-      id: 5,
-      question: 'What vaccinations do you provide?',
-      answer: 'We provide all routine childhood vaccinations as per the national immunization schedule, including optional vaccines. We also provide travel vaccinations for adults and children.'
-    },
-    {
-      id: 6,
-      question: 'How can I book an appointment?',
-      answer: 'You can book appointments by calling us, WhatsApp messaging, or through our contact form. Walk-ins are also welcome for urgent consultations.'
-    },
-    {
-      id: 7,
-      question: 'Do you have parking facilities?',
-      answer: 'Yes, we have dedicated parking space available for patients visiting our clinic. Additional street parking is also available nearby.'
-    },
-    {
-      id: 8,
-      question: 'What should I bring for my first visit?',
-      answer: 'Please bring any previous medical records, current medications, insurance information, and identification proof. For pediatric visits, bring the child\'s vaccination records.'
-    },
-    {
-      id: 9,
-      question: 'Do you provide home visits?',
-      answer: 'We do not provide routine home visits. However, for special cases or patients with mobility issues, please discuss with your doctor for possible arrangements.'
-    },
-    {
-      id: 10,
-      question: 'How long do appointments typically last?',
-      answer: 'Initial consultations typically last 15-20 minutes, while follow-up visits are usually 10-15 minutes. Complex cases may require longer appointments.'
-    }
-  ],
+  // Shown in the hero. TODO(clinic): check against the live Google Business Profile
+  // before launch (Justdial shows 3.8 from 62 reviews). NMC rules bar unprovable claims.
+  stats: { rating: 4.9, reviews: '600+', visits: '40,000+' },
 
-  // SEO Configuration
-  seo: {
-    siteTitle: 'Swastik Nursing Home - Pediatric & Orthopedic Care in Ghatkopar West, Mumbai',
-    defaultDescription: 'Trusted pediatric and orthopedic care in Ghatkopar West, Mumbai. Dr. Amit Shah (MD Pediatrics) and Dr. Swapnil Shah (MS Orthopedics, 27+ years). Walk-ins welcome. Call: 022 2500 8858.',
-    keywords: 'pediatrician Ghatkopar, orthopedic doctor Mumbai, child specialist Ghatkopar West, bone doctor Mumbai, vaccination clinic Ghatkopar, pediatric care Maharashtra, Dr Amit Shah, Dr Swapnil Shah',
-    ogImage: '/og-image.png',
-    canonicalBase: 'https://www.swastiknursinghome.org'
+  payment: { en: 'Cash and UPI', hi: 'कैश और UPI' },
+  // TODO(clinic): replace with the named list of insurers / TPAs for cashless admission.
+  insurers: [],
+}
+
+export const doctors = [
+  {
+    id: 'dr-amit-shah',
+    // AI-retouched (Gemini mark bottom-right). Replace with an unedited photo.
+    photo: '/doctors/dr-amit-shah.jpg',
+    name: 'Dr. Amit Shah',
+    nameHi: 'डॉ. अमित शाह',
+    specialty: 'peds',
+    title: { en: 'Pediatrician (child specialist)', hi: 'बाल रोग विशेषज्ञ (बच्चों के डॉक्टर)' },
+    degrees: 'MBBS, MD (Pediatrics)',
+    education: [],
+    // TODO(clinic): Maharashtra Medical Council registration number. NMC requires it on the site.
+    regNo: '',
+    since: 15,
+    languages: ['English', 'Hindi', 'Marathi'],
+    fee: 800,
+    focus: {
+      en: ['Newborn and infant check-ups', 'Vaccination (IAP schedule)', 'Fever, cough, cold and infections', 'Growth and nutrition', 'Allergy and asthma', 'School fitness check-ups'],
+      hi: ['नवजात और शिशु जाँच', 'टीकाकरण (IAP शेड्यूल)', 'बुखार, खाँसी, सर्दी और इन्फ़ेक्शन', 'बढ़त और पोषण', 'एलर्जी और अस्थमा', 'स्कूल फ़िटनेस जाँच'],
+    },
+    bio: {
+      en: 'Dr. Amit Shah sees children from newborns to teenagers: routine check-ups, vaccinations, growth and nutrition, allergies and asthma, and the fevers, coughs and stomach upsets that bring most families in. He looks at the child’s overall health, not just the complaint of the day.',
+      hi: 'डॉ. अमित शाह नवजात से किशोर उम्र तक के बच्चों को देखते हैं: नियमित जाँच, टीकाकरण, बढ़त और पोषण, एलर्जी और अस्थमा, और बुखार, खाँसी, पेट की तकलीफ़ जैसी आम बीमारियाँ। वे सिर्फ़ उस दिन की तकलीफ़ नहीं, बच्चे की पूरी सेहत देखते हैं।',
+    },
   },
+  {
+    id: 'dr-swapnil-shah',
+    photo: '/doctors/dr-swapnil-shah.jpg',
+    name: 'Dr. Swapnil Shah',
+    nameHi: 'डॉ. स्वप्निल शाह',
+    specialty: 'ortho',
+    title: { en: 'Orthopedic surgeon (bone and joint)', hi: 'ऑर्थोपेडिक सर्जन (हड्डी और जोड़)' },
+    degrees: 'MBBS, MS (Orthopedics)',
+    // Source: Practo profile (doctor-supplied).
+    education: ['MBBS, Shivaji University, Kolhapur (1991)', 'MS Orthopedics, Shivaji University, Kolhapur (1996)'],
+    regNo: '070546',
+    since: 27,
+    languages: ['English', 'Hindi', 'Marathi'],
+    fee: 1000,
+    focus: {
+      en: ['Knee, hip and shoulder pain', 'Arthritis', 'Fractures and plaster care', 'Back and neck pain', 'Sports injuries and sprains', 'Care after surgery'],
+      hi: ['घुटने, कूल्हे और कंधे का दर्द', 'गठिया (आर्थराइटिस)', 'फ़्रैक्चर और प्लास्टर', 'कमर और गर्दन का दर्द', 'खेल में चोट और मोच', 'ऑपरेशन के बाद की देखभाल'],
+    },
+    bio: {
+      en: 'Dr. Swapnil Shah has over 27 years of experience with bone and joint problems: knee and back pain, arthritis, fractures and sports injuries. He combines surgery with conservative treatment such as medicines, exercise and physiotherapy, and explains the condition so you can take part in the decision.',
+      hi: 'डॉ. स्वप्निल शाह को हड्डी और जोड़ों की समस्याओं में 27 से अधिक वर्षों का अनुभव है: घुटने और कमर का दर्द, गठिया, फ़्रैक्चर और खेल की चोटें। वे ऑपरेशन के साथ-साथ दवा, व्यायाम और फ़िज़ियोथेरेपी जैसे इलाज भी अपनाते हैं, और बीमारी समझाते हैं ताकि फ़ैसले में आप भी शामिल रहें।',
+    },
+  },
+]
 
-  // Why Choose Us section
-  whyChooseUs: [
-    {
-      title: 'Experienced Doctors',
-      description: 'Our doctors have years of experience in pediatric and orthopedic care, providing expert medical services.',
-      icon: '👨‍⚕️'
+export const faqs = [
+  {
+    q: { en: 'Do I need an appointment?', hi: 'क्या अपॉइंटमेंट ज़रूरी है?' },
+    a: {
+      en: 'Walk-ins are seen during clinic hours. Calling or sending a WhatsApp message first means a shorter wait, and lets us confirm the doctor is in.',
+      hi: 'क्लिनिक के समय में बिना अपॉइंटमेंट भी आ सकते हैं। पहले कॉल या WhatsApp करने से इंतज़ार कम होता है और डॉक्टर की उपलब्धता पक्की हो जाती है।',
     },
-    {
-      title: 'Family-Friendly Environment',
-      description: 'Comfortable, welcoming atmosphere designed with families and children in mind.',
-      icon: '👨‍👩‍👧‍👦'
+  },
+  {
+    q: { en: 'What is the consultation fee?', hi: 'कंसल्टेशन फ़ीस कितनी है?' },
+    a: {
+      en: 'From ₹800 for the pediatrician and from ₹1,000 for the orthopedic surgeon. Vaccines, X-rays, plasters and procedures are charged separately; ask at the desk before anything is done.',
+      hi: 'बाल रोग विशेषज्ञ के लिए ₹800 से और ऑर्थोपेडिक सर्जन के लिए ₹1,000 से। टीके, X-ray, प्लास्टर और प्रोसीजर का शुल्क अलग है; पहले डेस्क पर पूछ लें।',
     },
-    {
-      title: 'Convenient Location',
-      description: 'Easily accessible location at Bhaveshwar Plaza in Ghatkopar West with ample parking.',
-      icon: '📍'
+  },
+  {
+    q: { en: 'How do I pay?', hi: 'भुगतान कैसे करें?' },
+    a: { en: 'Cash or UPI.', hi: 'कैश या UPI से।' },
+  },
+  {
+    q: { en: 'Is insurance accepted?', hi: 'क्या इंश्योरेंस चलता है?' },
+    a: {
+      en: 'We accept most major health insurance plans and our staff help with the claim. Call with your insurer’s name to confirm before you come.',
+      hi: 'हम ज़्यादातर बड़े हेल्थ इंश्योरेंस प्लान स्वीकार करते हैं और क्लेम में हमारा स्टाफ़ मदद करता है। आने से पहले अपनी इंश्योरेंस कंपनी का नाम बताकर पक्का कर लें।',
     },
-    {
-      title: 'Modern Facilities',
-      description: 'Well-equipped clinic with modern medical facilities and hygienic environment.',
-      icon: '🏥'
+  },
+  {
+    q: { en: 'Is this an emergency hospital?', hi: 'क्या यह इमरजेंसी अस्पताल है?' },
+    a: {
+      en: 'No. For a medical emergency call 108 for an ambulance, or go to the nearest hospital casualty department.',
+      hi: 'नहीं। मेडिकल इमरजेंसी में एम्बुलेंस के लिए 108 पर कॉल करें, या नज़दीकी अस्पताल के कैज़ुअल्टी विभाग में जाएँ।',
     },
-    {
-      title: 'Personalized Care',
-      description: 'Individual attention and customized treatment plans for each patient.',
-      icon: '💝'
-    }
-  ]
-};
-
-export default clinicData;
+  },
+  {
+    q: { en: 'What should I bring?', hi: 'साथ में क्या लाएँ?' },
+    a: {
+      en: 'For a child: the vaccination card and any earlier prescriptions. For bone or joint problems: old X-rays, MRI reports and the medicines you are taking.',
+      hi: 'बच्चे के लिए: टीकाकरण कार्ड और पुराने प्रिस्क्रिप्शन। हड्डी या जोड़ की समस्या के लिए: पुराने X-ray, MRI रिपोर्ट और चल रही दवाइयाँ।',
+    },
+  },
+  {
+    q: { en: 'Which languages do the doctors speak?', hi: 'डॉक्टर कौन-सी भाषाएँ बोलते हैं?' },
+    a: { en: 'English, Hindi and Marathi.', hi: 'हिंदी, मराठी और अंग्रेज़ी।' },
+  },
+]
