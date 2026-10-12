@@ -34,8 +34,16 @@ export default function Home() {
       <section className="hero">
         <div className="wrap hero-grid">
           <div>
-            <p className="kicker">{tx({ en: `Ghatkopar West · since ${clinic.founded}`, hi: `घाटकोपर पश्चिम · ${clinic.founded} से` })}</p>
-            <h1>{tx({ en: 'Children’s doctor and bone & joint surgeon, Ghatkopar West', hi: 'बच्चों के डॉक्टर और हड्डी-जोड़ के सर्जन, घाटकोपर पश्चिम' })}</h1>
+            <p className="kicker">{tx({ en: `Pediatrics & Orthopedics · Ghatkopar West · since ${clinic.founded}`, hi: `बाल रोग और हड्डी रोग · घाटकोपर पश्चिम · ${clinic.founded} से` })}</p>
+            <h1>
+              {tx({ en: 'Care for your ', hi: 'आपके ' })}
+              <span className="accent-peds">{tx({ en: 'little ones', hi: 'नन्हे-मुन्नों' })}</span>
+              {tx({ en: '.', hi: ' की देखभाल।' })}
+              <br />
+              {tx({ en: 'Care for your ', hi: 'आपकी ' })}
+              <span className="accent-ortho">{tx({ en: 'bones', hi: 'हड्डियों' })}</span>
+              {tx({ en: '.', hi: ' की देखभाल।' })}
+            </h1>
             <p className="lede">
               {tx({
                 en: 'Dr. Amit Shah looks after children from newborns to teens. Dr. Swapnil Shah treats knee, back and joint pain, fractures and sports injuries. On L.B.S. Marg, opposite Shreyas Theatre.',

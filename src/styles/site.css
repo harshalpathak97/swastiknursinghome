@@ -131,8 +131,10 @@ a:hover { text-decoration-thickness: 2px; }
 @media (min-width: 960px) { .hero-grid { grid-template-columns: 1.05fr 1fr; } }
 .kicker { display: inline-flex; align-items: center; gap: 0.625rem; font-weight: 600; color: var(--ink-2); margin-bottom: 1.25rem; }
 .kicker::before { content: ''; width: 0.625rem; height: 0.625rem; border-radius: 50%; background: var(--marigold); }
-.hero h1 { max-width: 17ch; font-size: clamp(2.375rem, 4.4vw, 3.75rem); }
-:lang(hi) .hero h1 { max-width: 16ch; }
+.hero h1 { font-size: clamp(2.5rem, 5vw, 4.25rem); }
+.accent-peds { color: var(--marigold-ink); }
+.accent-ortho { color: var(--teal); }
+.accent-peds, .accent-ortho { white-space: nowrap; }
 .hero .lede { margin-top: 1.5rem; }
 .hero .btns { margin-top: 2rem; }
 .lede { font-size: clamp(1.125rem, 1.6vw, 1.3125rem); color: var(--ink-2); max-width: 36rem; line-height: 1.55; }
