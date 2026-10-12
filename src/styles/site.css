@@ -72,7 +72,7 @@ a:hover { text-decoration-thickness: 2px; }
 @media (max-width: 760px) {
   .util .hours-line, .util a.num { display: none; }
   .util .status { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .brand-name { font-size: 1.125rem; }
+  .brand-name { font-size: 1.5rem; }
   .brand-mark { width: 2.5rem; height: 2.5rem; }
 }
 
@@ -80,12 +80,9 @@ a:hover { text-decoration-thickness: 2px; }
 .site-head .wrap { display: flex; align-items: center; gap: 1.75rem; min-height: 4.75rem; }
 
 .brand { display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-.brand-mark {
-  width: 2.75rem; height: 2.75rem; flex: none; border-radius: 12px; background: var(--teal); color: #fff;
-  display: grid; place-items: center; font: 1.375rem/1 var(--serif); padding-top: 0.3rem;
-}
-.brand-name { display: block; font: 1.375rem/1.05 var(--serif); }
-.brand-sub { display: block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-top: 0.2rem; }
+.brand-mark { width: 3rem; height: 3rem; flex: none; }
+.brand-name { display: block; font: 1.875rem/0.95 var(--serif); letter-spacing: -0.01em; }
+.brand-sub { display: block; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ink-3); margin-top: 0.3rem; }
 :lang(hi) .brand-sub { letter-spacing: 0; text-transform: none; font-size: 0.8125rem; }
 
 .nav { display: flex; gap: 1.5rem; margin-left: auto; align-items: center; }
@@ -325,7 +322,6 @@ a:hover { text-decoration-thickness: 2px; }
 }
 
 @media (max-width: 400px) {
-  .brand-sub { display: none; }
   .hero .btns .btn { flex: 1 1 100%; }
   .facts { grid-template-columns: 1fr; gap: 0; }
   .facts dd { margin-bottom: 0.5rem; }

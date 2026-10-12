@@ -29,10 +29,10 @@ export function Brand() {
   const { tx, href } = useT()
   return (
     <Link to={href('/')} className="brand">
-      <span className="brand-mark" aria-hidden="true">स्व</span>
+      <img className="brand-mark" src="/logo.svg" alt="" width="48" height="48" />
       <span>
-        <span className="brand-name">{tx({ en: clinic.name, hi: clinic.nameHi })}</span>
-        <span className="brand-sub">{tx({ en: `Ghatkopar West · since ${clinic.founded}`, hi: `घाटकोपर पश्चिम · ${clinic.founded} से` })}</span>
+        <span className="brand-name">{tx({ en: 'Swastik', hi: 'स्वस्तिक' })}</span>
+        <span className="brand-sub">{tx({ en: 'Nursing Home', hi: 'नर्सिंग होम' })}</span>
       </span>
     </Link>
   )
