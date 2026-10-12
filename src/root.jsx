@@ -19,7 +19,11 @@ export function Layout({ children }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#faf7f0" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        {/* ?v= busts cached tab icons; bump when the logo changes. Safari needs the PNG/ICO. */}
+        <link rel="icon" href="/favicon.ico?v=2" sizes="48x48" />
+        <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+        <link rel="icon" href="/favicon-32.png?v=2" type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
         <Meta />
         <Links />
       </head>

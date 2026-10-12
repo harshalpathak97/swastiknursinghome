@@ -36,13 +36,9 @@ export default function Home() {
           <div>
             <p className="kicker">{tx({ en: `Pediatrics & Orthopedics · Ghatkopar West · since ${clinic.founded}`, hi: `बाल रोग और हड्डी रोग · घाटकोपर पश्चिम · ${clinic.founded} से` })}</p>
             <h1>
-              {tx({ en: 'Care for your ', hi: 'आपके ' })}
-              <span className="accent-peds">{tx({ en: 'little ones', hi: 'नन्हे-मुन्नों' })}</span>
-              {tx({ en: '.', hi: ' की देखभाल।' })}
+              <span className="accent-peds">{tx({ en: 'Children’s health.', hi: 'बच्चों की सेहत।' })}</span>
               <br />
-              {tx({ en: 'Care for your ', hi: 'आपकी ' })}
-              <span className="accent-ortho">{tx({ en: 'bones', hi: 'हड्डियों' })}</span>
-              {tx({ en: '.', hi: ' की देखभाल।' })}
+              <span className="accent-ortho">{tx({ en: 'Bone and joint care.', hi: 'हड्डी और जोड़ों की देखभाल।' })}</span>
             </h1>
             <p className="lede">
               {tx({

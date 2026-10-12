@@ -15,6 +15,7 @@ export const clinicLd = () => ({
   url: abs('/'),
   telephone: clinic.phoneE164,
   image: abs('/og-image.png'),
+  logo: abs('/icon-512.png'),
   foundingDate: String(clinic.founded),
   medicalSpecialty: ['Pediatric', 'Orthopedic'],
   priceRange: '₹₹',
